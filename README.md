@@ -1,1 +1,1 @@
-# SOEN6431---SCM-Project
+# SOEN6431 SCM-Project
