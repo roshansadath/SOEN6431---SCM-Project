@@ -1,0 +1,101 @@
+{
+    "DQN.py": {
+        "loc": 82,
+        "lloc": 71,
+        "sloc": 57,
+        "comments": 9,
+        "multi": 0,
+        "blank": 16,
+        "single_comments": 9
+    },
+    "game.py": {
+        "loc": 781,
+        "lloc": 557,
+        "sloc": 557,
+        "comments": 52,
+        "multi": 60,
+        "blank": 113,
+        "single_comments": 51
+    },
+    "ghostAgents.py": {
+        "loc": 94,
+        "lloc": 58,
+        "sloc": 58,
+        "comments": 15,
+        "multi": 0,
+        "blank": 18,
+        "single_comments": 18
+    },
+    "graphicsDisplay.py": {
+        "loc": 743,
+        "lloc": 503,
+        "sloc": 568,
+        "comments": 74,
+        "multi": 9,
+        "blank": 104,
+        "single_comments": 62
+    },
+    "graphicsUtils.py": {
+        "loc": 452,
+        "lloc": 295,
+        "sloc": 317,
+        "comments": 49,
+        "multi": 0,
+        "blank": 98,
+        "single_comments": 37
+    },
+    "keyboardAgents.py": {
+        "loc": 95,
+        "lloc": 60,
+        "sloc": 58,
+        "comments": 15,
+        "multi": 6,
+        "blank": 16,
+        "single_comments": 15
+    },
+    "layout.py": {
+        "loc": 164,
+        "lloc": 114,
+        "sloc": 115,
+        "comments": 13,
+        "multi": 14,
+        "blank": 22,
+        "single_comments": 13
+    },
+    "pacman.py": {
+        "loc": 748,
+        "lloc": 433,
+        "sloc": 447,
+        "comments": 73,
+        "multi": 110,
+        "blank": 129,
+        "single_comments": 62
+    },
+    "pacmanDQN_Agents.py": {
+        "loc": 382,
+        "lloc": 236,
+        "sloc": 254,
+        "comments": 64,
+        "multi": 0,
+        "blank": 78,
+        "single_comments": 50
+    },
+    "textDisplay.py": {
+        "loc": 81,
+        "lloc": 53,
+        "sloc": 53,
+        "comments": 14,
+        "multi": 0,
+        "blank": 16,
+        "single_comments": 12
+    },
+    "util.py": {
+        "loc": 695,
+        "lloc": 316,
+        "sloc": 371,
+        "comments": 32,
+        "multi": 170,
+        "blank": 112,
+        "single_comments": 42
+    }
+}
