@@ -683,7 +683,7 @@ def replayGame(layout, actions, display):
 
 
 def runGames(layout, pacman, ghosts, display, numGames, record, numTraining=0, catchExceptions=False, timeout=30):
-    import __main__
+    import __main__, time
     __main__.__dict__['_display'] = display
 
     rules = ClassicGameRules(timeout)
@@ -726,6 +726,8 @@ def runGames(layout, pacman, ghosts, display, numGames, record, numTraining=0, c
                (wins.count(True), len(wins), winRate)))
         print(('Record:       ', ', '.join(
             [['Loss', 'Win'][int(w)] for w in wins])))
+        end_time = time.time()
+        print("Execution Time = {0}s".format(end_time - start_time))
 
     return games
 
@@ -740,6 +742,7 @@ if __name__ == '__main__':
 
     > python pacman.py --help
     """
+    start_time = time.time()
     args = readCommand(sys.argv[1:])  # Get game components based on input
     runGames(**args)
 
