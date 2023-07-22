@@ -1,27 +1,32 @@
-# graphicsDisplay.py
-# ------------------
-# Licensing Information:  You are free to use or extend these projects for
-# educational purposes provided that (1) you do not distribute or publish
-# solutions, (2) you retain this notice, and (3) you provide clear
-# attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
-#
-# Attribution Information: The Pacman AI projects were developed at UC Berkeley.
-# The core projects and autograders were primarily created by John DeNero
-# (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
-# Student side autograding was added by Brad Miller, Nick Hay, and
-# Pieter Abbeel (pabbeel@cs.berkeley.edu).
+""" graphicsDisplay.py
+ ------------------
+Licensing Information:  You are free to use or extend these projects for
+educational purposes provided that (1) you do not distribute or publish
+solutions, (2) you retain this notice, and (3) you provide clear
+attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
 
+Attribution Information: The Pacman AI projects were developed at UC Berkeley.
+The core projects and autograders were primarily created by John DeNero
+(denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
+Student side autograding was added by Brad Miller, Nick Hay, and
+Pieter Abbeel (pabbeel@cs.berkeley.edu)."""
 
-from graphicsUtils import *
+import os
+from graphicsUtils import writePostscript, line, circle, remove_from_screen
+from graphicsDisplay import formatColor, changeColor, square
+from graphicsDisplay import refresh, moveCircle, end_graphics, changeText
+from graphicsDisplay import edit, move_by, polygon, sleep, begin_graphics
+from graphicsDisplay import text, wait_for_keys, colorToVector
 import math
-import time
 from game import Directions
 
 ###########################
 #  GRAPHICS DISPLAY CODE  #
 ###########################
 
-# Most code by Dan Klein and John Denero written or rewritten for cs188, UC Berkeley.
+# Most code by Dan Klein and John Denero
+#  written or rewritten
+# for cs188, UC Berkeley.
 # Some code from a Pacman implementation by LiveWires, and used / modified
 # with permission.
 
@@ -64,7 +69,7 @@ GHOST_VEC_COLORS = list(map(colorToVector, GHOST_COLORS))
 
 PACMAN_COLOR = formatColor(255.0 / 255.0, 255.0 / 255.0, 61.0 / 255)
 PACMAN_SCALE = 0.5
-#pacman_speed = 0.25
+# pacman_speed = 0.25
 
 # Food
 FOOD_COLOR = formatColor(1, 1, 1)
@@ -97,7 +102,7 @@ class InfoPane:
         """
           Translates a point relative from the bottom left of the info pane.
         """
-        if y == None:
+        if y is None:
             x, y = pos
         else:
             x = pos
@@ -108,7 +113,10 @@ class InfoPane:
 
     def drawPane(self):
         self.scoreText = text(self.toScreen(
-            0, 0), self.textColor, "SCORE:    0", "Times", self.fontSize, "bold")
+            0, 0), self.textColor, "SCORE:    0",
+            "Times",
+            self.fontSize,
+            "bold")
 
     def initializeGhostDistances(self, distances):
         self.ghostDistanceText = []
@@ -120,8 +128,9 @@ class InfoPane:
             size = 10
 
         for i, d in enumerate(distances):
-            t = text(self.toScreen(self.width / 2 + self.width / 8 * i,
-                                   0), GHOST_COLORS[i + 1], d, "Times", size, "bold")
+            t = text(self.toScreen(self.width / 2 +
+                                   self.width / 8 * i, 0),
+                     GHOST_COLORS[i + 1], d, "Times", size, "bold")
             self.ghostDistanceText.append(t)
 
     def updateScore(self, score):
@@ -258,9 +267,9 @@ class PacmanGraphics:
             self.moveGhost(agentState, agentIndex, prevState, prevImage)
         self.agentImages[agentIndex] = (agentState, prevImage)
 
-        if newState._foodEaten != None:
+        if newState._foodEaten is not None:
             self.removeFood(newState._foodEaten, self.food)
-        if newState._capsuleEaten != None:
+        if newState._capsuleEaten is not None:
             self.removeCapsule(newState._capsuleEaten, self.capsules)
         self.infoPane.updateScore(newState.score)
         if 'ghostDistances' in dir(newState):
@@ -326,7 +335,6 @@ class PacmanGraphics:
             if 'q' in keys:
                 self.frameTime = 0.1
         if self.frameTime > 0.01 or self.frameTime < 0:
-            start = time.time()
             fx, fy = self.getPosition(prevPacman)
             px, py = self.getPosition(pacman)
             frames = 4.0
@@ -372,14 +380,38 @@ class PacmanGraphics:
             dx = 0.2
         if dir == 'West':
             dx = -0.2
-        leftEye = circle((screen_x + self.gridSize * GHOST_SIZE * (-0.3 + dx / 1.5), screen_y -
-                          self.gridSize * GHOST_SIZE * (0.3 - dy / 1.5)), self.gridSize * GHOST_SIZE * 0.2, WHITE, WHITE)
-        rightEye = circle((screen_x + self.gridSize * GHOST_SIZE * (0.3 + dx / 1.5), screen_y -
-                           self.gridSize * GHOST_SIZE * (0.3 - dy / 1.5)), self.gridSize * GHOST_SIZE * 0.2, WHITE, WHITE)
-        leftPupil = circle((screen_x + self.gridSize * GHOST_SIZE * (-0.3 + dx), screen_y -
-                            self.gridSize * GHOST_SIZE * (0.3 - dy)), self.gridSize * GHOST_SIZE * 0.08, BLACK, BLACK)
-        rightPupil = circle((screen_x + self.gridSize * GHOST_SIZE * (0.3 + dx), screen_y -
-                             self.gridSize * GHOST_SIZE * (0.3 - dy)), self.gridSize * GHOST_SIZE * 0.08, BLACK, BLACK)
+        leftEye = circle((screen_x + self.gridSize *
+                          GHOST_SIZE *
+                          (-0.3 + dx / 1.5), screen_y -
+                          self.gridSize *
+                          GHOST_SIZE *
+                          (0.3 - dy / 1.5)), self.gridSize *
+                         GHOST_SIZE *
+                         0.2, WHITE, WHITE)
+        rightEye = circle((screen_x + self.gridSize *
+                           GHOST_SIZE *
+                           (0.3 + dx / 1.5), screen_y -
+                           self.gridSize *
+                           GHOST_SIZE *
+                           (0.3 - dy / 1.5)), self.gridSize *
+                          GHOST_SIZE *
+                          0.2, WHITE, WHITE)
+        leftPupil = circle((screen_x + self.gridSize *
+                            GHOST_SIZE *
+                            (-0.3 + dx), screen_y -
+                            self.gridSize *
+                            GHOST_SIZE *
+                            (0.3 - dy)), self.gridSize *
+                           GHOST_SIZE *
+                           0.08, BLACK, BLACK)
+        rightPupil = circle((screen_x + self.gridSize *
+                             GHOST_SIZE *
+                             (0.3 + dx), screen_y -
+                             self.gridSize *
+                             GHOST_SIZE *
+                             (0.3 - dy)), self.gridSize *
+                            GHOST_SIZE *
+                            0.08, BLACK, BLACK)
         ghostImageParts = []
         ghostImageParts.append(body)
         ghostImageParts.append(leftEye)
@@ -401,14 +433,26 @@ class PacmanGraphics:
             dx = 0.2
         if dir == 'West':
             dx = -0.2
-        moveCircle(eyes[0], (screen_x + self.gridSize * GHOST_SIZE * (-0.3 + dx / 1.5), screen_y -
-                             self.gridSize * GHOST_SIZE * (0.3 - dy / 1.5)), self.gridSize * GHOST_SIZE * 0.2)
-        moveCircle(eyes[1], (screen_x + self.gridSize * GHOST_SIZE * (0.3 + dx / 1.5), screen_y -
-                             self.gridSize * GHOST_SIZE * (0.3 - dy / 1.5)), self.gridSize * GHOST_SIZE * 0.2)
-        moveCircle(eyes[2], (screen_x + self.gridSize * GHOST_SIZE * (-0.3 + dx), screen_y -
-                             self.gridSize * GHOST_SIZE * (0.3 - dy)), self.gridSize * GHOST_SIZE * 0.08)
-        moveCircle(eyes[3], (screen_x + self.gridSize * GHOST_SIZE * (0.3 + dx), screen_y -
-                             self.gridSize * GHOST_SIZE * (0.3 - dy)), self.gridSize * GHOST_SIZE * 0.08)
+        moveCircle(eyes[0],
+                   (screen_x + self.gridSize * GHOST_SIZE * (-0.3 + dx / 1.5),
+                    screen_y -
+                    self.gridSize * GHOST_SIZE * (0.3 - dy / 1.5)),
+                   self.gridSize * GHOST_SIZE * 0.2)
+        moveCircle(eyes[1],
+                   (screen_x + self.gridSize * GHOST_SIZE * (0.3 + dx / 1.5),
+                    screen_y -
+                    self.gridSize * GHOST_SIZE * (0.3 - dy / 1.5)),
+                   self.gridSize * GHOST_SIZE * 0.2)
+        moveCircle(eyes[2],
+                   (screen_x + self.gridSize * GHOST_SIZE * (-0.3 + dx),
+                    screen_y -
+                    self.gridSize * GHOST_SIZE * (0.3 - dy)),
+                   self.gridSize * GHOST_SIZE * 0.08)
+        moveCircle(eyes[3],
+                   (screen_x + self.gridSize * GHOST_SIZE * (0.3 + dx),
+                    screen_y -
+                    self.gridSize * GHOST_SIZE * (0.3 - dy)),
+                   self.gridSize * GHOST_SIZE * 0.08)
 
     def moveGhost(self, ghost, ghostIndex, prevGhost, ghostImageParts):
         old_x, old_y = self.to_screen(self.getPosition(prevGhost))
@@ -429,12 +473,12 @@ class PacmanGraphics:
         refresh()
 
     def getPosition(self, agentState):
-        if agentState.configuration == None:
+        if agentState.configuration is None:
             return (-1000, -1000)
         return agentState.getPosition()
 
     def getDirection(self, agentState):
-        if agentState.configuration == None:
+        if agentState.configuration is None:
             return Directions.STOP
         return agentState.configuration.getDirection()
 
@@ -443,7 +487,7 @@ class PacmanGraphics:
 
     def to_screen(self, point):
         (x, y) = point
-        #y = self.height - y
+        # y = self.height - y
         x = (x + 1) * self.gridSize
         y = (self.height - y) * self.gridSize
         return (x, y)
@@ -451,7 +495,7 @@ class PacmanGraphics:
     # Fixes some TK issue with off-center circles
     def to_screen2(self, point):
         (x, y) = point
-        #y = self.height - y
+        # y = self.height - y
         x = (x + 1) * self.gridSize
         y = (self.height - y) * self.gridSize
         return (x, y)
@@ -487,64 +531,135 @@ class PacmanGraphics:
                                wallColor, wallColor, (0, 91), 'arc')
                     if (nIsWall) and (not eIsWall):
                         # vertical line
-                        line(add(screen, (self.gridSize * WALL_RADIUS, 0)), add(screen,
-                                                                                (self.gridSize * WALL_RADIUS, self.gridSize * (-0.5) - 1)), wallColor)
+                        line(add(screen, (self.gridSize * WALL_RADIUS, 0)),
+                             add(screen, (self.gridSize * WALL_RADIUS,
+                                          self.gridSize * (-0.5) - 1)),
+                             wallColor)
                     if (not nIsWall) and (eIsWall):
                         # horizontal line
-                        line(add(screen, (0, self.gridSize * (-1) * WALL_RADIUS)), add(screen,
-                                                                                       (self.gridSize * 0.5 + 1, self.gridSize * (-1) * WALL_RADIUS)), wallColor)
+                        line(add(screen,
+                                 (0,
+                                  self.gridSize * (-1) * WALL_RADIUS)),
+                             add(screen,
+                                 (self.gridSize * 0.5 + 1,
+                                  self.gridSize * (-1) * WALL_RADIUS)),
+                             wallColor)
                     if (nIsWall) and (eIsWall) and (not neIsWall):
                         # outer circle
-                        circle(add(screen2, (self.gridSize * 2 * WALL_RADIUS, self.gridSize * (-2) * WALL_RADIUS)),
-                               WALL_RADIUS * self.gridSize - 1, wallColor, wallColor, (180, 271), 'arc')
-                        line(add(screen, (self.gridSize * 2 * WALL_RADIUS - 1, self.gridSize * (-1) * WALL_RADIUS)),
-                             add(screen, (self.gridSize * 0.5 + 1, self.gridSize * (-1) * WALL_RADIUS)), wallColor)
-                        line(add(screen, (self.gridSize * WALL_RADIUS, self.gridSize * (-2) * WALL_RADIUS + 1)),
-                             add(screen, (self.gridSize * WALL_RADIUS, self.gridSize * (-0.5))), wallColor)
+                        circle(add(screen2,
+                                   (self.gridSize * 2 * WALL_RADIUS,
+                                    self.gridSize * (-2) * WALL_RADIUS)),
+                               WALL_RADIUS * self.gridSize - 1,
+                               wallColor,
+                               wallColor,
+                               (180,
+                                271),
+                               'arc')
+                        line(add(screen,
+                                 (self.gridSize * 2 * WALL_RADIUS - 1,
+                                  self.gridSize * (-1) * WALL_RADIUS)),
+                             add(screen,
+                                 (self.gridSize * 0.5 + 1,
+                                  self.gridSize * (-1) * WALL_RADIUS)),
+                             wallColor)
+                        line(add(screen,
+                                 (self.gridSize * WALL_RADIUS,
+                                  self.gridSize * (-2) * WALL_RADIUS + 1)),
+                             add(screen,
+                                 (self.gridSize * WALL_RADIUS,
+                                  self.gridSize * (-0.5))),
+                             wallColor)
 
                     # NW quadrant
                     if (not nIsWall) and (not wIsWall):
                         # inner circle
-                        circle(screen2, WALL_RADIUS * self.gridSize,
+                        circle(screen2,
+                               WALL_RADIUS * self.gridSize,
                                wallColor, wallColor, (90, 181), 'arc')
                     if (nIsWall) and (not wIsWall):
                         # vertical line
-                        line(add(screen, (self.gridSize * (-1) * WALL_RADIUS, 0)), add(screen,
-                                                                                       (self.gridSize * (-1) * WALL_RADIUS, self.gridSize * (-0.5) - 1)), wallColor)
+                        line(add(screen,
+                                 (self.gridSize * (-1) * WALL_RADIUS,
+                                  0)),
+                             add(screen,
+                                 (self.gridSize * (-1) * WALL_RADIUS,
+                                  self.gridSize * (-0.5) - 1)),
+                             wallColor)
                     if (not nIsWall) and (wIsWall):
                         # horizontal line
-                        line(add(screen, (0, self.gridSize * (-1) * WALL_RADIUS)), add(screen,
-                                                                                       (self.gridSize * (-0.5) - 1, self.gridSize * (-1) * WALL_RADIUS)), wallColor)
+                        line(add(screen,
+                                 (0,
+                                  self.gridSize * (-1) * WALL_RADIUS)),
+                             add(screen,
+                                 (self.gridSize * (-0.5) - 1,
+                                  self.gridSize * (-1) * WALL_RADIUS)),
+                             wallColor)
                     if (nIsWall) and (wIsWall) and (not nwIsWall):
                         # outer circle
-                        circle(add(screen2, (self.gridSize * (-2) * WALL_RADIUS, self.gridSize * (-2) * WALL_RADIUS)),
-                               WALL_RADIUS * self.gridSize - 1, wallColor, wallColor, (270, 361), 'arc')
-                        line(add(screen, (self.gridSize * (-2) * WALL_RADIUS + 1, self.gridSize * (-1) * WALL_RADIUS)),
-                             add(screen, (self.gridSize * (-0.5), self.gridSize * (-1) * WALL_RADIUS)), wallColor)
-                        line(add(screen, (self.gridSize * (-1) * WALL_RADIUS, self.gridSize * (-2) * WALL_RADIUS + 1)),
-                             add(screen, (self.gridSize * (-1) * WALL_RADIUS, self.gridSize * (-0.5))), wallColor)
+                        circle(add(screen2,
+                                   (self.gridSize * (-2) * WALL_RADIUS,
+                                    self.gridSize * (-2) * WALL_RADIUS)),
+                               WALL_RADIUS * self.gridSize - 1,
+                               wallColor,
+                               wallColor,
+                               (270,
+                                361),
+                               'arc')
+                        line(add(screen,
+                                 (self.gridSize * (-2) * WALL_RADIUS + 1,
+                                  self.gridSize * (-1) * WALL_RADIUS)),
+                             add(screen,
+                                 (self.gridSize * (-0.5),
+                                  self.gridSize * (-1) * WALL_RADIUS)),
+                             wallColor)
+                        line(add(screen,
+                                 (self.gridSize * (-1) * WALL_RADIUS,
+                                  self.gridSize * (-2) * WALL_RADIUS + 1)),
+                             add(screen,
+                                 (self.gridSize * (-1) * WALL_RADIUS,
+                                  self.gridSize * (-0.5))),
+                             wallColor)
 
                     # SE quadrant
                     if (not sIsWall) and (not eIsWall):
                         # inner circle
-                        circle(screen2, WALL_RADIUS * self.gridSize,
+                        circle(screen2,
+                               WALL_RADIUS * self.gridSize,
                                wallColor, wallColor, (270, 361), 'arc')
                     if (sIsWall) and (not eIsWall):
                         # vertical line
-                        line(add(screen, (self.gridSize * WALL_RADIUS, 0)), add(screen,
-                                                                                (self.gridSize * WALL_RADIUS, self.gridSize * (0.5) + 1)), wallColor)
+                        line(add(screen,
+                                 (self.gridSize * WALL_RADIUS, 0)),
+                             add(screen,
+                                 (self.gridSize * WALL_RADIUS,
+                                  self.gridSize * (0.5) + 1)), wallColor)
                     if (not sIsWall) and (eIsWall):
                         # horizontal line
-                        line(add(screen, (0, self.gridSize * (1) * WALL_RADIUS)), add(screen,
-                                                                                      (self.gridSize * 0.5 + 1, self.gridSize * (1) * WALL_RADIUS)), wallColor)
+                        line(add(screen,
+                                 (0, self.gridSize * (1) * WALL_RADIUS)),
+                             add(screen,
+                                 (self.gridSize * 0.5 + 1,
+                                  self.gridSize * (1) * WALL_RADIUS)),
+                             wallColor)
                     if (sIsWall) and (eIsWall) and (not seIsWall):
                         # outer circle
-                        circle(add(screen2, (self.gridSize * 2 * WALL_RADIUS, self.gridSize * (2) * WALL_RADIUS)),
-                               WALL_RADIUS * self.gridSize - 1, wallColor, wallColor, (90, 181), 'arc')
-                        line(add(screen, (self.gridSize * 2 * WALL_RADIUS - 1, self.gridSize * (1) * WALL_RADIUS)),
-                             add(screen, (self.gridSize * 0.5, self.gridSize * (1) * WALL_RADIUS)), wallColor)
-                        line(add(screen, (self.gridSize * WALL_RADIUS, self.gridSize * (2) * WALL_RADIUS - 1)),
-                             add(screen, (self.gridSize * WALL_RADIUS, self.gridSize * (0.5))), wallColor)
+                        circle(add(screen2,
+                                   (self.gridSize * 2 * WALL_RADIUS,
+                                    self.gridSize * (2) * WALL_RADIUS)),
+                               WALL_RADIUS * self.gridSize - 1,
+                               wallColor, wallColor,
+                               (90, 181), 'arc')
+                        line(add(screen, (self.gridSize * 2 * WALL_RADIUS - 1,
+                                          self.gridSize * (1) * WALL_RADIUS)),
+                             add(screen, (self.gridSize * 0.5,
+                                          self.gridSize * (1) * WALL_RADIUS)),
+                             wallColor)
+                        line(add(screen,
+                                 (self.gridSize * WALL_RADIUS,
+                                  self.gridSize * (2) * WALL_RADIUS-1)),
+                             add(screen,
+                                 (self.gridSize * WALL_RADIUS,
+                                  self.gridSize * (0.5))), wallColor)
 
                     # SW quadrant
                     if (not sIsWall) and (not wIsWall):
@@ -553,20 +668,32 @@ class PacmanGraphics:
                                wallColor, wallColor, (180, 271), 'arc')
                     if (sIsWall) and (not wIsWall):
                         # vertical line
-                        line(add(screen, (self.gridSize * (-1) * WALL_RADIUS, 0)), add(screen,
-                                                                                       (self.gridSize * (-1) * WALL_RADIUS, self.gridSize * (0.5) + 1)), wallColor)
+                        line(add(screen, (self.gridSize * (-1) * WALL_RADIUS,
+                                          0)),
+                             add(screen, (self.gridSize * (-1) * WALL_RADIUS,
+                                          self.gridSize*(0.5)+1)), wallColor)
                     if (not sIsWall) and (wIsWall):
                         # horizontal line
-                        line(add(screen, (0, self.gridSize * (1) * WALL_RADIUS)), add(screen,
-                                                                                      (self.gridSize * (-0.5) - 1, self.gridSize * (1) * WALL_RADIUS)), wallColor)
+                        line(add(screen, (0, self.gridSize*(1)*WALL_RADIUS)),
+                             add(screen, (self.gridSize * (-0.5) - 1,
+                                          self.gridSize * (1) *
+                                          WALL_RADIUS)), wallColor)
                     if (sIsWall) and (wIsWall) and (not swIsWall):
                         # outer circle
-                        circle(add(screen2, (self.gridSize * (-2) * WALL_RADIUS, self.gridSize * (2) * WALL_RADIUS)),
-                               WALL_RADIUS * self.gridSize - 1, wallColor, wallColor, (0, 91), 'arc')
-                        line(add(screen, (self.gridSize * (-2) * WALL_RADIUS + 1, self.gridSize * (1) * WALL_RADIUS)),
-                             add(screen, (self.gridSize * (-0.5), self.gridSize * (1) * WALL_RADIUS)), wallColor)
-                        line(add(screen, (self.gridSize * (-1) * WALL_RADIUS, self.gridSize * (2) * WALL_RADIUS - 1)),
-                             add(screen, (self.gridSize * (-1) * WALL_RADIUS, self.gridSize * (0.5))), wallColor)
+                        circle(add(screen2, (self.gridSize * (-2)*WALL_RADIUS,
+                                             self.gridSize * (2)*WALL_RADIUS)),
+                               WALL_RADIUS * self.gridSize - 1,
+                               wallColor, wallColor, (0, 91), 'arc')
+                        line(add(screen, (self.gridSize * (-2) * WALL_RADIUS+1,
+                                          self.gridSize * (1) * WALL_RADIUS)),
+                             add(screen, (self.gridSize * (-0.5),
+                                          self.gridSize * (1) *
+                                          WALL_RADIUS)), wallColor)
+                        line(add(screen, (self.gridSize * (-1) * WALL_RADIUS,
+                                          self.gridSize * (2) * WALL_RADIUS - 1
+                                          )),
+                             add(screen, (self.gridSize * (-1) * WALL_RADIUS,
+                                          self.gridSize * (0.5))), wallColor)
 
     def isWall(self, x, y, walls):
         if x < 0 or y < 0:
@@ -646,7 +773,7 @@ class PacmanGraphics:
         "Draws an agent's belief distributions"
         # copy all distributions so we don't change their state
         distributions = [x.copy() for x in distributions]
-        if self.distributionImages == None:
+        if self.distributionImages is None:
             self.drawDistributions(self.previousState)
         for x in range(len(self.distributionImages)):
             for y in range(len(self.distributionImages[0])):
@@ -679,8 +806,6 @@ class FirstPersonPacmanGraphics(PacmanGraphics):
         self.isBlue = isBlue
         PacmanGraphics.startGraphics(self, state)
         # Initialize distribution images
-        walls = state.layout.walls
-        dist = []
         self.layout = state.layout
 
         # Draw the rest
@@ -709,7 +834,9 @@ class FirstPersonPacmanGraphics(PacmanGraphics):
         return GHOST_COLORS[ghostIndex]
 
     def getPosition(self, ghostState):
-        if not self.showGhosts and not ghostState.isPacman and ghostState.getPosition()[1] > 1:
+        flag1 = self.showGhosts and not ghostState.isPacman
+        flag2 = ghostState.getPosition()[1] > 1
+        if not flag1 and flag2:
             return (-1000, -1000)
         else:
             return PacmanGraphics.getPosition(self, ghostState)
@@ -728,7 +855,6 @@ def add(x, y):
 SAVE_POSTSCRIPT = False
 POSTSCRIPT_OUTPUT_DIR = 'frames'
 FRAME_NUMBER = 0
-import os
 
 
 def saveFrame():
