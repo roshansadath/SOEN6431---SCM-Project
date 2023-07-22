@@ -10,7 +10,6 @@
  (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
  Student side autograding was added by Brad Miller, Nick Hay, and
  Pieter Abbeel (pabbeel@cs.berkeley.edu).
-
 """
 from game import Agent
 from game import Actions
@@ -32,8 +31,10 @@ class GhostAgent(Agent):
             return util.chooseFromDistribution(dist)
 
     def getDistribution(self, state):
-        """Returns a Counter encoding a distribution over actions
-        from the provided state."""
+        """
+        Returns a Counter encoding a distribution over,
+        actions from the provided state.
+        """
         util.raiseNotDefined()
 
 
