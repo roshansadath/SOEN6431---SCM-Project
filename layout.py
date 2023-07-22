@@ -1,21 +1,22 @@
-""" layout.py
+# layout.py
 # ---------
-Licensing Information:  You are free to use or extend these projects for
-educational purposes provided that (1) you do not distribute or publish
-solutions, (2) you retain this notice, and (3) you provide clear
-attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
+# Licensing Information:  You are free to use or extend these projects for
+# educational purposes provided that (1) you do not distribute or publish
+# solutions, (2) you retain this notice, and (3) you provide clear
+# attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
+#
+# Attribution Information: The Pacman AI projects were developed at UC Berkeley.
+# The core projects and autograders were primarily created by John DeNero
+# (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
+# Student side autograding was added by Brad Miller, Nick Hay, and
+# Pieter Abbeel (pabbeel@cs.berkeley.edu).
 
-Attribution Information: The Pacman AI projects were developed at UC Berkeley.
-The core projects and autograders were primarily created by John DeNero
-(denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
-Student side autograding was added by Brad Miller, Nick Hay, and
-Pieter Abbeel (pabbeel@cs.berkeley.edu)."""
 
-from functools import reduce
-import random
-import os
 from util import manhattanDistance
 from game import Grid
+import os
+import random
+from functools import reduce
 
 VISIBILITY_MATRIX_CACHE = {}
 
@@ -48,19 +49,15 @@ class Layout:
             vecs = [(-0.5, 0), (0.5, 0), (0, -0.5), (0, 0.5)]
             dirs = [Directions.NORTH, Directions.SOUTH,
                     Directions.WEST, Directions.EAST]
-            vis = Grid(self.width, self.height, {Directions.NORTH: set(),
-                                                 Directions.SOUTH: set(
-            ), Directions.EAST: set(), Directions.WEST: set(),
-                Directions.STOP: set()})
+            vis = Grid(self.width, self.height, {Directions.NORTH: set(), Directions.SOUTH: set(
+            ), Directions.EAST: set(), Directions.WEST: set(), Directions.STOP: set()})
             for x in range(self.width):
                 for y in range(self.height):
-                    if self.walls[x][y] is False:
+                    if self.walls[x][y] == False:
                         for vec, direction in zip(vecs, dirs):
                             dx, dy = vec
                             nextx, nexty = x + dx, y + dy
-                            cond1 = (nextx + nexty) != int(nextx) + int(nexty)
-                            cond2 = self.walls[int(nextx)][int(nexty)]
-                            while cond1 or not cond2:
+                            while (nextx + nexty) != int(nextx) + int(nexty) or not self.walls[int(nextx)][int(nexty)]:
                                 vis[x][y][direction].add((nextx, nexty))
                                 nextx, nexty = x + dx, y + dy
             self.visibility = vis
@@ -104,8 +101,7 @@ class Layout:
 
     def processLayoutText(self, layoutText):
         """
-        Coordinates are flipped from the input format to the (x,y)
-        convention here
+        Coordinates are flipped from the input format to the (x,y) convention here
 
         The shape of the maze.  Each character
         represents a different type of object.
@@ -141,31 +137,28 @@ class Layout:
             self.numGhosts += 1
 
 
-def get_layout(name, back=2):
+def getLayout(name, back=2):
     if name.endswith('.lay'):
-        layout = try_to_load('layouts/' + name)
-        if layout is None:
-            layout = try_to_load(name)
+        layout = tryToLoad('layouts/' + name)
+        if layout == None:
+            layout = tryToLoad(name)
     else:
-        layout = try_to_load('layouts/' + name + '.lay')
-        if layout is None:
-            layout = try_to_load(name + '.lay')
-    if layout is None and back >= 0:
+        layout = tryToLoad('layouts/' + name + '.lay')
+        if layout == None:
+            layout = tryToLoad(name + '.lay')
+    if layout == None and back >= 0:
         curdir = os.path.abspath('.')
         os.chdir('..')
-        layout = get_layout(name, back - 1)
+        layout = getLayout(name, back - 1)
         os.chdir(curdir)
     return layout
 
 
-def try_to_load(fullname):
-    """Trying to load the file"""
-    if (not os.path.exists(fullname)):
+def tryToLoad(fullname):
+    if(not os.path.exists(fullname)):
         return None
-    with open(fullname,encoding="utf-8") as my_file:
-        filename = my_file.read()
-    #f = open(fullname)
+    f = open(fullname)
     try:
-        return Layout([line.strip() for line in filename])
+        return Layout([line.strip() for line in f])
     finally:
-        filename.close()
+        f.close()

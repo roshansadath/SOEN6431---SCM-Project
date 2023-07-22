@@ -1,31 +1,31 @@
-""" game.py
- -------
- Licensing Information:  You are free to use or extend these projects for
- educational purposes provided that (1) you do not distribute or publish
- solutions, (2) you retain this notice, and (3) you provide clear
- attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
+# game.py
+# -------
+# Licensing Information:  You are free to use or extend these projects for
+# educational purposes provided that (1) you do not distribute or publish
+# solutions, (2) you retain this notice, and (3) you provide clear
+# attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
+#
+# Attribution Information: The Pacman AI projects were developed at UC Berkeley.
+# The core projects and autograders were primarily created by John DeNero
+# (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
+# Student side autograding was added by Brad Miller, Nick Hay, and
+# Pieter Abbeel (pabbeel@cs.berkeley.edu).
 
-Attribution Information: The Pacman AI projects were developed at UC Berkeley.
- The core projects and autograders were primarily created by John DeNero
- (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
- Student side autograding was added by Brad Miller, Nick Hay, and
- Pieter Abbeel (pabbeel@cs.berkeley.edu).
 
+# game.py
+# -------
+# Licensing Information: Please do not distribute or publish solutions to this
+# project. You are free to use and extend these projects for educational
+# purposes. The Pacman AI projects were developed at UC Berkeley, primarily by
+# John DeNero (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
+# For more info, see http://inst.eecs.berkeley.edu/~cs188/sp09/pacman.html
 
- game.py
- -------
- Licensing Information: Please do not distribute or publish solutions to this
- project. You are free to use and extend these projects for educational
- purposes. The Pacman AI projects were developed at UC Berkeley, primarily by
- John DeNero (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
- For more info, see http://inst.eecs.berkeley.edu/~cs188/sp09/pacman.html"""
-
-# from util import *
+from util import *
 import time
+import os
 import traceback
 import sys
-from util import TimeoutFunctionException, TimeoutFunction, nearestPoint
-from util import raiseNotDefined
+
 #######################
 # Parts worth reading #
 #######################
@@ -44,8 +44,7 @@ class Agent:
 
     def getAction(self, state):
         """
-        The Agent will receive a GameState (from either {pacman, capture, sonar
-        }.py) and
+        The Agent will receive a GameState (from either {pacman, capture, sonar}.py) and
         must return an action from Directions.{North, South, East, West, Stop}
         """
         raiseNotDefined()
@@ -78,10 +77,8 @@ class Configuration:
     A Configuration holds the (x,y) coordinate of a character, along with its
     traveling direction.
 
-    The convention for positions, like a graph, is that (0,0) is the lower left
-    corner, x increases
-    horizontally and y increases vertically.  Therefore, north is the direction
-    of increasing y, or (0,1).
+    The convention for positions, like a graph, is that (0,0) is the lower left corner, x increases
+    horizontally and y increases vertically.  Therefore, north is the direction of increasing y, or (0,1).
     """
 
     def __init__(self, pos, direction):
@@ -99,7 +96,7 @@ class Configuration:
         return x == int(x) and y == int(y)
 
     def __eq__(self, other):
-        if other is None:
+        if other == None:
             return False
         return (self.pos == other.pos and self.direction == other.direction)
 
@@ -147,11 +144,9 @@ class AgentState:
             return "Ghost: " + str(self.configuration)
 
     def __eq__(self, other):
-        if other is None:
+        if other == None:
             return False
-        first_flag = self.configuration == other.configuration
-        second_flag = self.scaredTimer == other.scaredTimer
-        return first_flag and second_flag
+        return self.configuration == other.configuration and self.scaredTimer == other.scaredTimer
 
     def __hash__(self):
         return hash(hash(self.configuration) + 13 * hash(self.scaredTimer))
@@ -165,7 +160,7 @@ class AgentState:
         return state
 
     def getPosition(self):
-        if self.configuration is None:
+        if self.configuration == None:
             return None
         return self.configuration.getPosition()
 
@@ -175,20 +170,14 @@ class AgentState:
 
 class Grid:
     """
-    A 2-dimensional array of objects backed by a list of lists.
-    Data is accessed via grid[x][y] where (x,y) are positions
-    on a Pacman map with x horizontal, y vertical and
-    the origin (0,0) in the bottom left corner.
+    A 2-dimensional array of objects backed by a list of lists.  Data is accessed
+    via grid[x][y] where (x,y) are positions on a Pacman map with x horizontal,
+    y vertical and the origin (0,0) in the bottom left corner.
 
-    The __str__ method constructs an output that is oriented
-    like a pacman board.
+    The __str__ method constructs an output that is oriented like a pacman board.
     """
 
-    def __init__(self,
-                 width,
-                 height,
-                 initialValue=False,
-                 bitRepresentation=None):
+    def __init__(self, width, height, initialValue=False, bitRepresentation=None):
         if initialValue not in [False, True]:
             raise Exception('Grids can only contain booleans')
         self.CELLS_PER_INT = 30
@@ -213,7 +202,7 @@ class Grid:
         return '\n'.join([''.join(x) for x in out])
 
     def __eq__(self, other):
-        if other is None:
+        if other == None:
             return False
         return self.data == other.data
 
@@ -221,12 +210,12 @@ class Grid:
         # return hash(str(self))
         base = 1
         h = 0
-        for key in self.data:
-            for i in key:
+        for l in self.data:
+            for i in l:
                 if i:
                     h += base
                 base *= 2
-        return hash(key)
+        return hash(h)
 
     def copy(self):
         g = Grid(self.width, self.height)
@@ -410,10 +399,9 @@ class GameStateData:
 
     def __init__(self, prevState=None):
         """
-        Generates a new data packet by copying
-        information from its predecessor.
+        Generates a new data packet by copying information from its predecessor.
         """
-        if prevState is not None:
+        if prevState != None:
             self.food = prevState.food.shallowCopy()
             self.capsules = prevState.capsules[:]
             self.agentStates = self.copyAgentStates(prevState.agentStates)
@@ -449,7 +437,7 @@ class GameStateData:
         """
         Allows two states to be compared.
         """
-        if other is None:
+        if other == None:
             return False
         # TODO Check for type of other
         if not self.agentStates == other.agentStates:
@@ -469,13 +457,10 @@ class GameStateData:
         for i, state in enumerate(self.agentStates):
             try:
                 int(hash(state))
-            except TypeError(Exception):
-                print(Exception)
+            except TypeError(e):
+                print(e)
                 # hash(state)
-        return int((hash(tuple(self.agentStates))
-                    + 13 * hash(self.food) +
-                    113 * hash(tuple(self.capsules))
-                    + 7 * hash(self.score)) % 1048575)
+        return int((hash(tuple(self.agentStates)) + 13 * hash(self.food) + 113 * hash(tuple(self.capsules)) + 7 * hash(self.score)) % 1048575)
 
     def __str__(self):
         width, height = self.layout.width, self.layout.height
@@ -488,9 +473,9 @@ class GameStateData:
                 map[x][y] = self._foodWallStr(food[x][y], walls[x][y])
 
         for agentState in self.agentStates:
-            if agentState is None:
+            if agentState == None:
                 continue
-            if agentState.configuration is None:
+            if agentState.configuration == None:
                 continue
             x, y = [int(i) for i in nearestPoint(agentState.configuration.pos)]
             agent_dir = agentState.configuration.direction
@@ -536,7 +521,7 @@ class GameStateData:
         Creates an initial game state from a layout array (see layout.py).
         """
         self.food = layout.food.copy()
-        """self.capsules = []"""
+        #self.capsules = []
         self.capsules = layout.capsules[:]
         self.layout = layout
         self.score = 0
@@ -554,11 +539,10 @@ class GameStateData:
                 Configuration(pos, Directions.STOP), isPacman))
         self._eaten = [False for a in self.agentStates]
 
-
 try:
     import boinc
     _BOINC_ENABLED = True
-except ImportError:
+except:
     _BOINC_ENABLED = False
 
 
@@ -567,11 +551,7 @@ class Game:
     The Game manages the control flow, soliciting actions from agents.
     """
 
-    def __init__(self, agents,
-                 display, rules,
-                 startingIndex=0,
-                 muteAgents=False,
-                 catchExceptions=False):
+    def __init__(self, agents, display, rules, startingIndex=0, muteAgents=False, catchExceptions=False):
         self.agentCrashed = False
         self.agents = agents
         self.display = display
@@ -608,6 +588,7 @@ class Game:
         if not self.muteAgents:
             return
         global OLD_STDOUT, OLD_STDERR
+        import io
         OLD_STDOUT = sys.stdout
         OLD_STDERR = sys.stderr
         sys.stdout = self.agentOutput[agentIndex]
@@ -645,8 +626,7 @@ class Game:
                 if self.catchExceptions:
                     try:
                         timed_func = TimeoutFunction(
-                            agent.registerInitialState,
-                            int(self.rules.getMaxStartupTime(i)))
+                            agent.registerInitialState, int(self.rules.getMaxStartupTime(i)))
                         try:
                             start_time = time.time()
                             timed_func(self.state.deepCopy())
@@ -659,7 +639,7 @@ class Game:
                             self.agentTimeout = True
                             self._agentCrash(i, quiet=True)
                             return
-                    except Exception(self.data):
+                    except Exception(data):
                         self._agentCrash(i, quiet=False)
                         self.unmute()
                         return
@@ -682,9 +662,8 @@ class Game:
                 self.mute(agentIndex)
                 if self.catchExceptions:
                     try:
-                        timed_func = TimeoutFunction(
-                            agent.observationFunction,
-                            int(self.rules.getMoveTimeout(agentIndex)))
+                        timed_func = TimeoutFunction(agent.observationFunction, int(
+                            self.rules.getMoveTimeout(agentIndex)))
                         try:
                             start_time = time.time()
                             observation = timed_func(self.state.deepCopy())
@@ -692,7 +671,7 @@ class Game:
                             skip_action = True
                         move_time += time.time() - start_time
                         self.unmute()
-                    except Exception(self.data):
+                    except Exception(data):
                         self._agentCrash(agentIndex, quiet=False)
                         self.unmute()
                         return
@@ -709,8 +688,7 @@ class Game:
             if self.catchExceptions:
                 try:
                     timed_func = TimeoutFunction(agent.getAction, int(
-                        self.rules.getMoveTimeout(agentIndex)) -
-                        int(move_time))
+                        self.rules.getMoveTimeout(agentIndex)) - int(move_time))
                     try:
                         start_time = time.time()
                         if skip_action:
@@ -728,17 +706,11 @@ class Game:
 
                     if move_time > self.rules.getMoveWarningTime(agentIndex):
                         self.totalAgentTimeWarnings[agentIndex] += 1
-                        print(f"Agent {agentIndex} took too long to"
-                              "make a move! This is warning "
-                              "{self.totalAgentTimeWarnings[agentIndex]}",
-                              file=sys.stder)
-                        f1 = self.totalAgentTimeWarnings[agentIndex]
-                        f2 = self.rules.getMaxTimeWarnings(agentIndex)
-                        if f1 > f2:
-                            print(f"Agent {agentIndex} exceeded the"
-                                  "maximum number of warnings:"
-                                  "{self.totalAgentTimeWarnings[agentIndex]}",
-                                  file=sys.stderr)
+                        print("Agent %d took too long to make a move! This is warning %d" % (
+                            agentIndex, self.totalAgentTimeWarnings[agentIndex]), file=sys.stderr)
+                        if self.totalAgentTimeWarnings[agentIndex] > self.rules.getMaxTimeWarnings(agentIndex):
+                            print("Agent %d exceeded the maximum number of warnings: %d" % (
+                                agentIndex, self.totalAgentTimeWarnings[agentIndex]), file=sys.stderr)
                             self.agentTimeout = True
                             self._agentCrash(agentIndex, quiet=True)
                             self.unmute()
@@ -747,18 +719,15 @@ class Game:
                     self.totalAgentTimes[agentIndex] += move_time
                     # print "Agent: %d, time: %f, total: %f" % (agentIndex,
                     # move_time, self.totalAgentTimes[agentIndex])
-                    flag1 = self.totalAgentTimes[agentIndex]
-                    flag2 = self.rules.getMaxTotalTime(agentIndex)
-                    if flag1 > flag2:
-                        print(f"Agent {agentIndex} ran out of time! "
-                              "(time: {self.totalAgentTimes[agentIndex]})",
-                              file=sys.stderr)
+                    if self.totalAgentTimes[agentIndex] > self.rules.getMaxTotalTime(agentIndex):
+                        print("Agent %d ran out of time! (time: %1.2f)" % (
+                            agentIndex, self.totalAgentTimes[agentIndex]), file=sys.stderr)
                         self.agentTimeout = True
                         self._agentCrash(agentIndex, quiet=True)
                         self.unmute()
                         return
                     self.unmute()
-                except Exception(self.data):
+                except Exception(data):
                     self._agentCrash(agentIndex)
                     self.unmute()
                     return
@@ -772,7 +741,7 @@ class Game:
                 try:
                     self.state = self.state.generateSuccessor(
                         agentIndex, action)
-                except Exception(self.data):
+                except Exception(data):
                     self.mute(agentIndex)
                     self._agentCrash(agentIndex)
                     self.unmute()
@@ -782,10 +751,10 @@ class Game:
 
             # Change the display
             self.display.update(self.state.data)
-            """idx = agentIndex - agentIndex % 2 + 1
-            self.display.update( self.state.makeObservation(idx).data )
+            ###idx = agentIndex - agentIndex % 2 + 1
+            ###self.display.update( self.state.makeObservation(idx).data )
 
-            Allow for game specific conditions (winning, losing, etc.)"""
+            # Allow for game specific conditions (winning, losing, etc.)
             self.rules.process(self.state, self)
             # Track progress
             if agentIndex == numAgents + 1:
@@ -803,7 +772,7 @@ class Game:
                     self.mute(agentIndex)
                     agent.final(self.state)
                     self.unmute()
-                except Exception(self.data):
+                except Exception(data):
                     if not self.catchExceptions:
                         raise
                     self._agentCrash(agentIndex)

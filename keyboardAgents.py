@@ -1,16 +1,15 @@
-"""keyboardAgents.py
- -----------------
- Licensing Information:  You are free to use or extend these projects for
- educational purposes provided that (1) you do not distribute or publish
- solutions, (2) you retain this notice, and (3) you provide clear
- attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
-
-Attribution Information: The Pacman AI projects were
-developed at UC Berkeley.
-The core projects and autograders were primarily created by John DeNero
-(denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
-Student side autograding was added by Brad Miller, Nick Hay, and
- Pieter Abbeel (pabbeel@cs.berkeley.edu)."""
+# keyboardAgents.py
+# -----------------
+# Licensing Information:  You are free to use or extend these projects for
+# educational purposes provided that (1) you do not distribute or publish
+# solutions, (2) you retain this notice, and (3) you provide clear
+# attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
+#
+# Attribution Information: The Pacman AI projects were developed at UC Berkeley.
+# The core projects and autograders were primarily created by John DeNero
+# (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
+# Student side autograding was added by Brad Miller, Nick Hay, and
+# Pieter Abbeel (pabbeel@cs.berkeley.edu).
 
 
 from game import Agent
@@ -60,18 +59,14 @@ class KeyboardAgent(Agent):
         return move
 
     def getMove(self, legal):
-        north = Directions.NORTH in legal
-        south = Directions.SOUTH in legal
-        west = Directions.WEST in legal
-        east = Directions.EAST in legal
         move = Directions.STOP
-        if (self.WEST_KEY in self.keys or 'Left' in self.keys) and west:
+        if (self.WEST_KEY in self.keys or 'Left' in self.keys) and Directions.WEST in legal:
             move = Directions.WEST
-        if (self.EAST_KEY in self.keys or 'Right' in self.keys) and east:
+        if (self.EAST_KEY in self.keys or 'Right' in self.keys) and Directions.EAST in legal:
             move = Directions.EAST
-        if (self.NORTH_KEY in self.keys or 'Up' in self.keys) and north:
+        if (self.NORTH_KEY in self.keys or 'Up' in self.keys) and Directions.NORTH in legal:
             move = Directions.NORTH
-        if (self.SOUTH_KEY in self.keys or 'Down' in self.keys) and south:
+        if (self.SOUTH_KEY in self.keys or 'Down' in self.keys) and Directions.SOUTH in legal:
             move = Directions.SOUTH
         return move
 
