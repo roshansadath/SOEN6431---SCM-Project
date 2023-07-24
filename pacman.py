@@ -242,9 +242,9 @@ class GameState:
         else:
             self.data = GameStateData()
 
-    def deepCopy(self):
+    def deep_copy(self):
         state = GameState(self)
-        state.data = self.data.deepCopy()
+        state.data = self.data.deep_copy()
         return state
 
     def __eq__(self, other):
@@ -292,12 +292,12 @@ class ClassicGameRules:
 
     def newGame(self, layout, pacmanAgent, ghostAgents,
                 display, quiet=False, catchExceptions=False):
-        agents = [pacmanAgent] + ghostAgents[:layout.getNumGhosts()]
+        agents = [pacmanAgent] + ghostAgents[:layout.get_num_ghosts()]
         initState = GameState()
         initState.initialize(layout, len(ghostAgents))
         game = Game(agents, display, self, catchExceptions=catchExceptions)
         game.state = initState
-        self.initialState = initState.deepCopy()
+        self.initialState = initState.deep_copy()
         self.quiet = quiet
         return game
 
@@ -329,19 +329,19 @@ class ClassicGameRules:
         else:
             print("A ghost crashed")
 
-    def getMaxTotalTime(self, agentIndex):
+    def get_max_total_time(self, agentIndex):
         return self.timeout
 
-    def getMaxStartupTime(self, agentIndex):
+    def get_max_startup_time(self, agentIndex):
         return self.timeout
 
-    def getMoveWarningTime(self, agentIndex):
+    def get_move_warning_time(self, agentIndex):
         return self.timeout
 
-    def getMoveTimeout(self, agentIndex):
+    def get_move_timeout(self, agentIndex):
         return self.timeout
 
-    def getMaxTimeWarnings(self, agentIndex):
+    def get_max_time_warnings(self, agentIndex):
         return 0
 
 
@@ -611,7 +611,7 @@ def readCommand(argv):
         random.seed('cs188')
 
     # Choose a layout
-    args['layout'] = layout.getLayout(options.layout)
+    args['layout'] = layout.get_layout(options.layout)
     if args['layout'] is None:
         raise Exception("The layout " + options.layout + " cannot be found")
 
@@ -621,8 +621,8 @@ def readCommand(argv):
     pacmanType = loadAgent(options.pacman, noKeyboard)
     agentOpts = parseAgentArgs(options.agentArgs)
 
-    agentOpts['width'] = layout.getLayout(options.layout).width
-    agentOpts['height'] = layout.getLayout(options.layout).height
+    agentOpts['width'] = layout.get_layout(options.layout).width
+    agentOpts['height'] = layout.get_layout(options.layout).height
 
     if options.numTraining > 0:
         args['numTraining'] = options.numTraining
@@ -709,7 +709,7 @@ def replayGame(layout, actions, display):
     import pacmanAgents
     rules = ClassicGameRules()
     agents = [pacmanAgents.GreedyAgent()]+[
-        ghostAgents.RandomGhost(i + 1) for i in range(layout.getNumGhosts())]
+        ghostAgents.RandomGhost(i + 1) for i in range(layout.get_num_ghosts())]
     game = rules.newGame(layout, agents[0], agents[1:], display)
     state = game.state
     display.initialize(state.data)
