@@ -83,13 +83,13 @@ class PacmanDQN(game.Agent):
         self.replay_mem = deque()
         self.last_scores = deque()
 
-    def getMove(self, state):
+    def get_move(self, state):
         # Exploit / Explore
         if np.random.rand() > self.params['eps']:
             # Exploit action
             self.Q_pred = self.qnet.sess.run(
-                self.qnet.y,
-                feed_dict={self.qnet.x: np.reshape(self.current_state,
+                self.qnet._y,
+                feed_dict={self.qnet._x: np.reshape(self.current_state,
                                                    (1, self.params['width'],
                                                     self.params['height'],
                                                     6)),
@@ -403,7 +403,7 @@ class PacmanDQN(game.Agent):
         self.numeps += 1
 
     def getAction(self, state):
-        move = self.getMove(state)
+        move = self.get_move(state)
 
         # Stop moving when not legal
         legal = state.getLegalActions(0)
