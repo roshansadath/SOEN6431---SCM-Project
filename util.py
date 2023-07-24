@@ -15,7 +15,6 @@
 # Pieter Abbeel (pabbeel@cs.berkeley.edu).
 
 """
-
 import sys
 import inspect
 import heapq
@@ -25,9 +24,9 @@ import time
 
 
 class FixedRandom:
-
+    """ Class for Random State Fixing"""
     def __init__(self):
-        fixedState = (3, (2147483648, 507801126, 683453281, 310439348,
+        fixed_state = (3, (2147483648, 507801126, 683453281, 310439348,
                           2597246090, 2209084787, 2267831527, 979920060,
                           3098657677, 37650879, 807947081, 3974896263,
                           881243242, 3100634921, 1334775171, 3965168385,
@@ -185,12 +184,7 @@ class FixedRandom:
                           892174056, 230984053, 719791226, 2718891946, 624),
                       None)
         self.random = random.Random()
-        self.random.setstate(fixedState)
-
-
-"""
- Data structures useful for implementing SearchAgents
-"""
+        self.random.setstate(fixed_state)
 
 
 class Stack:
@@ -207,7 +201,7 @@ class Stack:
         "Pop the most recently pushed item from the stack"
         return self.list.pop()
 
-    def isEmpty(self):
+    def is_empty(self):
         "Returns true if the stack is empty"
         return len(self.list) == 0
 
@@ -229,7 +223,7 @@ class Queue:
         """
         return self.list.pop()
 
-    def isEmpty(self):
+    def is_empty(self):
         "Returns true if the queue is empty"
         return len(self.list) == 0
 
@@ -251,19 +245,22 @@ class PriorityQueue:
         self.count = 0
 
     def push(self, item, priority):
-        # FIXME: restored old behaviour to check against old results better
-        # FIXED: restored to stable behaviour
+        """ Push Operation"""
+        #  FIXME: restored old behaviour to check against old results better
+        #  FIXED: restored to stable behaviour
         entry = (priority, self.count, item)
         # entry = (priority, item)
         heapq.heappush(self.heap, entry)
         self.count += 1
 
     def pop(self):
+        """ Pop Operation """
         (_, _, item) = heapq.heappop(self.heap)
         #  (_, item) = heapq.heappop(self.heap)
         return item
 
-    def isEmpty(self):
+    def is_empty(self):
+        """ Check if DS is Empty"""
         return len(self.heap) == 0
 
 
@@ -272,30 +269,23 @@ class PriorityQueueWithFunction(PriorityQueue):
     Implements a priority queue with the same push/pop signature of the
     Queue and the Stack classes. This is designed for drop-in replacement for
     those two classes. The caller has to provide a priority function, which
-    extracts each item's priority.
+    extracts each item'_s priority.
     """
 
-    def __init__(self, priorityFunction):
-        "priorityFunction (item) -> priority"
+    def __init__(self, priority_function):
+        "priority_function (item) -> priority"
         # store the priority function
-        self.priorityFunction = priorityFunction
+        self.priority_function = priority_function
         PriorityQueue.__init__(self)        # super-class initializer
 
     def push(self, item):
         "Adds an item to the queue with priority from the priority function"
-        PriorityQueue.push(self, item, self.priorityFunction(item))
+        PriorityQueue.push(self, item, self.priority_function(item))
 
 
-def manhattanDistance(xy1, xy2):
+def manhattan_distance(xy1, xy2):
     "Returns the Manhattan distance between points xy1 and xy2"
     return abs(xy1[0] - xy2[0]) + abs(xy1[1] - xy2[1])
-
-
-"""
-  Data structures and functions useful for various course projects
-
-  The search project should not need anything below this line.
-"""
 
 
 class Counter(dict):
@@ -343,12 +333,12 @@ class Counter(dict):
         self.setdefault(idx, 0)
         return dict.__getitem__(self, idx)
 
-    def incrementAll(self, keys, count):
+    def increment_all(self, keys, count):
         """
         Increments all elements of keys by the same count.
 
         >>> a = Counter()
-        >>> a.incrementAll(['one','two', 'three'], 1)
+        >>> a.increment_all(['one','two', 'three'], 1)
         >>> a['one']
         1
         >>> a['two']
@@ -357,21 +347,22 @@ class Counter(dict):
         for key in keys:
             self[key] += count
 
-    def argMax(self):
+    def arg_max(self):
         """
         Returns the key with the highest value.
         """
         if len(list(self.keys())) == 0:
             return None
-        all = list(self.items())
-        values = [x[1] for x in all]
-        maxIndex = values.index(max(values))
-        return all[maxIndex][0]
+        all_items = list(self.items())
+        values = [_x[1] for _x in all_items]
+        max_index = values.index(max(values))
+        return all_items[max_index][0]
 
-    def compared(self, x, y):
-        return sign(y[1] - x[1])
+    def compared(self, _x, _y):
+        """ COmparing elemets in a list"""
+        return sign(_y[1] - _x[1])
 
-    def sortedKeys(self):
+    def sorted_keys(self):
         """
         Returns a list of keys sorted by their values. Keys
         with the highest values will appear first.
@@ -380,14 +371,14 @@ class Counter(dict):
         >>> a['first'] = -2
         >>> a['second'] = 4
         >>> a['third'] = 1
-        >>> a.sortedKeys()
+        >>> a.sorted_keys()
         ['second', 'third', 'first']
         """
-        sortedItems = list(self.items())
-        sortedItems.sort(cmp=self.compare)
-        return [x[0] for x in sortedItems]
+        sorted_items = list(self.items())
+        sorted_items.sort(cmp=self.compared)
+        return [x[0] for x in sorted_items]
 
-    def totalCount(self):
+    def total_count(self):
         """
         Returns the sum of counts for all keys.
         """
@@ -400,13 +391,13 @@ class Counter(dict):
         will remain the same. Note that normalizing an empty
         Counter will result in an error.
         """
-        total = float(self.totalCount())
+        total = float(self.total_count())
         if total == 0:
             return
         for key in list(self.keys()):
             self[key] = self[key] / total
 
-    def divideAll(self, divisor):
+    def divide_all(self, divisor):
         """
         Divides all counts by divisor
         """
@@ -420,7 +411,7 @@ class Counter(dict):
         """
         return Counter(dict.copy(self))
 
-    def __mul__(self, y):
+    def __mul__(self, _y):
         """
         Multiplying two counters gives the dot product of their vectors where
         each unique label is a vector element.
@@ -436,17 +427,17 @@ class Counter(dict):
         >>> a * b
         14
         """
-        sum = 0
-        x = self
-        if len(x) > len(y):
-            x, y = y, x
-        for key in x:
-            if key not in y:
+        sum_value = 0
+        _x = self
+        if len(_x) > len(_y):
+            _x, _y = _y, _x
+        for key in _x:
+            if key not in _y:
                 continue
-            sum += x[key] * y[key]
-        return sum
+            sum_value += _x[key] * _y[key]
+        return sum_value
 
-    def __radd__(self, y):
+    def __radd__(self, _y):
         """
         Adding another counter to a counter increments the current counter
         by the values stored in the second counter.
@@ -461,10 +452,10 @@ class Counter(dict):
         >>> a['first']
         1
         """
-        for key, value in list(y.items()):
+        for key, value in list(_y.items()):
             self[key] += value
 
-    def __add__(self, y):
+    def __add__(self, _y):
         """
         Adding two counters gives a counter with the union of all keys and
         counts of the second added to counts of the first.
@@ -480,17 +471,17 @@ class Counter(dict):
         """
         addend = Counter()
         for key in self:
-            if key in y:
-                addend[key] = self[key] + y[key]
+            if key in _y:
+                addend[key] = self[key] + _y[key]
             else:
                 addend[key] = self[key]
-        for key in y:
+        for key in _y:
             if key in self:
                 continue
-            addend[key] = y[key]
+            addend[key] = _y[key]
         return addend
 
-    def __sub__(self, y):
+    def __sub__(self, _y):
         """
         Subtracting a counter from another gives a counter
         with the union of all keys and
@@ -507,68 +498,70 @@ class Counter(dict):
         """
         addend = Counter()
         for key in self:
-            if key in y:
-                addend[key] = self[key] - y[key]
+            if key in _y:
+                addend[key] = self[key] - _y[key]
             else:
                 addend[key] = self[key]
-        for key in y:
+        for key in _y:
             if key in self:
                 continue
-            addend[key] = -1 * y[key]
+            addend[key] = -1 * _y[key]
         return addend
 
 
-def raiseNotDefined():
-    fileName = inspect.stack()[1][1]
+def raise_not_defined():
+    """ pass """
+    file_name = inspect.stack()[1][1]
     line = inspect.stack()[1][2]
     method = inspect.stack()[1][3]
 
-    print(("*** Method not implemented: %s at line %s of %s" %
-           (method, line, fileName)))
+    print(f"Method not implemented: {method} at line {line} of {file_name}))")
     sys.exit(1)
 
 
-def normalize(vectorOrCounter):
+def normalize(vector_or_counter):
     """
     normalize a vector or counter by dividing
     each value by the sum of all values
 
     """
-    normalizedCounter = Counter()
-    if isinstance(vectorOrCounter, type(normalizedCounter)):
-        counter = vectorOrCounter
-        total = float(counter.totalCount())
+    normalized_counter = Counter()
+    if isinstance(vector_or_counter, type(normalized_counter)):
+        counter = vector_or_counter
+        total = float(counter.total_count())
         if total == 0:
             return counter
         for key in list(counter.keys()):
             value = counter[key]
-            normalizedCounter[key] = value / total
-        return normalizedCounter
-    else:
-        vector = vectorOrCounter
-        s = float(sum(vector))
-        if s == 0:
-            return vector
-        return [el / s for el in vector]
+            normalized_counter[key] = value / total
+        return normalized_counter
+    vector = vector_or_counter
+    _s = float(sum(vector))
+    if _s == 0:
+        return vector
+    return [el / _s for el in vector]
 
 
-def nSample(distribution, values, n):
+def n_sample(distribution, values, _n):
+    """ Sample n values on distribution """
     if sum(distribution) != 1:
         distribution = normalize(distribution)
-    rand = sorted([random.random() for i in range(n)])
+    rand = sorted([random.random() for i in range(_n)])
     samples = []
-    samplePos, distPos, cdf = 0, 0, distribution[0]
-    while samplePos < n:
-        if rand[samplePos] < cdf:
-            samplePos += 1
-            samples.append(values[distPos])
+    sample_pos, dist_pos, cdf = 0, 0, distribution[0]
+    while sample_pos < _n:
+        if rand[sample_pos] < cdf:
+            sample_pos += 1
+            samples.append(values[dist_pos])
         else:
-            distPos += 1
-            cdf += distribution[distPos]
+            dist_pos += 1
+            cdf += distribution[dist_pos]
     return samples
 
 
+
 def sample(distribution, values=None):
+    """ Sampling a Distribution of values """
     if isinstance(distribution, Counter):
         items = sorted(distribution.items())
         distribution = [i[1] for i in items]
@@ -583,12 +576,13 @@ def sample(distribution, values=None):
     return values[i]
 
 
-def sampleFromCounter(ctr):
+def sample_from_counter(ctr):
+    """ Sample from a counter values """
     items = sorted(ctr.items())
     return sample([v for k, v in items], [k for k, v in items])
 
 
-def getProbability(value, distribution, values):
+def get_probability(value, distribution, values):
     """
       Gives the probability of a value under a discrete distribution
       defined by (distributions, values).
@@ -600,24 +594,26 @@ def getProbability(value, distribution, values):
     return total
 
 
-def flipCoin(p):
-    r = random.random()
-    return r < p
+def flip_coin(_p):
+    """ Generate Random """
+    _r = random.random()
+    return _r < _p
 
 
-def chooseFromDistribution(distribution):
+def choose_from_distribution(distribution):
     "Takes either a counter or a list of (prob, key) pairs and samples"
-    if isinstance(distribution, dict) or isinstance(distribution, Counter):
-        return sample(distribution)
-    r = random.random()
+    if isinstance(distribution, (Counter, dict)):
+        sample_dist = sample(distribution)
+        return sample_dist
+    _r = random.random()
     base = 0.0
     for prob, element in distribution:
         base += prob
-        if r <= base:
+        if _r <= base:
             return element
 
 
-def nearestPoint(pos):
+def nearest_point(pos):
     """
     Finds the nearest grid point to a position (discretizes).
     """
@@ -628,28 +624,27 @@ def nearestPoint(pos):
     return (grid_row, grid_col)
 
 
-def sign(x):
+def sign(_x):
     """
     Returns 1 or -1 depending on the sign of x
     """
-    if (x >= 0):
+    if _x >= 0:
         return 1
-    else:
-        return -1
+    return -1
 
 
-def arrayInvert(array):
+def array_invert(array):
     """
     Inverts a matrix stored as a list of lists.
     """
     result = [[] for i in array]
     for outer in array:
-        for inner in range(len(outer)):
+        for inner in enumerate(outer):
             result[inner].append(outer[inner])
     return result
 
 
-def matrixAsList(matrix, value=True):
+def matrix_as_list(matrix, value=True):
     """
     Turns a matrix into a list of coordinates matching the specified value
     """
@@ -669,22 +664,22 @@ def lookup(name, namespace):
     """
     dots = name.count('.')
     if dots > 0:
-        moduleName, objName = '.'.join(
+        module_name, obj_name = '.'.join(
             name.split('.')[:-1]), name.split('.')[-1]
-        module = __import__(moduleName)
-        return getattr(module, objName)
-    else:
-        modules = [obj for obj in list(namespace.values()) if str(
-            type(obj)) == "<type 'module'>"]
-        options = [getattr(module, name)
-                   for module in modules if name in dir(module)]
-        options += [obj[1]
-                    for obj in list(namespace.items()) if obj[0] == name]
-        if len(options) == 1:
-            return options[0]
-        if len(options) > 1:
-            raise Exception('Name conflict for %s')
-        raise Exception('%s not found as a method or class' % name)
+        module = __import__(module_name)
+        return getattr(module, obj_name)
+
+    modules = [obj for obj in list(namespace.values()) if str(
+        type(obj)) == "<type 'module'>"]
+    options = [getattr(module, name)
+                for module in modules if name in dir(module)]
+    options += [obj[1]
+                for obj in list(namespace.items()) if obj[0] == name]
+    if len(options) == 1:
+        return options[0]
+    if len(options) > 1:
+        raise NameError(f'Name conflict for {name}')
+    raise NameError(f'{name} not found as a method or class')
 
 
 def pause():
@@ -692,7 +687,7 @@ def pause():
     Pauses the output stream awaiting user feedback.
     """
     print("<Press enter/return to continue>")
-    eval(input())
+    input()
 
 
 # code to handle timeouts
@@ -703,20 +698,26 @@ def pause():
 # of active time outs.  Currently, questions which have test cases calling
 # this have all student code so wrapped.
 
-
 class TimeoutFunctionException(Exception):
-    """Exception to raise on a timeout"""
-    pass
-
+    " Add Timeout Exceptions "
 
 class TimeoutFunction:
+    """Class to Handling Timeout
+    """
 
     def __init__(self, function, timeout):
         self.timeout = timeout
         self.function = function
 
     def handle_timeout(self, signum, frame):
-        raise TimeoutFunctionException()
+        """
+        Handling Timeout
+
+        Raises
+        ------
+        TimeoutFunctionException
+        """
+        raise TimeoutFunctionException
 
     def __call__(self, *args, **keyArgs):
         # If we have SIGALRM signal, use it to cause an exception if and
@@ -731,42 +732,9 @@ class TimeoutFunction:
                 signal.signal(signal.SIGALRM, old)
             signal.alarm(0)
         else:
-            startTime = time.time()
+            start_time = time.time()
             result = self.function(*args, **keyArgs)
-            timeElapsed = time.time() - startTime
-            if timeElapsed >= self.timeout:
+            time_elapsed = time.time() - start_time
+            if time_elapsed >= self.timeout:
                 self.handle_timeout(None, None)
         return result
-
-
-_ORIGINAL_STDOUT = None
-_ORIGINAL_STDERR = None
-_MUTED = False
-
-
-class WritableNull:
-
-    def write(self, string):
-        pass
-
-
-def mutePrint():
-    global _ORIGINAL_STDOUT, _ORIGINAL_STDERR, _MUTED
-    if _MUTED:
-        return
-    _MUTED = True
-
-    _ORIGINAL_STDOUT = sys.stdout
-    # _ORIGINAL_STDERR = sys.stderr
-    sys.stdout = WritableNull()
-    # sys.stderr = WritableNull()
-
-
-def unmutePrint():
-    global _ORIGINAL_STDOUT, _ORIGINAL_STDERR, _MUTED
-    if not _MUTED:
-        return
-    _MUTED = False
-
-    sys.stdout = _ORIGINAL_STDOUT
-    # sys.stderr = _ORIGINAL_STDERR
