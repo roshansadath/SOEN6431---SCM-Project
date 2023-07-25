@@ -42,12 +42,8 @@ code to run a game.  This file is divided into three sections:
 To play your first game, type 'python pacman.py' from the command line.
 The keys are 'a', 's', 'd', and 'w' to move (or arrow keys).  Have fun!
 """
-from game import GameStateData
-from game import Game
-from game import Directions
-from game import Actions
-from util import nearestPoint
-from util import manhattanDistance
+from game import GameStateData, Game, Directions, Actions
+from util import nearest_point, manhattan_distance
 import layout
 import sys
 import time
@@ -377,8 +373,8 @@ class PacmanRules:
 
         # Eat
         next = pacmanSt.configuration.getPosition()
-        nearest = nearestPoint(next)
-        if manhattanDistance(nearest, next) <= 0.5:
+        nearest = nearest_point(next)
+        if manhattan_distance(nearest, next) <= 0.5:
             # Remove food
             PacmanRules.consume(nearest, state)
     applyAction = staticmethod(applyAction)
@@ -446,7 +442,7 @@ class GhostRules:
     def decrementTimer(ghostState):
         timer = ghostState.scaredTimer
         if timer == 1:
-            ghostState.configuration.pos = nearestPoint(
+            ghostState.configuration.pos = nearest_point(
                 ghostState.configuration.pos)
         ghostState.scaredTimer = max(0, timer - 1)
     decrementTimer = staticmethod(decrementTimer)
@@ -480,7 +476,7 @@ class GhostRules:
     collide = staticmethod(collide)
 
     def canKill(pacmanPosition, ghostPosition):
-        return manhattanDistance(ghostPosition,
+        return manhattan_distance(ghostPosition,
                                  pacmanPosition) <= COLLISION_TOLERANCE
     canKill = staticmethod(canKill)
 
@@ -644,12 +640,12 @@ def readCommand(argv):
 
     # Choose a display format
     if options.quietGraphics:
-        import textDisplay
-        args['display'] = textDisplay.NullGraphics()
+        import text_display
+        args['display'] = text_display.NullGraphics()
     elif options.textGraphics:
-        import textDisplay
-        textDisplay.SLEEP_TIME = options.frameTime
-        args['display'] = textDisplay.PacmanGraphics()
+        import text_display
+        text_display.SLEEP_TIME = options.frameTime
+        args['display'] = text_display.PacmanGraphics()
     else:
         import graphicsDisplay
         args['display'] = graphicsDisplay.PacmanGraphics(
@@ -740,8 +736,8 @@ def runGames(layout, pacman, ghosts,
         beQuiet = i < numTraining
         if beQuiet:
             # Suppress output and graphics
-            import textDisplay
-            gameDisplay = textDisplay.NullGraphics()
+            import text_display
+            gameDisplay = text_display.NullGraphics()
             rules.quiet = True
         else:
             gameDisplay = display

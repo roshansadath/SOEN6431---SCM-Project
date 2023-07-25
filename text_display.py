@@ -1,4 +1,5 @@
-# textDisplay.py
+"""
+# text_display.py
 # --------------
 # Licensing Information:  You are free to use or extend these projects for
 # educational purposes provided that (1) you do not distribute or publish
@@ -12,12 +13,14 @@
 # Student side autograding was added by Brad Miller, Nick Hay, and
 # Pieter Abbeel (pabbeel@cs.berkeley.edu).
 
+"""
 
 import time
+
 try:
     import pacman
-except Exception:
-    pass
+except ImportError:
+    print("Import Error")
 
 DRAW_EVERY = 1
 SLEEP_TIME = 0  # This can be overwritten by __init__
@@ -26,52 +29,60 @@ QUIET = False  # Supresses output
 
 
 class NullGraphics:
-    def initialize(self, state, isBlue=False):
-        pass
+    " Define the Null Grpahics of the Game "
+    def initialize(self, state, is_blue=False):
+        " Initialization "
 
     def update(self, state):
-        pass
+        " Update the state "
 
-    def checkNullDisplay(self):
+    def check_null_display(self):
+        " Null "
         return True
 
     def pause(self):
+        " Pause Time "
         time.sleep(SLEEP_TIME)
 
     def draw(self, state):
+        " Write the State "
         print(state)
 
-    def updateDistributions(self, dist):
-        pass
+    def update_distributions(self, dist):
+        " Update The Distributions "
 
     def finish(self):
-        pass
+        " Finish "
 
 
 class PacmanGraphics:
+    """
+    Define the Graphics for PacMan Agent
+    """
     def __init__(self, speed=None):
+        self.turn = 0
+        self.agent_counter = 0
+        global SLEEP_TIME
         if speed is not None:
-            global SLEEP_TIME
             SLEEP_TIME = speed
 
-    def initialize(self, state, isBlue=False):
+    def initialize(self, state):
+        " Initialization "
         self.draw(state)
         self.pause()
-        self.turn = 0
-        self.agentCounter = 0
 
     def update(self, state):
-        numAgents = len(state.agentStates)
-        self.agentCounter = (self.agentCounter + 1) % numAgents
-        if self.agentCounter == 0:
+        " Update State "
+        num_agents = len(state.agentStates)
+        self.agent_counter = (self.agent_counter + 1) % num_agents
+        if self.agent_counter == 0:
             self.turn += 1
             if DISPLAY_MOVES:
-                ghosts = [pacman.nearestPoint(state.getGhostPosition(i))
-                          for i in range(1, numAgents)]
-                print(("%4d) P: %-8s" % (self.turn,
-                                         str(pacman.nearestPoint(
-                                             state.getPacmanPosition()))),
-                       '| Score: %-5d' % state.score,
+                ghosts = [pacman.nearest_point(state.getGhostPosition(i))
+                          for i in range(1, num_agents)]
+                print((f"""{self.turn}) P:{str(pacman.nearest_point(
+                    state.getPacmanPosition()))}""",
+                       f'| Score: {state.score}',
                        '| Ghosts:',
                        ghosts))
             if self.turn % DRAW_EVERY == 0:
@@ -81,10 +92,12 @@ class PacmanGraphics:
             self.draw(state)
 
     def pause(self):
+        " Pause Time "
         time.sleep(SLEEP_TIME)
 
     def draw(self, state):
+        " Write state "
         print(state)
 
     def finish(self):
-        pass
+        " Finish mode "

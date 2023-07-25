@@ -15,9 +15,8 @@ Pieter Abbeel (pabbeel@cs.berkeley.edu)."""
 import random
 import os
 from functools import reduce
-from game import Directions
-from util import manhattanDistance
-from game import Grid
+from game import Directions, Grid
+from util import manhattan_distance
 
 VISIBILITY_MATRIX_CACHE = {}
 
@@ -95,7 +94,7 @@ class Layout:
         """Get the furthest corner from current position"""
         poses = [(1, 1), (1, self.height - 2), (self.width - 2, 1),
                  (self.width - 2, self.height - 2)]
-        _ , pos = max([(manhattanDistance(p, pac_pos), p) for p in poses])
+        _ , pos = max([(manhattan_distance(p, pac_pos), p) for p in poses])
         return pos
 
     def is_visible_from(self, ghost_pos, pac_pos, pac_direction):

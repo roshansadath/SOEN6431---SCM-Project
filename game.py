@@ -24,8 +24,7 @@ Attribution Information: The Pacman AI projects were developed at UC Berkeley.
 import time
 import traceback
 import sys
-from util import TimeoutFunctionException, TimeoutFunction, nearestPoint
-from util import raiseNotDefined
+from util import TimeoutFunctionException, TimeoutFunction, nearest_point, raise_not_defined
 #######################
 # Parts worth reading #
 #######################
@@ -48,7 +47,7 @@ class Agent:
         }.py) and
         must return an action from Directions.{North, South, East, West, Stop}
         """
-        raiseNotDefined()
+        raise_not_defined()
 
 
 class Directions:
@@ -492,7 +491,7 @@ class GameStateData:
                 continue
             if agentState.configuration is None:
                 continue
-            x, y = [int(i) for i in nearestPoint(agentState.configuration.pos)]
+            x, y = [int(i) for i in nearest_point(agentState.configuration.pos)]
             agent_dir = agentState.configuration.direction
             if agentState.isPacman:
                 map[x][y] = self._pacStr(agent_dir)
@@ -669,7 +668,7 @@ class Game:
                 self.unmute()
 
         agentIndex = self.startingIndex
-        numAgents = len(self.agents)
+        num_agents = len(self.agents)
 
         while not self.gameOver:
             # Fetch the next agent
@@ -788,10 +787,10 @@ class Game:
             Allow for game specific conditions (winning, losing, etc.)"""
             self.rules.process(self.state, self)
             # Track progress
-            if agentIndex == numAgents + 1:
+            if agentIndex == num_agents + 1:
                 self.numMoves += 1
             # Next agent
-            agentIndex = (agentIndex + 1) % numAgents
+            agentIndex = (agentIndex + 1) % num_agents
 
             if _BOINC_ENABLED:
                 boinc.set_fraction_done(self.getProgress())
