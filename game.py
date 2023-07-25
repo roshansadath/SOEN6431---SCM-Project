@@ -41,7 +41,7 @@ class Agent:
     def __init__(self, index=0):
         self.index = index
 
-    def get_action(self):
+    def get_action(self, state):
         """
         The Agent will receive a GameState (from either {pacman, capture, sonar
         }.py) and

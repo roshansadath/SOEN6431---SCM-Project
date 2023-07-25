@@ -16,7 +16,7 @@ import random
 import numpy as np
 
 import tensorflow.compat.v1 as tf
-import DQN
+import deep_q_network
 from pacman import Directions
 import game
 
@@ -46,7 +46,7 @@ params = {
 class PacmanDQN(game.Agent):
     " Defining the PACMAN Agent "
     def __init__(self, args):
-
+        super().__init__()
         print("Initialise DQN Agent")
 
         # Load parameters from user-given arguments
@@ -60,7 +60,7 @@ class PacmanDQN(game.Agent):
             per_process_gpu_memory_fraction=0.1)
         self.sess = tf.compat.v1.Session(
             config=tf.compat.v1.ConfigProto(gpu_options=gpu_options))
-        self.qnet = DQN.DQN(self.params)
+        self.qnet = deep_q_network.DQN(self.params)
 
         # time started
         self.general_record_time = time.strftime("%a_%d_%b_%Y_%H_%M_%S",
