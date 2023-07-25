@@ -32,16 +32,16 @@ from util import TimeoutFunctionException, TimeoutFunction, nearest_point, raise
 
 class Agent:
     """
-    An agent must define a getAction method, but may also define the
+    An agent must define a get_action method, but may also define the
     following methods which will be called if they exist:
 
-    def registerInitialState(self, state): # inspects the starting state
+    def register_initial_state(self, state): # inspects the starting state
     """
 
     def __init__(self, index=0):
         self.index = index
 
-    def getAction(self, state):
+    def get_action(self):
         """
         The Agent will receive a GameState (from either {pacman, capture, sonar
         }.py) and
@@ -440,8 +440,8 @@ class GameStateData:
 
     def copyAgentStates(self, agentStates):
         copiedStates = []
-        for agentState in agentStates:
-            copiedStates.append(agentState.copy())
+        for agent_state in agentStates:
+            copiedStates.append(agent_state.copy())
         return copiedStates
 
     def __eq__(self, other):
@@ -486,14 +486,14 @@ class GameStateData:
                 food, walls = self.food, self.layout.walls
                 map[x][y] = self._foodWallStr(food[x][y], walls[x][y])
 
-        for agentState in self.agentStates:
-            if agentState is None:
+        for agent_state in self.agentStates:
+            if agent_state is None:
                 continue
-            if agentState.configuration is None:
+            if agent_state.configuration is None:
                 continue
-            x, y = [int(i) for i in nearest_point(agentState.configuration.pos)]
-            agent_dir = agentState.configuration.direction
-            if agentState.isPacman:
+            x, y = [int(i) for i in nearest_point(agent_state.configuration.pos)]
+            agent_dir = agent_state.configuration.direction
+            if agent_state.isPacman:
                 map[x][y] = self._pacStr(agent_dir)
             else:
                 map[x][y] = self._ghostStr(agent_dir)
@@ -639,12 +639,12 @@ class Game:
                 self.unmute()
                 self._agentCrash(i, quiet=True)
                 return
-            if ("registerInitialState" in dir(agent)):
+            if ("register_initial_state" in dir(agent)):
                 self.mute(i)
                 if self.catchExceptions:
                     try:
                         timed_func = TimeoutFunction(
-                            agent.registerInitialState,
+                            agent.register_initial_state,
                             int(self.rules.getMaxStartupTime(i)))
                         try:
                             start_time = time.time()
@@ -663,7 +663,7 @@ class Game:
                         self.unmute()
                         return
                 else:
-                    agent.registerInitialState(self.state.deep_copy())
+                    agent.register_initial_state(self.state.deep_copy())
                 # TODO: could this exceed the total time
                 self.unmute()
 
@@ -677,12 +677,12 @@ class Game:
             skip_action = False
 
             # Generate an observation of the state
-            if 'observationFunction' in dir(agent):
+            if 'observation_function' in dir(agent):
                 self.mute(agentIndex)
                 if self.catchExceptions:
                     try:
                         timed_func = TimeoutFunction(
-                            agent.observationFunction,
+                            agent.observation_function,
                             int(self.rules.get_moveTimeout(agentIndex)))
                         try:
                             start_time = time.time()
@@ -696,7 +696,7 @@ class Game:
                         self.unmute()
                         return
                 else:
-                    observation = agent.observationFunction(
+                    observation = agent.observation_function(
                         self.state.deep_copy())
                 self.unmute()
             else:
@@ -707,7 +707,7 @@ class Game:
             self.mute(agentIndex)
             if self.catchExceptions:
                 try:
-                    timed_func = TimeoutFunction(agent.getAction, int(
+                    timed_func = TimeoutFunction(agent.get_action, int(
                         self.rules.get_move_timeout(agentIndex)) -
                         int(move_time))
                     try:
@@ -762,7 +762,7 @@ class Game:
                     self.unmute()
                     return
             else:
-                action = agent.getAction(observation)
+                action = agent.get_action(observation)
             self.unmute()
 
             # Execute the action

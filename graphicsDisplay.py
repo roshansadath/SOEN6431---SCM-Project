@@ -229,7 +229,7 @@ class PacmanGraphics:
         refresh()
 
     def drawAgentObjects(self, state):
-        self.agentImages = []  # (agentState, image)
+        self.agentImages = []  # (agent_state, image)
         for index, agent in enumerate(state.agentStates):
             if agent.isPacman:
                 image = self.drawPacman(agent, index)
@@ -256,16 +256,16 @@ class PacmanGraphics:
 
     def update(self, newState):
         agentIndex = newState._agentMoved
-        agentState = newState.agentStates[agentIndex]
+        agent_state = newState.agentStates[agentIndex]
 
-        if self.agentImages[agentIndex][0].isPacman != agentState.isPacman:
-            self.swapImages(agentIndex, agentState)
+        if self.agentImages[agentIndex][0].isPacman != agent_state.isPacman:
+            self.swapImages(agentIndex, agent_state)
         prevState, prevImage = self.agentImages[agentIndex]
-        if agentState.isPacman:
-            self.animatePacman(agentState, prevState, prevImage)
+        if agent_state.isPacman:
+            self.animatePacman(agent_state, prevState, prevImage)
         else:
-            self.moveGhost(agentState, agentIndex, prevState, prevImage)
-        self.agentImages[agentIndex] = (agentState, prevImage)
+            self.moveGhost(agent_state, agentIndex, prevState, prevImage)
+        self.agentImages[agentIndex] = (agent_state, prevImage)
 
         if newState._foodEaten is not None:
             self.removeFood(newState._foodEaten, self.food)
@@ -472,15 +472,15 @@ class PacmanGraphics:
                       self.getDirection(ghost), ghostImageParts[-4:])
         refresh()
 
-    def getPosition(self, agentState):
-        if agentState.configuration is None:
+    def getPosition(self, agent_state):
+        if agent_state.configuration is None:
             return (-1000, -1000)
-        return agentState.getPosition()
+        return agent_state.getPosition()
 
-    def getDirection(self, agentState):
-        if agentState.configuration is None:
+    def getDirection(self, agent_state):
+        if agent_state.configuration is None:
             return Directions.STOP
-        return agentState.configuration.getDirection()
+        return agent_state.configuration.getDirection()
 
     def finish(self):
         end_graphics()

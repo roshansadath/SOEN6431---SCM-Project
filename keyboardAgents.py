@@ -36,7 +36,7 @@ class KeyboardAgent(Agent):
         self.index = index
         self.keys = []
 
-    def getAction(self, state):
+    def get_action(self, state):
         keys = keys_waiting() + keys_pressed()
         if keys:
             self.keys = keys
