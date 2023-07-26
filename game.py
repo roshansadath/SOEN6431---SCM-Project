@@ -570,7 +570,7 @@ class Game:
                  display, rules,
                  startingIndex=0,
                  muteAgents=False,
-                 catchExceptions=False):
+                 catch_exceptions=False):
         self.agentCrashed = False
         self.agents = agents
         self.display = display
@@ -578,7 +578,7 @@ class Game:
         self.startingIndex = startingIndex
         self.gameOver = False
         self.muteAgents = muteAgents
-        self.catchExceptions = catchExceptions
+        self.catch_exceptions = catch_exceptions
         self.moveHistory = []
         self.totalAgentTimes = [0 for agent in agents]
         self.totalAgentTimeWarnings = [0 for agent in agents]
@@ -641,7 +641,7 @@ class Game:
                 return
             if ("register_initial_state" in dir(agent)):
                 self.mute(i)
-                if self.catchExceptions:
+                if self.catch_exceptions:
                     try:
                         timed_func = TimeoutFunction(
                             agent.register_initial_state,
@@ -679,7 +679,7 @@ class Game:
             # Generate an observation of the state
             if 'observation_function' in dir(agent):
                 self.mute(agentIndex)
-                if self.catchExceptions:
+                if self.catch_exceptions:
                     try:
                         timed_func = TimeoutFunction(
                             agent.observation_function,
@@ -705,7 +705,7 @@ class Game:
             # Solicit an action
             action = None
             self.mute(agentIndex)
-            if self.catchExceptions:
+            if self.catch_exceptions:
                 try:
                     timed_func = TimeoutFunction(agent.get_action, int(
                         self.rules.get_move_timeout(agentIndex)) -
@@ -747,7 +747,7 @@ class Game:
                     # print "Agent: %d, time: %f, total: %f" % (agentIndex,
                     # move_time, self.totalAgentTimes[agentIndex])
                     flag1 = self.totalAgentTimes[agentIndex]
-                    flag2 = self.rules.getMaxTotalTime(agentIndex)
+                    flag2 = self.rules.get_max_total_time(agentIndex)
                     if flag1 > flag2:
                         print(f"Agent {agentIndex} ran out of time! "
                               "(time: {self.totalAgentTimes[agentIndex]})",
@@ -767,9 +767,9 @@ class Game:
 
             # Execute the action
             self.moveHistory.append((agentIndex, action))
-            if self.catchExceptions:
+            if self.catch_exceptions:
                 try:
-                    self.state = self.state.generateSuccessor(
+                    self.state = self.state.generate_successor(
                         agentIndex, action)
                 except Exception(self.data):
                     self.mute(agentIndex)
@@ -777,7 +777,7 @@ class Game:
                     self.unmute()
                     return
             else:
-                self.state = self.state.generateSuccessor(agentIndex, action)
+                self.state = self.state.generate_successor(agentIndex, action)
 
             # Change the display
             self.display.update(self.state.data)
@@ -803,7 +803,7 @@ class Game:
                     agent.final(self.state)
                     self.unmute()
                 except Exception(self.data):
-                    if not self.catchExceptions:
+                    if not self.catch_exceptions:
                         raise
                     self._agentCrash(agentIndex)
                     self.unmute()

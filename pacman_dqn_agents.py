@@ -1,5 +1,5 @@
 """
-pacmanDQN_agents.py
+pacman_dqn_agents.py
 # Used code from
 # DQN implementation by Tejas Kulkarni found at
 # https://github.com/mrkulk/deepQN_tensorflow
@@ -53,7 +53,7 @@ class PacmanDQN(game.Agent):
         self.params = params
         self.params['width'] = args['width']
         self.params['height'] = args['height']
-        self.params['num_training'] = args['numTraining']
+        self.params['num_training'] = args['num_training']
 
         # Start Tensorflow session
         gpu_options = tf.compat.v1.GPUOptions(
@@ -155,7 +155,7 @@ class PacmanDQN(game.Agent):
             self.current_state = self.get_state_matrices(state)
 
             # Process current experience reward
-            self.current_score = state.getScore()
+            self.current_score = state.get_score()
             reward = self.current_score - self.last_score
             self.last_score = self.current_score
 
@@ -420,7 +420,7 @@ class PacmanDQN(game.Agent):
         move = self.get_move()
 
         # Stop moving when not legal
-        legal = state.getLegalActions(0)
+        legal = state.get_legal_actions(0)
         if move not in legal:
             move = Directions.STOP
 

@@ -42,7 +42,7 @@ class RandomGhost(GhostAgent):
 
     def get_distribution(self, state):
         dist = util.Counter()
-        for a in state.getLegalActions(self.index):
+        for a in state.get_legal_actions(self.index):
             dist[a] = 1.0
         dist.normalize()
         return dist
