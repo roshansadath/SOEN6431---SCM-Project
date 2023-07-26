@@ -12,11 +12,11 @@ Student side autograding was added by Brad Miller, Nick Hay, and
 Pieter Abbeel (pabbeel@cs.berkeley.edu)."""
 
 import os
-from graphicsUtils import write_post_script, line, circle, remove_from_screen
-from graphicsUtils import format_color, change_color, square
-from graphicsUtils import refresh, moveCircle, end_graphics, changeText
-from graphicsUtils import edit, move_by, polygon, sleep, begin_graphics
-from graphicsUtils import text, wait_for_keys, color_to_vector
+from graphics_utils import write_post_script, line, circle, remove_from_screen
+from graphics_utils import format_color, change_color, square
+from graphics_utils import refresh, move_circle, end_graphics, change_text
+from graphics_utils import edit, move_by, polygon, sleep, begin_graphics
+from graphics_utils import text, wait_for_keys, color_to_vector
 import math
 from game import Directions
 
@@ -134,7 +134,7 @@ class InfoPane:
             self.ghostDistanceText.append(t)
 
     def updateScore(self, score):
-        changeText(self.scoreText, "SCORE: % 4d" % score)
+        change_text(self.scoreText, "SCORE: % 4d" % score)
 
     def setTeam(self, isBlue):
         text = "RED TEAM"
@@ -150,7 +150,7 @@ class InfoPane:
             self.initializeGhostDistances(distances)
         else:
             for i, d in enumerate(distances):
-                changeText(self.ghostDistanceText[i], d)
+                change_text(self.ghostDistanceText[i], d)
 
     def drawGhost(self):
         pass
@@ -301,7 +301,7 @@ class PacmanGraphics:
             width = PACMAN_CAPTURE_OUTLINE_WIDTH
 
         return [circle(screen_point, PACMAN_SCALE * self.gridSize,
-                       fillColor=fillColor, outlineColor=outlineColor,
+                       fill_color=fillColor, outline_color=outlineColor,
                        endpoints=endpoints,
                        width=width)]
 
@@ -325,7 +325,7 @@ class PacmanGraphics:
         screenPosition = self.to_screen(position)
         endpoints = self.getEndpoints(direction, position)
         r = PACMAN_SCALE * self.gridSize
-        moveCircle(image[0], screenPosition, r, endpoints)
+        move_circle(image[0], screenPosition, r, endpoints)
         refresh()
 
     def animatePacman(self, pacman, prevPacman, image):
@@ -433,22 +433,22 @@ class PacmanGraphics:
             dx = 0.2
         if dir == 'West':
             dx = -0.2
-        moveCircle(eyes[0],
+        move_circle(eyes[0],
                    (screen_x + self.gridSize * GHOST_SIZE * (-0.3 + dx / 1.5),
                     screen_y -
                     self.gridSize * GHOST_SIZE * (0.3 - dy / 1.5)),
                    self.gridSize * GHOST_SIZE * 0.2)
-        moveCircle(eyes[1],
+        move_circle(eyes[1],
                    (screen_x + self.gridSize * GHOST_SIZE * (0.3 + dx / 1.5),
                     screen_y -
                     self.gridSize * GHOST_SIZE * (0.3 - dy / 1.5)),
                    self.gridSize * GHOST_SIZE * 0.2)
-        moveCircle(eyes[2],
+        move_circle(eyes[2],
                    (screen_x + self.gridSize * GHOST_SIZE * (-0.3 + dx),
                     screen_y -
                     self.gridSize * GHOST_SIZE * (0.3 - dy)),
                    self.gridSize * GHOST_SIZE * 0.08)
-        moveCircle(eyes[3],
+        move_circle(eyes[3],
                    (screen_x + self.gridSize * GHOST_SIZE * (0.3 + dx),
                     screen_y -
                     self.gridSize * GHOST_SIZE * (0.3 - dy)),
@@ -717,7 +717,7 @@ class PacmanGraphics:
                     screen = self.to_screen((xNum, yNum))
                     dot = circle(screen,
                                  FOOD_SIZE * self.gridSize,
-                                 outlineColor=color, fillColor=color,
+                                 outline_color=color, fill_color=color,
                                  width=1)
                     imageRow.append(dot)
                 else:

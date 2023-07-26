@@ -15,8 +15,8 @@ Student side autograding was added by Brad Miller, Nick Hay, and
 import random
 from game import Agent
 from game import Directions
-from graphicsUtils import keys_waiting
-from graphicsUtils import keys_pressed
+from graphics_utils import keys_waiting
+from graphics_utils import keys_pressed
 
 
 class KeyboardAgent(Agent):
@@ -98,3 +98,17 @@ class KeyboardAgent2(KeyboardAgent):
         if (self.SOUTH_KEY in self.keys) and Directions.SOUTH in legal:
             move = Directions.SOUTH
         return move
+
+
+def remap_arrows(event):
+    " TURN ARROW PRESSES INTO LETTERS (SHOULD BE IN KEYBOARD AGENT) "
+    if event.char in ['a', 's', 'd', 'w']:
+        return
+    if event.keycode in [37, 101]:  # LEFT ARROW (win / _x)
+        event.char = 'a'
+    if event.keycode in [38, 99]:  # UP ARROW
+        event.char = 'w'
+    if event.keycode in [39, 102]:  # RIGHT ARROW
+        event.char = 'd'
+    if event.keycode in [40, 104]:  # DOWN ARROW
+        event.char = 's'
