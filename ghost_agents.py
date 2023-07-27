@@ -25,22 +25,22 @@ class GhostAgent(Agent):
     def __init__(self, index):
         self.index = index
 
-    def getAction(self, state):
-        dist = self.getDistribution(state)
+    def get_action(self, state):
+        dist = self.get_distribution(state)
         if len(dist) == 0:
             return Directions.STOP
         return util.choose_from_distribution(dist)
 
-    def getDistribution(self, state):
+    def get_distribution(self, state):
         """Returns a Counter encoding a distribution over actions
         from the provided state."""
-        util.raiseNotDefined()
+        util.raise_not_defined()
 
 
 class RandomGhost(GhostAgent):
     "A ghost that chooses a legal action uniformly at random."
 
-    def getDistribution(self, state):
+    def get_distribution(self, state):
         dist = util.Counter()
         for state in state.get_legal_actions(self.index):
             dist[state] = 1.0
@@ -56,7 +56,7 @@ class DirectionalGhost(GhostAgent):
         self.prob_attack = prob_attack
         self.prob_scared_flee = prob_scared_flee
 
-    def getDistribution(self, state):
+    def get_distribution(self, state):
         # Read variables from state
         ghost_state = state.getGhostState(self.index)
         legal_actions = state.getlegal_actions(self.index)

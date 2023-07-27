@@ -61,7 +61,7 @@ import layout
 
 from game import GameStateData, Game, Directions, Actions
 from util import nearest_point, manhattan_distance
-import textDisplay as text_display
+import text_display
 import graphics_display as graphics_display
 import ghost_agents
 
