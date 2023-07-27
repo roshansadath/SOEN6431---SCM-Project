@@ -20,7 +20,7 @@ import time
 import tkinter
 WINDOWS = sys.platform == 'win32'  # True if on Win95/98/NT
 
-ROOT_WINDOW = None      # The root window for graphics output
+ROOTWINDOW = None      # The root window for graphics output
 CANVAS = None      # The canvas which holds graphics
 CANVAS_XS = None      # Size of canvas obj
 CANVAS_YS = None
@@ -53,24 +53,24 @@ def sleep(secs):
     """
     sleep function for given seconds
     """
-    if ROOT_WINDOW is None:
+    if ROOTWINDOW is None:
         time.sleep(secs)
     else:
-        ROOT_WINDOW.update_idletasks()
-        ROOT_WINDOW.after(int(1000 * secs), ROOT_WINDOW.quit)
-        ROOT_WINDOW.mainloop()
+        ROOTWINDOW.update_idletasks()
+        ROOTWINDOW.after(int(1000 * secs), ROOTWINDOW.quit)
+        ROOTWINDOW.mainloop()
 
 
 def begin_graphics(width=640, height=480,
                    color=format_color(0, 0, 0), title=None):
     """start graphics"""
-    global ROOT_WINDOW, CANVAS, CANVAS_X
+    global ROOTWINDOW, CANVAS, CANVAS_X
     global CANVAS_Y, CANVAS_XS, CANVAS_YS, _BG_COLOR
 
     # Check for duplicate call
-    if ROOT_WINDOW is not None:
+    if ROOTWINDOW is not None:
         # Lose the window.
-        ROOT_WINDOW.destroy()
+        ROOTWINDOW.destroy()
 
     # Save the canvas size parameters
     CANVAS_XS, CANVAS_YS = width - 1, height - 1
@@ -78,30 +78,30 @@ def begin_graphics(width=640, height=480,
     _BG_COLOR = color
 
     # Create the root window
-    ROOT_WINDOW = tkinter.Tk()
-    ROOT_WINDOW.protocol('WM_DELETE_WINDOW', _destroy_window)
-    ROOT_WINDOW.title(title or 'Graphics Window')
-    ROOT_WINDOW.resizable(0, 0)
+    ROOTWINDOW = tkinter.Tk()
+    ROOTWINDOW.protocol('WM_DELETEwinDOW', _destroywindow)
+    ROOTWINDOW.title(title or 'Graphics Window')
+    ROOTWINDOW.resizable(0, 0)
 
     # Create the canvas obj
     try:
-        CANVAS = tkinter.Canvas(ROOT_WINDOW, width=width, height=height)
+        CANVAS = tkinter.Canvas(ROOTWINDOW, width=width, height=height)
         CANVAS.pack()
         draw_background()
         CANVAS.update()
     except Exception:
-        ROOT_WINDOW = None
+        ROOTWINDOW = None
         raise
 
     # Bind to key-down and key-up events
-    ROOT_WINDOW.bind("<KeyPress>", _keypress)
-    ROOT_WINDOW.bind("<KeyRelease>", _keyrelease)
-    ROOT_WINDOW.bind("<FocusIn>", _clear_keys)
-    ROOT_WINDOW.bind("<FocusOut>", _clear_keys)
-    ROOT_WINDOW.bind("<Button-1>", _leftclick)
-    ROOT_WINDOW.bind("<Button-2>", _rightclick)
-    ROOT_WINDOW.bind("<Button-3>", _rightclick)
-    ROOT_WINDOW.bind("<Control-Button-1>", _ctrl_leftclick)
+    ROOTWINDOW.bind("<KeyPress>", _keypress)
+    ROOTWINDOW.bind("<KeyRelease>", _keyrelease)
+    ROOTWINDOW.bind("<FocusIn>", _clear_keys)
+    ROOTWINDOW.bind("<FocusOut>", _clear_keys)
+    ROOTWINDOW.bind("<Button-1>", _leftclick)
+    ROOTWINDOW.bind("<Button-2>", _rightclick)
+    ROOTWINDOW.bind("<Button-3>", _rightclick)
+    ROOTWINDOW.bind("<Control-Button-1>", _ctrl_leftclick)
     _clear_keys()
 
 
@@ -154,27 +154,27 @@ def draw_background():
             filled=True, smoothed=False)
 
 
-def _destroy_window():
+def _destroywindow():
     " Destroy Window "
     sys.exit(0)
-#    global ROOT_WINDOW
-#    ROOT_WINDOW.destroy()
-#    ROOT_WINDOW = None
+#    global ROOTWINDOW
+#    ROOTWINDOW.destroy()
+#    ROOTWINDOW = None
     # print "DESTROY"
 
 
 def end_graphics():
     " End the graphics "
-    global ROOT_WINDOW, CANVAS, _mouse_enabled
+    global ROOTWINDOW, CANVAS, _mouse_enabled
     try:
         try:
             sleep(1)
-            if ROOT_WINDOW is not None:
-                ROOT_WINDOW.destroy()
+            if ROOTWINDOW is not None:
+                ROOTWINDOW.destroy()
         except SystemExit as sysexit:
             print(('Ending graphics raised an exception:', sysexit))
     finally:
-        ROOT_WINDOW = None
+        ROOTWINDOW = None
         CANVAS = None
         _mouse_enabled = 0
         _clear_keys()
@@ -194,15 +194,14 @@ def polygon(coords, outline_color,
     """ Defining a Polygon """
     _c = []
     for coord in coords:
-        _c.append(coord[0])
-        _c.append(coord[1])
+        c.append(coord[0])
+        c.append(coord[1])
     if fill_color is None:
         fill_color = outline_color
     if filled == 0:
         fill_color = ""
     poly = CANVAS.create_polygon(
-        _c, outline=outline_color, fill=fill_color,
-        smooth=smoothed, width=width)
+        c, outline=outline_color, fill=fill_color, smooth=smoothed, width=width)
     if behind > 0:
         CANVAS.tag_lower(poly, behind)  # Higher should be more visible
     return poly
@@ -216,7 +215,7 @@ def square(pos, _r, color, filled=1, behind=0):
     return polygon(coords, color, color, filled, 0, behind=behind)
 
 
-def circle(pos, _r,
+def circle(pos, r,
            outline_color,
            fill_color,
            endpoints=None,
@@ -233,13 +232,13 @@ def circle(pos, _r,
     while _e[0] > _e[1]:
         _e[1] = _e[1] + 360
 
-    return CANVAS.create_arc(_x0, _y0, _x1, _y1,
-                             outline=outline_color,
-                             fill=fill_color,
-                             extent=_e[1] - _e[0],
-                             start=_e[0],
-                             style=style,
-                             width=width)
+    return CANVAS.create_arc(x0, y0, x1, y1,
+                              outline=outline_color,
+                              fill=fill_color,
+                              extent=e[1] - e[0],
+                              start=e[0],
+                              style=style,
+                              width=width)
 
 
 def image(pos, file="../../blueghost.gif"):
@@ -257,8 +256,7 @@ def refresh():
     CANVAS.update_idletasks()
 
 
-def move_circle(_id, pos, _r, endpoints=None):
-    " Move the Circle "
+def move_circle(id, pos, r, endpoints=None):
     global CANVAS_X, CANVAS_Y
 
     _x, _y = pos
@@ -301,9 +299,8 @@ def text(pos,
                               anchor=anchor)
 
 
-def change_text(_id, new_text, font=None, size=12, style='normal'):
-    " Change the Text "
-    CANVAS.itemconfigure(_id, text=new_text)
+def change_text(id, newText, font=None, size=12, style='normal'):
+    CANVAS.itemconfigure(id, text=newText)
     if font is not None:
         CANVAS.itemconfigure(_id, font=(font, '-%d' % size, style))
 
@@ -367,7 +364,7 @@ def keys_pressed(d_o_e=None,
                  d_w=tkinter._tkinter.DONT_WAIT):
     " Check Keys Pressed "
     if d_o_e is None:
-        d_o_e = ROOT_WINDOW.dooneevent
+        d_o_e = ROOTWINDOW.dooneevent
     d_o_e(d_w)
     if _got_release:
         d_o_e(d_w)
@@ -398,7 +395,7 @@ def remove_from_screen(_x,
                        d_w=tkinter._tkinter.DONT_WAIT):
     " Remove Window from Screen "
     if d_o_e is None:
-        d_o_e = ROOT_WINDOW.dooneevent
+        d_o_e = ROOTWINDOW.dooneevent
     CANVAS.delete(_x)
     d_o_e(d_w)
 
@@ -416,7 +413,7 @@ def move_to(obj, _x, _y=None,
             d_w=tkinter._tkinter.DONT_WAIT):
     " A Move To Function "
     if d_o_e is None:
-        d_o_e = ROOT_WINDOW.dooneevent
+        d_o_e = ROOTWINDOW.dooneevent
     if _y is None:
         try:
             _x, _y = _x
@@ -444,7 +441,7 @@ def move_by(obj, x_pos, y_pos=None,
             d_w=tkinter._tkinter.DONT_WAIT, lift=False):
     """Move the pac based on the position"""
     if d_o_e is None:
-        d_o_e = ROOT_WINDOW.dooneevent
+        d_o_e = ROOTWINDOW.dooneevent
     if y_pos is None:
         try:
             x_pos, y_pos = x_pos

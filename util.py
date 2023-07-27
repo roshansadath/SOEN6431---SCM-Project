@@ -329,9 +329,9 @@ class Counter(dict):
     also be normalized and their total count and arg max can be extracted.
     """
 
-    def __getitem__(self, idx):
-        self.setdefault(idx, 0)
-        return dict.__getitem__(self, idx)
+    def __getitem__(self, iderivative_x):
+        self.setdefault(iderivative_x, 0)
+        return dict.__getitem__(self, iderivative_x)
 
     def increment_all(self, keys, count):
         """
@@ -510,8 +510,7 @@ class Counter(dict):
 
 
 def raise_not_defined():
-    """ pass """
-    file_name = inspect.stack()[1][1]
+    fileName = inspect.stack()[1][1]
     line = inspect.stack()[1][2]
     method = inspect.stack()[1][3]
 
