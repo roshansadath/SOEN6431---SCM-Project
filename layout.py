@@ -15,8 +15,9 @@ Pieter Abbeel (pabbeel@cs.berkeley.edu)."""
 import random
 import os
 from functools import reduce
-from game import Directions, Grid
+from game import Directions
 from util import manhattan_distance
+from game import Grid
 
 VISIBILITY_MATRIX_CACHE = {}
 
@@ -36,15 +37,17 @@ class Layout:
         self.num_ghosts = 0
         self.process_layout_text(layout_text)
         self.layout_text = layout_text
-        self.totalFood = len(self.food.asList())
+        self.total_food = len(self.food.as_list())
 
         # self.initializeVisibilityMatrix()
 
     def get_num_ghosts(self):
+        """Get the number of ghosts"""
         return self.num_ghosts
 
-    def initializeVisibilityMatrix(self):
-        global VISIBILITY_MATRIX_CACHE 
+    def initialize_visibility_matrix(self):
+        """Initialize visibilty"""
+        global VISIBILITY_MATRIX_CACHE
         if reduce(str.__add__, self.layout_text) not in VISIBILITY_MATRIX_CACHE:
             vecs = [(-0.5, 0), (0.5, 0), (0, -0.5), (0, 0.5)]
             dirs = [Directions.NORTH, Directions.SOUTH,
@@ -94,7 +97,7 @@ class Layout:
         """Get the furthest corner from current position"""
         poses = [(1, 1), (1, self.height - 2), (self.width - 2, 1),
                  (self.width - 2, self.height - 2)]
-        _ , pos = max([(manhattan_distance(p, pac_pos), p) for p in poses])
+        _ , pos = max((manhattan_distance(p, pac_pos), p) for p in poses)
         return pos
 
     def is_visible_from(self, ghost_pos, pac_pos, pac_direction):

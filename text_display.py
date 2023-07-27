@@ -73,7 +73,7 @@ class PacmanGraphics:
 
     def update(self, state):
         " Update State "
-        num_agents = len(state.agentStates)
+        num_agents = len(state.agent_states)
         self.agent_counter = (self.agent_counter + 1) % num_agents
         if self.agent_counter == 0:
             self.turn += 1
@@ -88,7 +88,7 @@ class PacmanGraphics:
             if self.turn % DRAW_EVERY == 0:
                 self.draw(state)
                 self.pause()
-        if state._win or state._lose:
+        if state.win or state.lose:
             self.draw(state)
 
     def pause(self):

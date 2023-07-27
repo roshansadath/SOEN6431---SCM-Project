@@ -195,8 +195,8 @@
 ./graphicsDisplay.py:111:80: E501 line too long (81 > 79 characters)
 ./graphicsDisplay.py:123:17: F405 'text' may be undefined, or defined from star imports: graphicsUtils
 ./graphicsDisplay.py:124:80: E501 line too long (85 > 79 characters)
-./graphicsDisplay.py:128:9: F405 'changeText' may be undefined, or defined from star imports: graphicsUtils
-./graphicsDisplay.py:144:17: F405 'changeText' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:128:9: F405 'change_text' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:144:17: F405 'change_text' may be undefined, or defined from star imports: graphicsUtils
 ./graphicsDisplay.py:208:25: F405 'square' may be undefined, or defined from star imports: graphicsUtils
 ./graphicsDisplay.py:220:9: F405 'refresh' may be undefined, or defined from star imports: graphicsUtils
 ./graphicsDisplay.py:231:9: F405 'refresh' may be undefined, or defined from star imports: graphicsUtils
@@ -206,7 +206,7 @@
 ./graphicsDisplay.py:263:35: E711 comparison to None should be 'if cond is not None:'
 ./graphicsDisplay.py:275:9: F405 'begin_graphics' may be undefined, or defined from star imports: graphicsUtils
 ./graphicsDisplay.py:294:17: F405 'circle' may be undefined, or defined from star imports: graphicsUtils
-./graphicsDisplay.py:319:9: F405 'moveCircle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:319:9: F405 'move_circle' may be undefined, or defined from star imports: graphicsUtils
 ./graphicsDisplay.py:320:9: F405 'refresh' may be undefined, or defined from star imports: graphicsUtils
 ./graphicsDisplay.py:325:20: F405 'wait_for_keys' may be undefined, or defined from star imports: graphicsUtils
 ./graphicsDisplay.py:329:13: F841 local variable 'start' is assigned to but never used
@@ -228,16 +228,16 @@
 ./graphicsDisplay.py:381:22: F405 'circle' may be undefined, or defined from star imports: graphicsUtils
 ./graphicsDisplay.py:381:80: E501 line too long (91 > 79 characters)
 ./graphicsDisplay.py:382:80: E501 line too long (119 > 79 characters)
-./graphicsDisplay.py:404:9: F405 'moveCircle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:404:9: F405 'move_circle' may be undefined, or defined from star imports: graphicsUtils
 ./graphicsDisplay.py:404:80: E501 line too long (98 > 79 characters)
 ./graphicsDisplay.py:405:80: E501 line too long (110 > 79 characters)
-./graphicsDisplay.py:406:9: F405 'moveCircle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:406:9: F405 'move_circle' may be undefined, or defined from star imports: graphicsUtils
 ./graphicsDisplay.py:406:80: E501 line too long (97 > 79 characters)
 ./graphicsDisplay.py:407:80: E501 line too long (110 > 79 characters)
-./graphicsDisplay.py:408:9: F405 'moveCircle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:408:9: F405 'move_circle' may be undefined, or defined from star imports: graphicsUtils
 ./graphicsDisplay.py:408:80: E501 line too long (92 > 79 characters)
 ./graphicsDisplay.py:409:80: E501 line too long (105 > 79 characters)
-./graphicsDisplay.py:410:9: F405 'moveCircle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:410:9: F405 'move_circle' may be undefined, or defined from star imports: graphicsUtils
 ./graphicsDisplay.py:410:80: E501 line too long (91 > 79 characters)
 ./graphicsDisplay.py:411:80: E501 line too long (105 > 79 characters)
 ./graphicsDisplay.py:419:13: F405 'move_by' may be undefined, or defined from star imports: graphicsUtils

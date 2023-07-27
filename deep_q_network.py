@@ -153,7 +153,7 @@ class DQN:
             self.saver.restore(self.sess, self.params['load_file'])
 
     def train(self, bat_s, bat_a, bat_t, bat_n, bat_r):
-        """Specify Training Parameters
+        """Specifrom_y Training Parameters
 
         Parameters
         ----------
