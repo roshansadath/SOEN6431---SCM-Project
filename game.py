@@ -25,7 +25,8 @@ import io
 import time
 import traceback
 import sys
-from util import TimeoutFunctionException, TimeoutFunction, nearest_point, raise_not_defined
+from util import TimeoutFunctionException, TimeoutFunction
+from util import nearest_point, raise_not_defined
 #######################
 # Parts worth reading #
 #######################
@@ -42,7 +43,7 @@ class Agent:
     def __init__(self, index=0):
         self.index = index
 
-    def get_action(self,state):
+    def get_action(self, state):
         """
         The Agent will receive a GameState (from either {pacman, capture, sonar
         }.py) and
@@ -64,10 +65,8 @@ class Directions:
             EAST:  NORTH,
             WEST:  SOUTH,
             STOP:  STOP}
-    #{y_pos: x_pos for x_pos, y_pos in list(LEFT.items()) }
-# dict([(y_pos, x_pos) for x_pos, y_pos in list(LEFT.items())])
-    RIGHT =    {y_pos: x_pos for x_pos, y_pos in list(LEFT.items()) }
 
+    RIGHT = {y_pos: x_pos for x_pos, y_pos in list(LEFT.items())}
 
     REVERSE = {NORTH: SOUTH,
                SOUTH: NORTH,
@@ -78,8 +77,8 @@ class Directions:
 
 class Configuration:
     """
-    A Configuration holds the (x_pos,y) coordinate of a character, along with its
-    traveling direction.
+    A Configuration holds the (x_pos,y) coordinate of a character, along
+    with its traveling direction.
 
     The convention for positions, like a graph, is that (0,0) is the lower left
     corner, x_pos increases
@@ -130,24 +129,26 @@ class Configuration:
         direction = Actions.vector_to_direction(vector)
         if direction == Directions.STOP:
             direction = self.direction  # There is no stop direction
-        return Configuration((x_pos + derivitive_x, y_pos + derivate_y), direction)
+        return Configuration((x_pos + derivitive_x, y_pos + derivate_y),
+                             direction)
 
 
 class AgentState:
     """
-    agent_states hold the state of an agent (configuration, speed, scared, etc).
+    agent_states hold the state of an agent
+    (configuration, speed, scared, etc).
     """
 
-    def __init__(self, start_configuration, is_pacman):
+    def __init__(self, start_configuration, is_pac):
         self.start = start_configuration
         self.configuration = start_configuration
-        self.is_pacman = is_pacman
+        self.is_pac = is_pac
         self.scared_timer = 0
         self.num_carrying = 0
         self.num_returned = 0
 
     def __str__(self):
-        if self.is_pacman:
+        if self.is_pac:
             return "Pacman: " + str(self.configuration)
         return "Ghost: " + str(self.configuration)
 
@@ -163,7 +164,7 @@ class AgentState:
 
     def copy(self):
         """Copy the current agent state"""
-        state = AgentState(self.start, self.is_pacman)
+        state = AgentState(self.start, self.is_pac)
         state.configuration = self.configuration
         state.scared_timer = self.scared_timer
         state.num_carrying = self.num_carrying
@@ -343,6 +344,7 @@ class Actions:
     _directionsas_list = list(_directions.items())
 
     TOLERANCE = .001
+
     @staticmethod
     def reverse_direction(action):
         """Revrese direction"""
@@ -355,7 +357,7 @@ class Actions:
         if action == Directions.WEST:
             return Directions.EAST
         return action
-   # reverse_direction = staticmethod(reverse_direction)
+
     @staticmethod
     def vector_to_direction(vector):
         """Convert to vector"""
@@ -369,13 +371,13 @@ class Actions:
         if derivitive_x > 0:
             return Directions.EAST
         return Directions.STOP
-   # vector_to_direction = vector_to_direction
+
     @staticmethod
     def direction_to_vector(direction, speed=1.0):
         """Direction to vector"""
         derivitive_x, derivate_y = Actions._directions[direction]
         return (derivitive_x * speed, derivate_y * speed)
-    #direction_to_vector = staticmethod(direction_to_vector)
+
     @staticmethod
     def get_possible_actions(config, walls):
         """Get all the possible actions"""
@@ -388,15 +390,14 @@ class Actions:
             return [config.get_direction()]
 
         for dir_ectory, vec in Actions._directionsas_list:
-            derivative_x, derivate_y = vec
+            deri_x, derivate_y = vec
             next_y = y_int + derivate_y
-            next_x = x_int + derivative_x
+            next_x = x_int + deri_x
             if not walls[next_x][next_y]:
                 possible.append(dir_ectory)
 
         return possible
 
-    #get_possible_actions = staticmethod(get_possible_actions)
     @staticmethod
     def get_legal_neighbors(position, walls):
         """Get legal neighbours"""
@@ -404,8 +405,8 @@ class Actions:
         x_int, y_int = int(x_pos + 0.5), int(y_pos + 0.5)
         neighbors = []
         for _, vec in Actions._directionsas_list:
-            derivative_x, derivate_y = vec
-            next_x = x_int + derivative_x
+            deri_x, derivate_y = vec
+            next_x = x_int + deri_x
             if next_x < 0 or next_x == walls.width:
                 continue
             next_y = y_int + derivate_y
@@ -414,14 +415,13 @@ class Actions:
             if not walls[next_x][next_y]:
                 neighbors.append((next_x, next_y))
         return neighbors
-    #get_legal_neighbors = staticmethod(get_legal_neighbors)
+
     @staticmethod
     def get_successor(position, action):
         """Get successor"""
-        derivative_x, derivate_y = Actions.direction_to_vector(action)
+        deri_x, derivate_y = Actions.direction_to_vector(action)
         x_pos, y_pos = position
-        return (x_pos + derivative_x, y_pos + derivate_y)
-    #get_successor = staticmethod(get_successor)
+        return (x_pos + deri_x, y_pos + derivate_y)
 
 
 class GameStateData:
@@ -508,16 +508,19 @@ class GameStateData:
         for x_pos in range(width):
             for y_pos in range(height):
                 food, walls = self.food, self.layout.walls
-                map_game[x_pos][y_pos] = self.food_wall_str(food[x_pos][y_pos], walls[x_pos][y_pos])
+                map_game[x_pos][y_pos] = self.food_wall_str(food[x_pos][y_pos],
+                                                            walls[x_pos][y_pos]
+                                                            )
 
         for agent_state in self.agent_states:
             if agent_state is None:
                 continue
             if agent_state.configuration is None:
                 continue
-            x_pos, y_pos = [int(i) for i in nearest_point(agent_state.configuration.pos)]
+            x_pos, y_pos = [int(i) for i in
+                            nearest_point(agent_state.configuration.pos)]
             agent_dir = agent_state.configuration.direction
-            if agent_state.is_pacman:
+            if agent_state.is_pac:
                 map_game[x_pos][y_pos] = self.pac_str(agent_dir)
             else:
                 map_game[x_pos][y_pos] = self.ghost_str(agent_dir)
@@ -545,12 +548,11 @@ class GameStateData:
             return '>'
         return '<'
 
-
     def initialize(self, layout, num_ghost_agents):
-        """
-        Creates an initial game state from a layout array (see layout.py). """
+        """Creates an initial game state
+        from a layout array (see layout.py). """
         self.food = layout.food.copy()
-        #self.capsules = []
+        # self.capsules = []
         self.capsules = layout.capsules[:]
         self.layout = layout
         self.score = 0
@@ -558,13 +560,13 @@ class GameStateData:
 
         self.agent_states = []
         num_ghosts = 0
-        for is_pacman, pos in layout.agent_positions:
-            if not is_pacman:
+        for is_pac, pos in layout.agent_positions:
+            if not is_pac:
                 if num_ghosts == num_ghost_agents:
-                    continue  # Max ghosts reached alreaderivative_y
+                    continue  # Max ghosts reached alreaderi_y
                 num_ghosts += 1
             self.agent_states.append(AgentState(
-                Configuration(pos, Directions.STOP), is_pacman))
+                Configuration(pos, Directions.STOP), is_pac))
         self._eaten = [False for a in self.agent_states]
 
 
@@ -644,7 +646,7 @@ class Game:
 
         # self.display.initialize(self.state.makeObservation(1).data)
         # inform learning agents of the game start
-        for i,_ in enumerate(self.agents):
+        for i, _ in enumerate(self.agents):
             agent = self.agents[i]
             if not agent:
                 self.mute(i)
@@ -667,7 +669,8 @@ class Game:
                             time_taken = time.time() - start_time
                             self.total_agent_times[i] += time_taken
                         except TimeoutFunctionException:
-                            print(f"Agent {i} ran out of time on startup!", file=sys.stderr)
+                            print(f"Agent {i} ran out of time on startup!",
+                                  file=sys.stderr)
                             self.unmute()
                             self.agent_timeout = True
                             self.agent_crash(i, quiet=True)
@@ -738,8 +741,8 @@ class Game:
                         return
 
                     move_time += time.time() - start_time
-
-                    if move_time > self.rules.get_move_warning_time(agent_index):
+                    rules = self.rules.get_move_warning_time(agent_index)
+                    if move_time > rules:
                         self.total_agent_time_warnings[agent_index] += 1
                         print(f"Agent {agent_index} took too long to"
                               "make a move! This is warning "
@@ -750,7 +753,8 @@ class Game:
                         if f1_agent > f2_agent:
                             print(f"Agent {agent_index} exceeded the"
                                   "maximum number of warnings:"
-                                  "{self.total_agent_time_warnings[agent_index]}",
+                                  "{self.total_agent_time_warnings"
+                                  "[agent_index]}",
                                   file=sys.stderr)
                             self.agent_timeout = True
                             self.agent_crash(agent_index, quiet=True)

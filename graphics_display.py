@@ -132,8 +132,8 @@ class info_pane:
 
         for i, distance in enumerate(distances):
             itext = text(self.to_screen(self.width / 2 +
-                                   self.width / 8 * i, 0),
-                     GHOST_COLORS[i + 1], distance, "Times", size, "bold")
+                                        self.width / 8 * i, 0),
+                         GHOST_COLORS[i + 1], distance, "Times", size, "bold")
             self.ghost_distance_text.append(itext)
 
     def update_score(self, score):
@@ -182,8 +182,10 @@ class info_pane:
         """Clear message"""
         pass
 
+
 class PacmanGraphics:
     """pacman graphics"""
+
     def __init__(self, zoom=1.0, frame_time=0.0, capture=False):
         self.havewindow = 0
         self.current_ghost_images = {}
@@ -248,7 +250,7 @@ class PacmanGraphics:
         """Draw agent obeject"""
         self.agent_images = []  # (agent_state, image)
         for index, agent in enumerate(state.agent_states):
-            if agent.is_pacman:
+            if agent.is_pac:
                 image = self.draw_pacman(agent, index)
                 self.agent_images.append((agent, image))
             else:
@@ -263,7 +265,7 @@ class PacmanGraphics:
         _, prev_image = self.agent_images[agent_index]
         for item in prev_image:
             remove_from_screen(item)
-        if new_state.is_pacman:
+        if new_state.is_pac:
             image = self.draw_pacman(new_state, agent_index)
             self.agent_images[agent_index] = (new_state, image)
         else:
@@ -276,10 +278,10 @@ class PacmanGraphics:
         agent_index = new_state.agent_moved
         agent_state = new_state.agent_states[agent_index]
 
-        if self.agent_images[agent_index][0].is_pacman != agent_state.is_pacman:
+        if self.agent_images[agent_index][0].is_pac != agent_state.is_pac:
             self.swap_images(agent_index, agent_state)
         prev_state, prev_image = self.agent_images[agent_index]
-        if agent_state.is_pacman:
+        if agent_state.is_pac:
             self.animate_pacman(agent_state, prev_state, prev_image)
         else:
             self.move_ghost(agent_state, agent_index, prev_state, prev_image)
@@ -369,7 +371,7 @@ class PacmanGraphics:
                 refresh()
                 sleep(abs(self.frame_time) / frames)
         self.move_pacman(self.get_position(pacman),
-                            self.get_direction(pacman), image)
+                         self.get_direction(pacman), image)
         refresh()
 
     def get_ghost_color(self, ghost, ghost_index):
@@ -389,54 +391,54 @@ class PacmanGraphics:
                            y_pos * self.grid_size * GHOST_SIZE + screen_y))
 
         colour = self.get_ghost_color(ghost, agent_index)
-        boderivative_y = polygon(coords, colour, filled=1)
+        boderi_y = polygon(coords, colour, filled=1)
         white = format_color(1.0, 1.0, 1.0)
         black = format_color(0.0, 0.0, 0.0)
 
-        derivative_x = 0
-        derivative_y = 0
+        deri_x = 0
+        deri_y = 0
         if direction == 'North':
-            derivative_y = -0.2
+            deri_y = -0.2
         if direction == 'South':
-            derivative_y = 0.2
+            deri_y = 0.2
         if direction == 'East':
-            derivative_x = 0.2
+            deri_x = 0.2
         if direction == 'West':
-            derivative_x = -0.2
+            deri_x = -0.2
         left_eye = circle((screen_x + self.grid_size *
                           GHOST_SIZE *
-                          (-0.3 + derivative_x / 1.5), screen_y -
+                          (-0.3 + deri_x / 1.5), screen_y -
                           self.grid_size *
                           GHOST_SIZE *
-                          (0.3 - derivative_y / 1.5)), self.grid_size *
-                         GHOST_SIZE *
-                         0.2, white, white)
-        right_eye = circle((screen_x + self.grid_size *
-                           GHOST_SIZE *
-                           (0.3 + derivative_x / 1.5), screen_y -
-                           self.grid_size *
-                           GHOST_SIZE *
-                           (0.3 - derivative_y / 1.5)), self.grid_size *
+                          (0.3 - deri_y / 1.5)), self.grid_size *
                           GHOST_SIZE *
                           0.2, white, white)
+        right_eye = circle((screen_x + self.grid_size *
+                           GHOST_SIZE *
+                           (0.3 + deri_x / 1.5), screen_y -
+                           self.grid_size *
+                           GHOST_SIZE *
+                           (0.3 - deri_y / 1.5)), self.grid_size *
+                           GHOST_SIZE *
+                           0.2, white, white)
         left_pupil = circle((screen_x + self.grid_size *
                             GHOST_SIZE *
-                            (-0.3 + derivative_x), screen_y -
+                            (-0.3 + deri_x), screen_y -
                             self.grid_size *
                             GHOST_SIZE *
-                            (0.3 - derivative_y)), self.grid_size *
-                           GHOST_SIZE *
-                           0.08, black, black)
-        right_pupil = circle((screen_x + self.grid_size *
-                             GHOST_SIZE *
-                             (0.3 + derivative_x), screen_y -
-                             self.grid_size *
-                             GHOST_SIZE *
-                             (0.3 - derivative_y)), self.grid_size *
+                            (0.3 - deri_y)), self.grid_size *
                             GHOST_SIZE *
                             0.08, black, black)
+        right_pupil = circle((screen_x + self.grid_size *
+                             GHOST_SIZE *
+                             (0.3 + deri_x), screen_y -
+                             self.grid_size *
+                             GHOST_SIZE *
+                             (0.3 - deri_y)), self.grid_size *
+                             GHOST_SIZE *
+                             0.08, black, black)
         ghost_image_parts = []
-        ghost_image_parts.append(boderivative_y)
+        ghost_image_parts.append(boderi_y)
         ghost_image_parts.append(left_eye)
         ghost_image_parts.append(right_eye)
         ghost_image_parts.append(left_pupil)
@@ -447,36 +449,38 @@ class PacmanGraphics:
     def move_eyes(self, pos, direction, eyes):
         """move eyes"""
         screen_x, screen_y = self.to_screen(pos)
-        derivative_x = 0
-        derivative_y = 0
+        deri_x = 0
+        deri_y = 0
         if direction == 'North':
-            derivative_y = -0.2
+            deri_y = -0.2
         if direction == 'South':
-            derivative_y = 0.2
+            deri_y = 0.2
         if direction == 'East':
-            derivative_x = 0.2
+            deri_x = 0.2
         if direction == 'West':
-            derivative_x = -0.2
+            deri_x = -0.2
         move_circle(eyes[0],
-                   (screen_x + self.grid_size * GHOST_SIZE * (-0.3 + derivative_x / 1.5),
+                    (screen_x + self.grid_size * GHOST_SIZE * (-0.3 + deri_x
+                                                               / 1.5),
                     screen_y -
-                    self.grid_size * GHOST_SIZE * (0.3 - derivative_y / 1.5)),
-                   self.grid_size * GHOST_SIZE * 0.2)
+                    self.grid_size * GHOST_SIZE * (0.3 - deri_y / 1.5)),
+                    self.grid_size * GHOST_SIZE * 0.2)
         move_circle(eyes[1],
-                   (screen_x + self.grid_size * GHOST_SIZE * (0.3 + derivative_x / 1.5),
+                    (screen_x + self.grid_size * GHOST_SIZE * (0.3 + deri_x
+                                                               / 1.5),
                     screen_y -
-                    self.grid_size * GHOST_SIZE * (0.3 - derivative_y / 1.5)),
-                   self.grid_size * GHOST_SIZE * 0.2)
+                    self.grid_size * GHOST_SIZE * (0.3 - deri_y / 1.5)),
+                    self.grid_size * GHOST_SIZE * 0.2)
         move_circle(eyes[2],
-                   (screen_x + self.grid_size * GHOST_SIZE * (-0.3 + derivative_x),
+                    (screen_x + self.grid_size * GHOST_SIZE * (-0.3 + deri_x),
                     screen_y -
-                    self.grid_size * GHOST_SIZE * (0.3 - derivative_y)),
-                   self.grid_size * GHOST_SIZE * 0.08)
+                    self.grid_size * GHOST_SIZE * (0.3 - deri_y)),
+                    self.grid_size * GHOST_SIZE * 0.08)
         move_circle(eyes[3],
-                   (screen_x + self.grid_size * GHOST_SIZE * (0.3 + derivative_x),
+                    (screen_x + self.grid_size * GHOST_SIZE * (0.3 + deri_x),
                     screen_y -
-                    self.grid_size * GHOST_SIZE * (0.3 - derivative_y)),
-                   self.grid_size * GHOST_SIZE * 0.08)
+                    self.grid_size * GHOST_SIZE * (0.3 - deri_y)),
+                    self.grid_size * GHOST_SIZE * 0.08)
 
     def move_ghost(self, ghost, ghost_index, prev_ghost, ghost_image_parts):
         """Move ghosts"""
@@ -494,7 +498,7 @@ class PacmanGraphics:
             color = GHOST_COLORS[ghost_index]
         edit(ghost_image_parts[0], ('fill', color), ('outline', color))
         self.move_eyes(self.get_position(ghost),
-                      self.get_direction(ghost), ghost_image_parts[-4:])
+                       self.get_direction(ghost), ghost_image_parts[-4:])
         refresh()
 
     def get_position(self, agent_state):
@@ -530,13 +534,13 @@ class PacmanGraphics:
         y_pos = (self.height - y_pos) * self.grid_size
         return (x_pos, y_pos)
 
-    def draw_walls(self, wall_matrix):
+    def draw_walls(self, wall_mat):
         """draw walls"""
         wall_color = WALL_COLOR
-        for x_num, x_pos in enumerate(wall_matrix):
-            if self.capture and (x_num * 2) < wall_matrix.width:
+        for x_num, x_pos in enumerate(wall_mat):
+            if self.capture and (x_num * 2) < wall_mat.width:
                 wall_color = TEAM_COLORS[0]
-            if self.capture and (x_num * 2) >= wall_matrix.width:
+            if self.capture and (x_num * 2) >= wall_mat.width:
                 wall_color = TEAM_COLORS[1]
 
             for y_num, cell in enumerate(x_pos):
@@ -546,14 +550,18 @@ class PacmanGraphics:
                     screen2 = self.to_screen2(pos)
 
                     # draw each quadrant of the square based on adjacent walls
-                    w_is_wall = self.is_wall(x_num - 1, y_num, wall_matrix)
-                    e_is_wall = self.is_wall(x_num + 1, y_num, wall_matrix)
-                    n_is_wall = self.is_wall(x_num, y_num + 1, wall_matrix)
-                    sis_wall = self.is_wall(x_num, y_num - 1, wall_matrix)
-                    nw_is_wall = self.is_wall(x_num - 1, y_num + 1, wall_matrix)
-                    sw_is_wall = self.is_wall(x_num - 1, y_num - 1, wall_matrix)
-                    ne_is_wall = self.is_wall(x_num + 1, y_num + 1, wall_matrix)
-                    se_is_wall = self.is_wall(x_num + 1, y_num - 1, wall_matrix)
+                    w_is_wall = self.is_wall(x_num - 1, y_num, wall_mat)
+                    e_is_wall = self.is_wall(x_num + 1, y_num, wall_mat)
+                    n_is_wall = self.is_wall(x_num, y_num + 1, wall_mat)
+                    sis_wall = self.is_wall(x_num, y_num - 1, wall_mat)
+                    nw_is_wall = self.is_wall(
+                        x_num - 1, y_num + 1, wall_mat)
+                    sw_is_wall = self.is_wall(
+                        x_num - 1, y_num - 1, wall_mat)
+                    ne_is_wall = self.is_wall(
+                        x_num + 1, y_num + 1, wall_mat)
+                    se_is_wall = self.is_wall(
+                        x_num + 1, y_num - 1, wall_mat)
 
                     # NE quadrant
                     if (not n_is_wall) and (not e_is_wall):
@@ -711,17 +719,22 @@ class PacmanGraphics:
                                           WALL_RADIUS)), wall_color)
                     if (sis_wall) and (w_is_wall) and (not sw_is_wall):
                         # outer circle
-                        circle(add(screen2, (self.grid_size * (-2)*WALL_RADIUS,
-                                             self.grid_size * (2)*WALL_RADIUS)),
+                        circle(add(screen2, (self.grid_size *
+                                             (-2)*WALL_RADIUS,
+                                             self.grid_size *
+                                             (2)*WALL_RADIUS)),
                                WALL_RADIUS * self.grid_size - 1,
                                wall_color, wall_color, (0, 91), 'arc')
-                        line(add(screen, (self.grid_size * (-2) * WALL_RADIUS+1,
-                                          self.grid_size * (1) * WALL_RADIUS)),
+                        line(add(screen, (self.grid_size * (-2) *
+                                          WALL_RADIUS+1,
+                                          self.grid_size * (1) *
+                                          WALL_RADIUS)),
                              add(screen, (self.grid_size * (-0.5),
                                           self.grid_size * (1) *
                                           WALL_RADIUS)), wall_color)
                         line(add(screen, (self.grid_size * (-1) * WALL_RADIUS,
-                                          self.grid_size * (2) * WALL_RADIUS - 1
+                                          self.grid_size *
+                                          (2) * WALL_RADIUS - 1
                                           )),
                              add(screen, (self.grid_size * (-1) * WALL_RADIUS,
                                           self.grid_size * (0.5))), wall_color)
@@ -791,7 +804,8 @@ class PacmanGraphics:
         for k, cell in enumerate(cells):
             screen_pos = self.to_screen(cell)
             cell_color = format_color(
-                *[(n_cells - k) * color * .5 / n_cells + .25 for color in base_color])
+                *[(n_cells - k) * color * .5 / n_cells + .25
+                  for color in base_color])
             block = square(screen_pos,
                            0.5 * self.grid_size,
                            color=cell_color,
@@ -812,7 +826,7 @@ class PacmanGraphics:
         distributions = [x_pos.copy() for x_pos in distributions]
         if self.distribution_images is None:
             self.draw_distributions(self.previous_state)
-        for _,x_pos in enumerate(len(self.distribution_images)):
+        for _, x_pos in enumerate(len(self.distribution_images)):
             for y_pos in range(len(self.distribution_images[0])):
                 image = self.distribution_images[x_pos][y_pos]
                 weights = [dist[(x_pos, y_pos)] for dist in distributions]
@@ -833,7 +847,9 @@ class PacmanGraphics:
 
 class FirstPersonPacmanGraphics(PacmanGraphics):
     """First pacman graphics"""
-    def __init__(self, zoom=1.0, show_ghosts=True, capture=False, frame_time=0):
+
+    def __init__(self, zoom=1.0, show_ghosts=True,
+                 capture=False, frame_time=0):
         PacmanGraphics.__init__(self, zoom, frame_time=frame_time)
         self.show_ghosts = show_ghosts
         self.capture = capture
@@ -873,7 +889,7 @@ class FirstPersonPacmanGraphics(PacmanGraphics):
 
     def get_position(self, ghostState):
         """get ghost position"""
-        flag1 = self.show_ghosts and not ghostState.is_pacman
+        flag1 = self.show_ghosts and not ghostState.is_pac
         flag2 = ghostState.get_position()[1] > 1
         if not flag1 and flag2:
             return (-1000, -1000)

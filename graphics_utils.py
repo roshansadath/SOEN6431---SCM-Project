@@ -33,9 +33,9 @@ CANVAS_TSERIFS = 0
 
 def format_color(red, green, blue):
     """Format the color into hexcode"""
-    return f'#%02x%02x%02x' % (int(red * 255),
-                               int(green * 255),
-                               int(blue * 255))
+    return '#%02x%02x%02x' % (int(red * 255),
+                              int(green * 255),
+                              int(blue * 255))
 
 
 def color_to_vector(color):

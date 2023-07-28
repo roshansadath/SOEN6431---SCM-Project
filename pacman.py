@@ -42,6 +42,11 @@ code to run a game.  This file is divided into three sections:
 To play your first game, type 'python pacman.py' from the command line.
 The keys are 'a', 's', 'd', and 'w' to move (or arrow keys).  Have fun!
 """
+import sys
+import time
+import random
+import os
+import pickle
 from game import GameStateData
 from game import Game
 from game import Directions
@@ -49,20 +54,12 @@ from game import Actions
 from util import nearest_point
 from util import manhattan_distance
 import layout
-import sys
-import time
-import random
-import os
-import pickle
 from optparse import OptionParser
 import __main__
 import pacman_dqn_agents
-import layout
 
-from game import GameStateData, Game, Directions, Actions
-from util import nearest_point, manhattan_distance
 import text_display
-import graphics_display as graphics_display
+import graphics_display
 import ghost_agents
 
 
@@ -697,7 +694,6 @@ def read_command(argv):
         text_display.SLEEP_TIME = options.frame_time
         args['display'] = text_display.PacmanGraphics()
     else:
-        import graphics_display
         args['display'] = graphics_display.PacmanGraphics(
             options.zoom, frame_time=options.frame_time)
     args['num_games'] = options.num_games
@@ -741,7 +737,7 @@ def load_agent(pacman, nographics):
             if pacman in dir(module):
                 if nographics and modulename == 'keyboard_agents.py':
                     raise UserWarning(
-                            """Using the keyboard requires
+                        """Using the keyboard requires
                             graphics (not text display)""")
                 return getattr(module, pacman)
     raise UserWarning("The agent " + pacman +
@@ -752,7 +748,8 @@ def replay_game(layout, actions, display):
     " Replay Game "
     rules = ClassicGameRules()
     agents = [pacman_dqn_agents.Greederivative_yAgent()]+[
-        ghost_agents.RandomGhost(i + 1) for i in range(layout.get_num_ghosts())]
+        ghost_agents.RandomGhost(i + 1)
+        for i in range(layout.get_num_ghosts())]
     game = rules.new_game(layout, agents[0], agents[1:], display)
     state = game.state
     display.initialize(state.data)

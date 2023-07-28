@@ -19,7 +19,7 @@ from game import Directions
 from util import manhattan_distance
 from game import Grid
 
-VISIBILITY_MATRIX_CACHE = {}
+VISIBILITY_MAT_CACHE = {}
 
 
 class Layout:
@@ -47,8 +47,8 @@ class Layout:
 
     def initialize_visibility_matrix(self):
         """Initialize visibilty"""
-        global VISIBILITY_MATRIX_CACHE
-        if reduce(str.__add__, self.layout_text) not in VISIBILITY_MATRIX_CACHE:
+        global VISIBILITY_MAT_CACHE
+        if reduce(str.__add__, self.layout_text) not in VISIBILITY_MAT_CACHE:
             vecs = [(-0.5, 0), (0.5, 0), (0, -0.5), (0, 0.5)]
             dirs = [Directions.NORTH, Directions.SOUTH,
                     Directions.WEST, Directions.EAST]
@@ -60,17 +60,20 @@ class Layout:
                 for y_height in range(self.height):
                     if self.walls[x_width][y_height] is False:
                         for vec, direction in zip(vecs, dirs):
-                            derivative_x, derivative_y = vec
-                            nextx, nexty = x_width + derivative_x, y_height + derivative_y
+                            deri_x, deri_y = vec
+                            nextx, nexty = x_width + deri_x, y_height + deri_y
                             cond1 = (nextx + nexty) != int(nextx) + int(nexty)
                             cond2 = self.walls[int(nextx)][int(nexty)]
                             while cond1 or not cond2:
-                                vis[x_width][y_height][direction].add((nextx, nexty))
-                                nextx, nexty = x_width + derivative_x, y_height + derivative_y
+                                vis[x_width][y_height][direction].add(
+                                    (nextx, nexty))
+                                nextx, nexty = x_width + deri_x, y_height
+                                + deri_y
             self.visibility = vis
-            VISIBILITY_MATRIX_CACHE[reduce(str.__add__, self.layout_text)] = vis
+            VISIBILITY_MAT_CACHE[reduce(
+                str.__add__, self.layout_text)] = vis
         else:
-            self.visibility = VISIBILITY_MATRIX_CACHE[
+            self.visibility = VISIBILITY_MAT_CACHE[
                 reduce(str.__add__, self.layout_text)]
 
     def is_wall(self, pos):
@@ -97,7 +100,7 @@ class Layout:
         """Get the furthest corner from current position"""
         poses = [(1, 1), (1, self.height - 2), (self.width - 2, 1),
                  (self.width - 2, self.height - 2)]
-        _ , pos = max((manhattan_distance(p, pac_pos), p) for p in poses)
+        _, pos = max((manhattan_distance(p, pac_pos), p) for p in poses)
         return pos
 
     def is_visible_from(self, ghost_pos, pac_pos, pac_direction):
@@ -132,7 +135,8 @@ class Layout:
                 layout_char = layout_text[max_y - y_height][x_width]
                 self.process_layout_char(x_width, y_height, layout_char)
         self.agent_positions.sort()
-        self.agent_positions = [(i == 0, pos) for i, pos in self.agent_positions]
+        self.agent_positions = [(i == 0, pos) for i, pos in
+                                self.agent_positions]
 
     def process_layout_char(self, x_pos, y_pos, layout_char):
         """Process the layout characters"""
@@ -174,7 +178,7 @@ def try_to_load(fullname):
     """Trying to load the file"""
     if not os.path.exists(fullname):
         return None
-    with open(fullname,encoding="utf8") as file:
+    with open(fullname, encoding="utf8") as file:
         try:
             return Layout([line.strip() for line in file])
         finally:

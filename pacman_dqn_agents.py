@@ -36,7 +36,7 @@ params = {
     # 'rms_decay': 0.99,      # RMS Prop decay (switched to adam)
     # 'rms_eps': 1e-6,        # RMS Prop epsilon (switched to adam)
 
-    # Epsilon value (epsilon-greederivative_y)
+    # Epsilon value (epsilon-greederi_y)
     'eps': 1.0,             # Epsilon start value
     'eps_final': 0.1,       # Epsilon end value
     'eps_step': 10000       # Epsilon steps between start and end (linear)
@@ -280,7 +280,7 @@ class PacmanDQN(game.Agent):
     def get_onehot(self, actions):
         """ Create list of vectors with 1 values at index of action in list """
         actions_onehot = np.zeros((self.params['batch_size'], 4))
-        for i,_ in enumerate(actions):
+        for i, _ in enumerate(actions):
             actions_onehot[i][int(actions[i])] = 1
         return actions_onehot
 
@@ -312,7 +312,7 @@ class PacmanDQN(game.Agent):
             matrix = np.zeros((height, width), dtype=np.int8)
 
             for agent_state in state.data.agent_states:
-                if agent_state.is_pacman:
+                if agent_state.is_pac:
                     pos = agent_state.configuration.get_position()
                     cell = 1
                     matrix[-1-int(pos[1])][int(pos[0])] = cell
@@ -325,7 +325,7 @@ class PacmanDQN(game.Agent):
             matrix = np.zeros((height, width), dtype=np.int8)
 
             for agent_state in state.data.agent_states:
-                if not agent_state.is_pacman:
+                if not agent_state.is_pac:
                     if not agent_state.scared_timer > 0:
                         pos = agent_state.configuration.get_position()
                         cell = 1
@@ -339,7 +339,7 @@ class PacmanDQN(game.Agent):
             matrix = np.zeros((height, width), dtype=np.int8)
 
             for agent_state in state.data.agent_states:
-                if not agent_state.is_pacman:
+                if not agent_state.is_pac:
                     if agent_state.scared_timer > 0:
                         pos = agent_state.configuration.get_position()
                         cell = 1
