@@ -31,7 +31,7 @@ class KeyboardAgent(Agent):
     STOP_KEY = 'q'
 
     def __init__(self, index=0):
-
+        super().__init__()
         self.last_move = Directions.STOP
         self.index = index
         self.keys = []

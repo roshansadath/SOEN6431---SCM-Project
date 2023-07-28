@@ -1,1 +1,518 @@
-{"game.py": [{"type": "method", "rank": "D", "endline": 781, "lineno": 605, "classname": "Game", "name": "run", "col_offset": 4, "complexity": 27, "closures": []}, {"type": "method", "rank": "B", "endline": 490, "lineno": 465, "classname": "GameStateData", "name": "__str__", "col_offset": 4, "complexity": 10, "closures": []}, {"type": "method", "rank": "B", "endline": 385, "lineno": 371, "classname": "Actions", "name": "getLegalNeighbors", "col_offset": 4, "complexity": 7, "closures": []}, {"type": "class", "rank": "B", "endline": 781, "lineno": 549, "name": "Game", "col_offset": 0, "complexity": 7, "methods": [{"type": "method", "rank": "A", "endline": 568, "lineno": 554, "classname": "Game", "name": "__init__", "col_offset": 4, "complexity": 4, "closures": []}, {"type": "method", "rank": "A", "endline": 574, "lineno": 570, "classname": "Game", "name": "getProgress", "col_offset": 4, "complexity": 2, "closures": []}, {"type": "method", "rank": "A", "endline": 582, "lineno": 576, "classname": "Game", "name": "_agentCrash", "col_offset": 4, "complexity": 2, "closures": []}, {"type": "method", "rank": "A", "endline": 595, "lineno": 587, "classname": "Game", "name": "mute", "col_offset": 4, "complexity": 2, "closures": []}, {"type": "method", "rank": "A", "endline": 603, "lineno": 597, "classname": "Game", "name": "unmute", "col_offset": 4, "complexity": 2, "closures": []}, {"type": "method", "rank": "D", "endline": 781, "lineno": 605, "classname": "Game", "name": "run", "col_offset": 4, "complexity": 27, "closures": []}]}, {"type": "method", "rank": "B", "endline": 451, "lineno": 436, "classname": "GameStateData", "name": "__eq__", "col_offset": 4, "complexity": 6, "closures": []}], "ghostAgents.py": [{"type": "method", "rank": "B", "endline": 94, "lineno": 59, "classname": "DirectionalGhost", "name": "getDistribution", "col_offset": 4, "complexity": 10, "closures": []}, {"type": "class", "rank": "B", "endline": 94, "lineno": 51, "name": "DirectionalGhost", "col_offset": 0, "complexity": 7, "methods": [{"type": "method", "rank": "A", "endline": 57, "lineno": 54, "classname": "DirectionalGhost", "name": "__init__", "col_offset": 4, "complexity": 1, "closures": []}, {"type": "method", "rank": "B", "endline": 94, "lineno": 59, "classname": "DirectionalGhost", "name": "getDistribution", "col_offset": 4, "complexity": 10, "closures": []}]}], "graphicsDisplay.py": [{"type": "method", "rank": "F", "endline": 569, "lineno": 459, "classname": "PacmanGraphics", "name": "drawWalls", "col_offset": 4, "complexity": 44, "closures": []}, {"type": "method", "rank": "B", "endline": 667, "lineno": 645, "classname": "PacmanGraphics", "name": "updateDistributions", "col_offset": 4, "complexity": 10, "closures": []}, {"type": "method", "rank": "B", "endline": 598, "lineno": 578, "classname": "PacmanGraphics", "name": "drawFood", "col_offset": 4, "complexity": 8, "closures": []}, {"type": "method", "rank": "B", "endline": 267, "lineno": 248, "classname": "PacmanGraphics", "name": "update", "col_offset": 4, "complexity": 6, "closures": []}, {"type": "method", "rank": "B", "endline": 343, "lineno": 322, "classname": "PacmanGraphics", "name": "animatePacman", "col_offset": 4, "complexity": 6, "closures": []}, {"type": "method", "rank": "B", "endline": 390, "lineno": 351, "classname": "PacmanGraphics", "name": "drawGhost", "col_offset": 4, "complexity": 6, "closures": []}], "graphicsUtils.py": [{"type": "function", "rank": "B", "endline": 420, "lineno": 395, "name": "move_by", "col_offset": 0, "complexity": 7, "closures": []}, {"type": "function", "rank": "B", "endline": 314, "lineno": 303, "name": "remap_arrows", "col_offset": 0, "complexity": 6, "closures": []}, {"type": "function", "rank": "B", "endline": 392, "lineno": 368, "name": "move_to", "col_offset": 0, "complexity": 6, "closures": []}], "keyboardAgents.py": [{"type": "method", "rank": "C", "endline": 71, "lineno": 61, "classname": "KeyboardAgent", "name": "getMove", "col_offset": 4, "complexity": 13, "closures": []}, {"type": "class", "rank": "B", "endline": 95, "lineno": 74, "name": "KeyboardAgent2", "col_offset": 0, "complexity": 10, "methods": [{"type": "method", "rank": "B", "endline": 95, "lineno": 85, "classname": "KeyboardAgent2", "name": "getMove", "col_offset": 4, "complexity": 9, "closures": []}]}, {"type": "method", "rank": "B", "endline": 95, "lineno": 85, "classname": "KeyboardAgent2", "name": "getMove", "col_offset": 4, "complexity": 9, "closures": []}, {"type": "class", "rank": "B", "endline": 71, "lineno": 20, "name": "KeyboardAgent", "col_offset": 0, "complexity": 8, "methods": [{"type": "method", "rank": "A", "endline": 35, "lineno": 31, "classname": "KeyboardAgent", "name": "__init__", "col_offset": 4, "complexity": 1, "closures": []}, {"type": "method", "rank": "B", "endline": 59, "lineno": 37, "classname": "KeyboardAgent", "name": "getAction", "col_offset": 4, "complexity": 7, "closures": []}, {"type": "method", "rank": "C", "endline": 71, "lineno": 61, "classname": "KeyboardAgent", "name": "getMove", "col_offset": 4, "complexity": 13, "closures": []}]}, {"type": "method", "rank": "B", "endline": 59, "lineno": 37, "classname": "KeyboardAgent", "name": "getAction", "col_offset": 4, "complexity": 7, "closures": []}], "layout.py": [{"type": "method", "rank": "B", "endline": 67, "lineno": 45, "classname": "Layout", "name": "initializeVisibilityMatrix", "col_offset": 4, "complexity": 8, "closures": []}, {"type": "method", "rank": "B", "endline": 137, "lineno": 123, "classname": "Layout", "name": "processLayoutChar", "col_offset": 4, "complexity": 7, "closures": []}, {"type": "function", "rank": "B", "endline": 154, "lineno": 140, "name": "getLayout", "col_offset": 0, "complexity": 6, "closures": []}], "pacman.py": [{"type": "function", "rank": "C", "endline": 633, "lineno": 507, "name": "readCommand", "col_offset": 0, "complexity": 13, "closures": []}, {"type": "function", "rank": "C", "endline": 661, "lineno": 636, "name": "loadAgent", "col_offset": 0, "complexity": 11, "closures": []}, {"type": "function", "rank": "C", "endline": 730, "lineno": 685, "name": "runGames", "col_offset": 0, "complexity": 11, "closures": []}, {"type": "method", "rank": "B", "endline": 138, "lineno": 106, "classname": "GameState", "name": "generateSuccessor", "col_offset": 4, "complexity": 6, "closures": []}, {"type": "method", "rank": "B", "endline": 399, "lineno": 380, "classname": "PacmanRules", "name": "consume", "col_offset": 4, "complexity": 6, "closures": []}], "pacmanDQN_Agents.py": [{"type": "method", "rank": "C", "endline": 183, "lineno": 138, "classname": "PacmanDQN", "name": "observation_step", "col_offset": 4, "complexity": 12, "closures": []}], "textDisplay.py": [{"type": "method", "rank": "B", "endline": 72, "lineno": 60, "classname": "PacmanGraphics", "name": "update", "col_offset": 4, "complexity": 7, "closures": []}], "util.py": [{"type": "function", "rank": "B", "endline": 607, "lineno": 585, "name": "lookup", "col_offset": 0, "complexity": 10, "closures": []}, {"type": "function", "rank": "B", "endline": 472, "lineno": 453, "name": "normalize", "col_offset": 0, "complexity": 6, "closures": []}, {"type": "function", "rank": "B", "endline": 503, "lineno": 491, "name": "sample", "col_offset": 0, "complexity": 6, "closures": []}]}
+{
+    "game.py": [
+        {
+            "type": "method",
+            "rank": "D",
+            "endline": 781,
+            "lineno": 605,
+            "classname": "Game",
+            "name": "run",
+            "col_offset": 4,
+            "complexity": 27,
+            "closures": []
+        },
+        {
+            "type": "method",
+            "rank": "B",
+            "endline": 490,
+            "lineno": 465,
+            "classname": "GameStateData",
+            "name": "__str__",
+            "col_offset": 4,
+            "complexity": 10,
+            "closures": []
+        },
+        {
+            "type": "method",
+            "rank": "B",
+            "endline": 385,
+            "lineno": 371,
+            "classname": "Actions",
+            "name": "getLegalNeighbors",
+            "col_offset": 4,
+            "complexity": 7,
+            "closures": []
+        },
+        {
+            "type": "class",
+            "rank": "B",
+            "endline": 781,
+            "lineno": 549,
+            "name": "Game",
+            "col_offset": 0,
+            "complexity": 7,
+            "methods": [
+                {
+                    "type": "method",
+                    "rank": "A",
+                    "endline": 568,
+                    "lineno": 554,
+                    "classname": "Game",
+                    "name": "__init__",
+                    "col_offset": 4,
+                    "complexity": 4,
+                    "closures": []
+                },
+                {
+                    "type": "method",
+                    "rank": "A",
+                    "endline": 574,
+                    "lineno": 570,
+                    "classname": "Game",
+                    "name": "getProgress",
+                    "col_offset": 4,
+                    "complexity": 2,
+                    "closures": []
+                },
+                {
+                    "type": "method",
+                    "rank": "A",
+                    "endline": 582,
+                    "lineno": 576,
+                    "classname": "Game",
+                    "name": "_agentCrash",
+                    "col_offset": 4,
+                    "complexity": 2,
+                    "closures": []
+                },
+                {
+                    "type": "method",
+                    "rank": "A",
+                    "endline": 595,
+                    "lineno": 587,
+                    "classname": "Game",
+                    "name": "mute",
+                    "col_offset": 4,
+                    "complexity": 2,
+                    "closures": []
+                },
+                {
+                    "type": "method",
+                    "rank": "A",
+                    "endline": 603,
+                    "lineno": 597,
+                    "classname": "Game",
+                    "name": "unmute",
+                    "col_offset": 4,
+                    "complexity": 2,
+                    "closures": []
+                },
+                {
+                    "type": "method",
+                    "rank": "D",
+                    "endline": 781,
+                    "lineno": 605,
+                    "classname": "Game",
+                    "name": "run",
+                    "col_offset": 4,
+                    "complexity": 27,
+                    "closures": []
+                }
+            ]
+        },
+        {
+            "type": "method",
+            "rank": "B",
+            "endline": 451,
+            "lineno": 436,
+            "classname": "GameStateData",
+            "name": "__eq__",
+            "col_offset": 4,
+            "complexity": 6,
+            "closures": []
+        }
+    ],
+    "ghostAgents.py": [
+        {
+            "type": "method",
+            "rank": "B",
+            "endline": 94,
+            "lineno": 59,
+            "classname": "DirectionalGhost",
+            "name": "getDistribution",
+            "col_offset": 4,
+            "complexity": 10,
+            "closures": []
+        },
+        {
+            "type": "class",
+            "rank": "B",
+            "endline": 94,
+            "lineno": 51,
+            "name": "DirectionalGhost",
+            "col_offset": 0,
+            "complexity": 7,
+            "methods": [
+                {
+                    "type": "method",
+                    "rank": "A",
+                    "endline": 57,
+                    "lineno": 54,
+                    "classname": "DirectionalGhost",
+                    "name": "__init__",
+                    "col_offset": 4,
+                    "complexity": 1,
+                    "closures": []
+                },
+                {
+                    "type": "method",
+                    "rank": "B",
+                    "endline": 94,
+                    "lineno": 59,
+                    "classname": "DirectionalGhost",
+                    "name": "getDistribution",
+                    "col_offset": 4,
+                    "complexity": 10,
+                    "closures": []
+                }
+            ]
+        }
+    ],
+    "graphicsDisplay.py": [
+        {
+            "type": "method",
+            "rank": "F",
+            "endline": 569,
+            "lineno": 459,
+            "classname": "PacmanGraphics",
+            "name": "drawWalls",
+            "col_offset": 4,
+            "complexity": 44,
+            "closures": []
+        },
+        {
+            "type": "method",
+            "rank": "B",
+            "endline": 667,
+            "lineno": 645,
+            "classname": "PacmanGraphics",
+            "name": "updateDistributions",
+            "col_offset": 4,
+            "complexity": 10,
+            "closures": []
+        },
+        {
+            "type": "method",
+            "rank": "B",
+            "endline": 598,
+            "lineno": 578,
+            "classname": "PacmanGraphics",
+            "name": "drawFood",
+            "col_offset": 4,
+            "complexity": 8,
+            "closures": []
+        },
+        {
+            "type": "method",
+            "rank": "B",
+            "endline": 267,
+            "lineno": 248,
+            "classname": "PacmanGraphics",
+            "name": "update",
+            "col_offset": 4,
+            "complexity": 6,
+            "closures": []
+        },
+        {
+            "type": "method",
+            "rank": "B",
+            "endline": 343,
+            "lineno": 322,
+            "classname": "PacmanGraphics",
+            "name": "animatePacman",
+            "col_offset": 4,
+            "complexity": 6,
+            "closures": []
+        },
+        {
+            "type": "method",
+            "rank": "B",
+            "endline": 390,
+            "lineno": 351,
+            "classname": "PacmanGraphics",
+            "name": "drawGhost",
+            "col_offset": 4,
+            "complexity": 6,
+            "closures": []
+        }
+    ],
+    "graphicsUtils.py": [
+        {
+            "type": "function",
+            "rank": "B",
+            "endline": 420,
+            "lineno": 395,
+            "name": "move_by",
+            "col_offset": 0,
+            "complexity": 7,
+            "closures": []
+        },
+        {
+            "type": "function",
+            "rank": "B",
+            "endline": 314,
+            "lineno": 303,
+            "name": "remap_arrows",
+            "col_offset": 0,
+            "complexity": 6,
+            "closures": []
+        },
+        {
+            "type": "function",
+            "rank": "B",
+            "endline": 392,
+            "lineno": 368,
+            "name": "move_to",
+            "col_offset": 0,
+            "complexity": 6,
+            "closures": []
+        }
+    ],
+    "keyboardAgents.py": [
+        {
+            "type": "method",
+            "rank": "C",
+            "endline": 71,
+            "lineno": 61,
+            "classname": "KeyboardAgent",
+            "name": "getMove",
+            "col_offset": 4,
+            "complexity": 13,
+            "closures": []
+        },
+        {
+            "type": "class",
+            "rank": "B",
+            "endline": 95,
+            "lineno": 74,
+            "name": "KeyboardAgent2",
+            "col_offset": 0,
+            "complexity": 10,
+            "methods": [
+                {
+                    "type": "method",
+                    "rank": "B",
+                    "endline": 95,
+                    "lineno": 85,
+                    "classname": "KeyboardAgent2",
+                    "name": "getMove",
+                    "col_offset": 4,
+                    "complexity": 9,
+                    "closures": []
+                }
+            ]
+        },
+        {
+            "type": "method",
+            "rank": "B",
+            "endline": 95,
+            "lineno": 85,
+            "classname": "KeyboardAgent2",
+            "name": "getMove",
+            "col_offset": 4,
+            "complexity": 9,
+            "closures": []
+        },
+        {
+            "type": "class",
+            "rank": "B",
+            "endline": 71,
+            "lineno": 20,
+            "name": "KeyboardAgent",
+            "col_offset": 0,
+            "complexity": 8,
+            "methods": [
+                {
+                    "type": "method",
+                    "rank": "A",
+                    "endline": 35,
+                    "lineno": 31,
+                    "classname": "KeyboardAgent",
+                    "name": "__init__",
+                    "col_offset": 4,
+                    "complexity": 1,
+                    "closures": []
+                },
+                {
+                    "type": "method",
+                    "rank": "B",
+                    "endline": 59,
+                    "lineno": 37,
+                    "classname": "KeyboardAgent",
+                    "name": "getAction",
+                    "col_offset": 4,
+                    "complexity": 7,
+                    "closures": []
+                },
+                {
+                    "type": "method",
+                    "rank": "C",
+                    "endline": 71,
+                    "lineno": 61,
+                    "classname": "KeyboardAgent",
+                    "name": "getMove",
+                    "col_offset": 4,
+                    "complexity": 13,
+                    "closures": []
+                }
+            ]
+        },
+        {
+            "type": "method",
+            "rank": "B",
+            "endline": 59,
+            "lineno": 37,
+            "classname": "KeyboardAgent",
+            "name": "getAction",
+            "col_offset": 4,
+            "complexity": 7,
+            "closures": []
+        }
+    ],
+    "layout.py": [
+        {
+            "type": "method",
+            "rank": "B",
+            "endline": 67,
+            "lineno": 45,
+            "classname": "Layout",
+            "name": "initializeVisibilityMatrix",
+            "col_offset": 4,
+            "complexity": 8,
+            "closures": []
+        },
+        {
+            "type": "method",
+            "rank": "B",
+            "endline": 137,
+            "lineno": 123,
+            "classname": "Layout",
+            "name": "processLayoutChar",
+            "col_offset": 4,
+            "complexity": 7,
+            "closures": []
+        },
+        {
+            "type": "function",
+            "rank": "B",
+            "endline": 154,
+            "lineno": 140,
+            "name": "getLayout",
+            "col_offset": 0,
+            "complexity": 6,
+            "closures": []
+        }
+    ],
+    "pacman.py": [
+        {
+            "type": "function",
+            "rank": "C",
+            "endline": 633,
+            "lineno": 507,
+            "name": "readCommand",
+            "col_offset": 0,
+            "complexity": 13,
+            "closures": []
+        },
+        {
+            "type": "function",
+            "rank": "C",
+            "endline": 661,
+            "lineno": 636,
+            "name": "loadAgent",
+            "col_offset": 0,
+            "complexity": 11,
+            "closures": []
+        },
+        {
+            "type": "function",
+            "rank": "C",
+            "endline": 730,
+            "lineno": 685,
+            "name": "runGames",
+            "col_offset": 0,
+            "complexity": 11,
+            "closures": []
+        },
+        {
+            "type": "method",
+            "rank": "B",
+            "endline": 138,
+            "lineno": 106,
+            "classname": "GameState",
+            "name": "generateSuccessor",
+            "col_offset": 4,
+            "complexity": 6,
+            "closures": []
+        },
+        {
+            "type": "method",
+            "rank": "B",
+            "endline": 399,
+            "lineno": 380,
+            "classname": "PacmanRules",
+            "name": "consume",
+            "col_offset": 4,
+            "complexity": 6,
+            "closures": []
+        }
+    ],
+    "pacmanDQN_Agents.py": [
+        {
+            "type": "method",
+            "rank": "C",
+            "endline": 183,
+            "lineno": 138,
+            "classname": "PacmanDQN",
+            "name": "observation_step",
+            "col_offset": 4,
+            "complexity": 12,
+            "closures": []
+        }
+    ],
+    "textDisplay.py": [
+        {
+            "type": "method",
+            "rank": "B",
+            "endline": 72,
+            "lineno": 60,
+            "classname": "PacmanGraphics",
+            "name": "update",
+            "col_offset": 4,
+            "complexity": 7,
+            "closures": []
+        }
+    ],
+    "util.py": [
+        {
+            "type": "function",
+            "rank": "B",
+            "endline": 607,
+            "lineno": 585,
+            "name": "lookup",
+            "col_offset": 0,
+            "complexity": 10,
+            "closures": []
+        },
+        {
+            "type": "function",
+            "rank": "B",
+            "endline": 472,
+            "lineno": 453,
+            "name": "normalize",
+            "col_offset": 0,
+            "complexity": 6,
+            "closures": []
+        },
+        {
+            "type": "function",
+            "rank": "B",
+            "endline": 503,
+            "lineno": 491,
+            "name": "sample",
+            "col_offset": 0,
+            "complexity": 6,
+            "closures": []
+        }
+    ]
+}

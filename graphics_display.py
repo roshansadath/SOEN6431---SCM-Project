@@ -896,13 +896,13 @@ POSTSCRIPT_OUTPUT_DIR = 'frames'
 FRAME_NUMBER = 0
 
 
-def saveFrame():
+def save_frame():
     "Saves the current graphical output as a postscript file"
     global SAVE_POSTSCRIPT, FRAME_NUMBER, POSTSCRIPT_OUTPUT_DIR
     if not SAVE_POSTSCRIPT:
         return
     if not os.path.exists(POSTSCRIPT_OUTPUT_DIR):
         os.mkdir(POSTSCRIPT_OUTPUT_DIR)
-    name = os.path.join(POSTSCRIPT_OUTPUT_DIR, 'frame_%08d.ps' % FRAME_NUMBER)
+    name = os.path.join(POSTSCRIPT_OUTPUT_DIR, f'frame_{FRAME_NUMBER}.ps')
     FRAME_NUMBER += 1
     write_post_script(name)  # writes the current canvas
