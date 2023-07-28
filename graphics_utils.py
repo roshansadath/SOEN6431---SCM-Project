@@ -33,7 +33,9 @@ CANVAS_TSERIFS = 0
 
 def format_color(red, green, blue):
     """Format the color into hexcode"""
-    return f'#%02x%02x%02x' % (int(red * 255), int(green * 255), int(blue * 255))
+    return f'#%02x%02x%02x' % (int(red * 255),
+                               int(green * 255),
+                               int(blue * 255))
 
 
 def color_to_vector(color):
@@ -203,7 +205,8 @@ def polygon(coords, outline_color,
     if filled == 0:
         fill_color = ""
     poly = CANVAS.create_polygon(
-        coordss, outline=outline_color, fill=fill_color, smooth=smoothed, width=width)
+        coordss, outline=outline_color, fill=fill_color,
+        smooth=smoothed, width=width)
     if behind > 0:
         CANVAS.tag_lower(poly, behind)  # Higher should be more visible
     return poly
@@ -214,7 +217,8 @@ def square(pos, radius, color, filled=1, behind=0):
     x_pos, y_pos = pos
     coords = [(x_pos - radius, y_pos - radius),
               (x_pos + radius, y_pos - radius),
-              (x_pos + radius, y_pos + radius), (x_pos - radius, y_pos + radius)]
+              (x_pos + radius, y_pos + radius),
+              (x_pos - radius, y_pos + radius)]
     return polygon(coords, color, color, filled, 0, behind=behind)
 
 
@@ -236,12 +240,12 @@ def circle(pos, radius,
         endpoint[1] = endpoint[1] + 360
 
     return CANVAS.create_arc(x0_pos, y0_pos, x1_pos, y1_pos,
-                              outline=outline_color,
-                              fill=fill_color,
-                              extent=endpoint[1] - endpoint[0],
-                              start=endpoint[0],
-                              style=style,
-                              width=width)
+                             outline=outline_color,
+                             fill=fill_color,
+                             extent=endpoint[1] - endpoint[0],
+                             start=endpoint[0],
+                             style=style,
+                             width=width)
 
 
 def image(pos, file="../../blueghost.gif"):
@@ -249,9 +253,9 @@ def image(pos, file="../../blueghost.gif"):
     x_pos, y_pos = pos
     # img = PhotoImage(file=file)
     return CANVAS.create_image(x_pos,
-                                y_pos,
-                                image=tkinter.PhotoImage(file=file),
-                                anchor=tkinter.NW)
+                               y_pos,
+                               image=tkinter.PhotoImage(file=file),
+                               anchor=tkinter.NW)
 
 
 def refresh():
@@ -275,7 +279,8 @@ def move_circle(identification, pos, radius, endpoints=None):
     while endpoint[0] > endpoint[1]:
         endpoint[1] = endpoint[1] + 360
 
-    edit(identification, ('start', endpoint[0]), ('extent', endpoint[1] - endpoint[0]))
+    edit(identification, ('start', endpoint[0]),
+         ('extent', endpoint[1] - endpoint[0]))
     move_to(identification, x0_pos, y0_pos)
 
 
@@ -296,18 +301,19 @@ def text(pos,
     x_pos, y_pos = pos
     font = (font, str(size), style)
     return CANVAS.create_text(x_pos,
-                               y_pos,
-                               fill=color,
-                               text=contents,
-                               font=font,
-                               anchor=anchor)
+                              y_pos,
+                              fill=color,
+                              text=contents,
+                              font=font,
+                              anchor=anchor)
 
 
 def change_text(identification, new_text, font=None, size=12, style='normal'):
     """Change the text"""
     CANVAS.itemconfigure(identification, text=new_text)
     if font is not None:
-        CANVAS.itemconfigure(identification, font=(font, f'{size}' % size, style))
+        CANVAS.itemconfigure(identification, font=(font,
+                                                   f'{size}' % size, style))
 
 
 def change_color(identification, new_color):
@@ -319,7 +325,8 @@ def line(here, there, color=format_color(0, 0, 0), width=2):
     """draw a line"""
     x0_pos, y0_pos = here[0], here[1]
     x1_pos, y1_pos = there[0], there[1]
-    return CANVAS.create_line(x0_pos, y0_pos, x1_pos, y1_pos, fill=color, width=width)
+    return CANVAS.create_line(x0_pos, y0_pos, x1_pos, y1_pos,
+                              fill=color, width=width)
 
 
 # We bind to key-down and key-up events.
@@ -481,8 +488,9 @@ def move_by(pac, x_pos, y_pos=None,
 
 def write_post_script(filename):
     "Writes the current canvas to a postscript file."
-    with open(filename, 'w',encoding="utf8") as psfile:
-        psfile.write(CANVAS.postscript(pageanchor='sw', y_pos='0.c', x_pos='0.c'))
+    with open(filename, 'w', encoding="utf8") as psfile:
+        psfile.write(CANVAS.postscript(pageanchor='sw',
+                                       y_pos='0.c', x_pos='0.c'))
 
 
 ghost_shape = [
@@ -502,7 +510,8 @@ ghost_shape = [
 if __name__ == '__main__':
     begin_graphics()
     clear_screen()
-    ghost_shape = [(x_pos * 10 + 20, y_pos * 10 + 20) for x_pos, y_pos in ghost_shape]
+    ghost_shape = [(x_pos * 10 + 20, y_pos * 10 + 20)
+                   for x_pos, y_pos in ghost_shape]
     g = polygon(ghost_shape, format_color(1, 1, 1))
     move_to(g, (50, 50))
     circle((150, 150), 20, format_color(0.7, 0.3, 0.0), endpoints=[15, - 15])

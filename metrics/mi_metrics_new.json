@@ -1,0 +1,46 @@
+{
+    "deep_q_network.py": {
+        "mi": 61.040452467952086,
+        "rank": "A"
+    },
+    "game.py": {
+        "mi": 17.037667338936163,
+        "rank": "B"
+    },
+    "ghost_agents.py": {
+        "mi": 71.0076394079143,
+        "rank": "A"
+    },
+    "graphics_display.py": {
+        "mi": 12.060259650963435,
+        "rank": "B"
+    },
+    "graphics_utils.py": {
+        "mi": 37.61049323946944,
+        "rank": "A"
+    },
+    "keyboard_agents.py": {
+        "mi": 60.800180754871114,
+        "rank": "A"
+    },
+    "layout.py": {
+        "mi": 52.9700021811524,
+        "rank": "A"
+    },
+    "pacman.py": {
+        "mi": 34.18510477434579,
+        "rank": "A"
+    },
+    "pacman_dqn_agents.py": {
+        "mi": 43.99714190414761,
+        "rank": "A"
+    },
+    "text_display.py": {
+        "mi": 71.79617571178976,
+        "rank": "A"
+    },
+    "util.py": {
+        "mi": 41.223562898077596,
+        "rank": "A"
+    }
+}
