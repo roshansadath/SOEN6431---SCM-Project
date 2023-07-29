@@ -1,0 +1,606 @@
+./DQN.py:15:64: E231 missing whitespace after ','
+./DQN.py:15:80: E501 line too long (115 > 79 characters)
+./DQN.py:15:85: E231 missing whitespace after ','
+./DQN.py:16:80: E501 line too long (83 > 79 characters)
+./DQN.py:17:80: E501 line too long (94 > 79 characters)
+./DQN.py:18:80: E501 line too long (91 > 79 characters)
+./DQN.py:19:80: E501 line too long (95 > 79 characters)
+./DQN.py:22:29: E203 whitespace before ';'
+./DQN.py:22:30: E702 multiple statements on one line (semicolon)
+./DQN.py:22:40: E203 whitespace before ';'
+./DQN.py:22:41: E702 multiple statements on one line (semicolon)
+./DQN.py:22:55: E203 whitespace before ';'
+./DQN.py:22:56: E702 multiple statements on one line (semicolon)
+./DQN.py:22:70: E203 whitespace before ';'
+./DQN.py:22:71: E702 multiple statements on one line (semicolon)
+./DQN.py:22:80: E501 line too long (82 > 79 characters)
+./DQN.py:23:53: E231 missing whitespace after ','
+./DQN.py:23:58: E231 missing whitespace after ','
+./DQN.py:23:67: E231 missing whitespace after ','
+./DQN.py:23:80: E501 line too long (141 > 79 characters)
+./DQN.py:23:90: E231 missing whitespace after ','
+./DQN.py:24:64: E231 missing whitespace after ','
+./DQN.py:24:80: E501 line too long (114 > 79 characters)
+./DQN.py:25:80: E501 line too long (144 > 79 characters)
+./DQN.py:25:95: E231 missing whitespace after ','
+./DQN.py:26:44: E231 missing whitespace after ','
+./DQN.py:26:53: E231 missing whitespace after ','
+./DQN.py:26:80: E501 line too long (108 > 79 characters)
+./DQN.py:29:29: E203 whitespace before ';'
+./DQN.py:29:30: E702 multiple statements on one line (semicolon)
+./DQN.py:29:40: E203 whitespace before ';'
+./DQN.py:29:41: E702 multiple statements on one line (semicolon)
+./DQN.py:29:56: E203 whitespace before ';'
+./DQN.py:29:57: E702 multiple statements on one line (semicolon)
+./DQN.py:29:71: E203 whitespace before ';'
+./DQN.py:29:72: E702 multiple statements on one line (semicolon)
+./DQN.py:29:80: E501 line too long (83 > 79 characters)
+./DQN.py:30:53: E231 missing whitespace after ','
+./DQN.py:30:58: E231 missing whitespace after ','
+./DQN.py:30:67: E231 missing whitespace after ','
+./DQN.py:30:80: E501 line too long (141 > 79 characters)
+./DQN.py:30:90: E231 missing whitespace after ','
+./DQN.py:31:64: E231 missing whitespace after ','
+./DQN.py:31:80: E501 line too long (114 > 79 characters)
+./DQN.py:32:80: E501 line too long (145 > 79 characters)
+./DQN.py:32:96: E231 missing whitespace after ','
+./DQN.py:33:44: E231 missing whitespace after ','
+./DQN.py:33:53: E231 missing whitespace after ','
+./DQN.py:33:80: E501 line too long (108 > 79 characters)
+./DQN.py:34:1: W293 blank line contains whitespace
+./DQN.py:35:49: W291 trailing whitespace
+./DQN.py:38:27: E203 whitespace before ';'
+./DQN.py:38:28: E702 multiple statements on one line (semicolon)
+./DQN.py:38:43: E203 whitespace before ';'
+./DQN.py:38:44: E702 multiple statements on one line (semicolon)
+./DQN.py:38:80: E501 line too long (86 > 79 characters)
+./DQN.py:39:47: E231 missing whitespace after ','
+./DQN.py:39:52: E231 missing whitespace after ','
+./DQN.py:39:80: E501 line too long (106 > 79 characters)
+./DQN.py:40:52: E231 missing whitespace after ','
+./DQN.py:40:75: E231 missing whitespace after ','
+./DQN.py:40:80: E501 line too long (126 > 79 characters)
+./DQN.py:41:64: E231 missing whitespace after ','
+./DQN.py:41:80: E501 line too long (114 > 79 characters)
+./DQN.py:42:49: E231 missing whitespace after ','
+./DQN.py:42:58: E231 missing whitespace after ','
+./DQN.py:42:66: E231 missing whitespace after ','
+./DQN.py:42:80: E501 line too long (113 > 79 characters)
+./DQN.py:43:38: E231 missing whitespace after ','
+./DQN.py:43:80: E501 line too long (93 > 79 characters)
+./DQN.py:46:27: E203 whitespace before ';'
+./DQN.py:46:28: E702 multiple statements on one line (semicolon)
+./DQN.py:46:41: E203 whitespace before ';'
+./DQN.py:46:42: E702 multiple statements on one line (semicolon)
+./DQN.py:47:52: E231 missing whitespace after ','
+./DQN.py:47:75: E231 missing whitespace after ','
+./DQN.py:47:80: E501 line too long (126 > 79 characters)
+./DQN.py:48:64: E231 missing whitespace after ','
+./DQN.py:48:80: E501 line too long (114 > 79 characters)
+./DQN.py:49:42: E231 missing whitespace after ','
+./DQN.py:49:51: E231 missing whitespace after ','
+./DQN.py:49:59: E231 missing whitespace after ','
+./DQN.py:49:80: E501 line too long (110 > 79 characters)
+./DQN.py:51:9: E265 block comment should start with '# '
+./DQN.py:53:80: E501 line too long (109 > 79 characters)
+./DQN.py:54:55: E231 missing whitespace after ','
+./DQN.py:54:80: E501 line too long (90 > 79 characters)
+./DQN.py:56:1: W293 blank line contains whitespace
+./DQN.py:58:80: E501 line too long (124 > 79 characters)
+./DQN.py:58:88: E231 missing whitespace after ','
+./DQN.py:60:80: E501 line too long (82 > 79 characters)
+./DQN.py:61:1: W293 blank line contains whitespace
+./DQN.py:62:80: E501 line too long (168 > 79 characters)
+./DQN.py:63:80: E501 line too long (112 > 79 characters)
+./DQN.py:70:41: E231 missing whitespace after ','
+./DQN.py:72:1: W293 blank line contains whitespace
+./DQN.py:73:5: E303 too many blank lines (2)
+./DQN.py:73:19: E231 missing whitespace after ','
+./DQN.py:73:25: E231 missing whitespace after ','
+./DQN.py:73:31: E231 missing whitespace after ','
+./DQN.py:73:37: E231 missing whitespace after ','
+./DQN.py:73:43: E231 missing whitespace after ','
+./DQN.py:74:18: E225 missing whitespace around operator
+./DQN.py:74:80: E501 line too long (133 > 79 characters)
+./DQN.py:74:106: E231 missing whitespace after ':'
+./DQN.py:75:35: E231 missing whitespace after ','
+./DQN.py:77:18: E225 missing whitespace around operator
+./DQN.py:77:80: E501 line too long (112 > 79 characters)
+./DQN.py:77:85: E231 missing whitespace after ':'
+./DQN.py:78:10: E231 missing whitespace after ','
+./DQN.py:78:14: E231 missing whitespace after ','
+./DQN.py:78:65: E231 missing whitespace after ','
+./DQN.py:78:76: E231 missing whitespace after ','
+./DQN.py:78:80: E501 line too long (96 > 79 characters)
+./DQN.py:81:23: E231 missing whitespace after ','
+./game.py:8:80: E501 line too long (80 > 79 characters)
+./game.py:23:1: F403 'from util import *' used; unable to detect undefined names
+./game.py:25:1: F401 'os' imported but unused
+./game.py:47:80: E501 line too long (88 > 79 characters)
+./game.py:50:9: F405 'raiseNotDefined' may be undefined, or defined from star imports: util
+./game.py:80:80: E501 line too long (99 > 79 characters)
+./game.py:81:80: E501 line too long (106 > 79 characters)
+./game.py:99:18: E711 comparison to None should be 'if cond is None:'
+./game.py:147:18: E711 comparison to None should be 'if cond is None:'
+./game.py:149:80: E501 line too long (98 > 79 characters)
+./game.py:163:31: E711 comparison to None should be 'if cond is None:'
+./game.py:173:80: E501 line too long (81 > 79 characters)
+./game.py:177:80: E501 line too long (81 > 79 characters)
+./game.py:180:80: E501 line too long (82 > 79 characters)
+./game.py:205:18: E711 comparison to None should be 'if cond is None:'
+./game.py:213:13: E741 ambiguous variable name 'l'
+./game.py:402:80: E501 line too long (80 > 79 characters)
+./game.py:404:22: E711 comparison to None should be 'if cond is not None:'
+./game.py:440:18: E711 comparison to None should be 'if cond is None:'
+./game.py:460:30: F405 'e' may be undefined, or defined from star imports: util
+./game.py:461:23: F405 'e' may be undefined, or defined from star imports: util
+./game.py:463:80: E501 line too long (142 > 79 characters)
+./game.py:476:27: E711 comparison to None should be 'if cond is None:'
+./game.py:478:41: E711 comparison to None should be 'if cond is None:'
+./game.py:480:37: F405 'nearestPoint' may be undefined, or defined from star imports: util
+./game.py:524:9: E265 block comment should start with '# '
+./game.py:542:1: E305 expected 2 blank lines after class or function definition, found 1
+./game.py:545:1: E722 do not use bare 'except'
+./game.py:554:80: E501 line too long (105 > 79 characters)
+./game.py:591:9: F401 'io' imported but unused
+./game.py:628:38: F405 'TimeoutFunction' may be undefined, or defined from star imports: util
+./game.py:629:80: E501 line too long (93 > 79 characters)
+./game.py:635:32: F405 'TimeoutFunctionException' may be undefined, or defined from star imports: util
+./game.py:642:38: F405 'data' may be undefined, or defined from star imports: util
+./game.py:665:38: F405 'TimeoutFunction' may be undefined, or defined from star imports: util
+./game.py:665:80: E501 line too long (84 > 79 characters)
+./game.py:670:32: F405 'TimeoutFunctionException' may be undefined, or defined from star imports: util
+./game.py:674:38: F405 'data' may be undefined, or defined from star imports: util
+./game.py:690:34: F405 'TimeoutFunction' may be undefined, or defined from star imports: util
+./game.py:691:80: E501 line too long (80 > 79 characters)
+./game.py:695:35: F405 'TimeoutFunctionException' may be undefined, or defined from star imports: util
+./game.py:697:28: F405 'TimeoutFunctionException' may be undefined, or defined from star imports: util
+./game.py:709:80: E501 line too long (93 > 79 characters)
+./game.py:710:80: E501 line too long (98 > 79 characters)
+./game.py:711:80: E501 line too long (111 > 79 characters)
+./game.py:712:80: E501 line too long (92 > 79 characters)
+./game.py:713:80: E501 line too long (102 > 79 characters)
+./game.py:722:80: E501 line too long (97 > 79 characters)
+./game.py:724:80: E501 line too long (91 > 79 characters)
+./game.py:730:34: F405 'data' may be undefined, or defined from star imports: util
+./game.py:744:34: F405 'data' may be undefined, or defined from star imports: util
+./game.py:754:13: E265 block comment should start with '# '
+./game.py:755:13: E265 block comment should start with '# '
+./game.py:775:34: F405 'data' may be undefined, or defined from star imports: util
+./ghostAgents.py:8:80: E501 line too long (80 > 79 characters)
+./ghostAgents.py:18:1: F401 'random' imported but unused
+./ghostAgents.py:36:80: E501 line too long (89 > 79 characters)
+./graphicsDisplay.py:8:80: E501 line too long (80 > 79 characters)
+./graphicsDisplay.py:15:1: F403 'from graphicsUtils import *' used; unable to detect undefined names
+./graphicsDisplay.py:24:80: E501 line too long (85 > 79 characters)
+./graphicsDisplay.py:30:20: F405 'formatColor' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:31:14: F405 'formatColor' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:32:19: F405 'formatColor' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:33:15: F405 'formatColor' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:38:21: F405 'formatColor' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:39:21: F405 'formatColor' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:40:21: F405 'formatColor' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:41:21: F405 'formatColor' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:42:21: F405 'formatColor' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:43:21: F405 'formatColor' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:61:16: F405 'formatColor' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:63:29: F405 'colorToVector' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:65:16: F405 'formatColor' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:67:1: E265 block comment should start with '# '
+./graphicsDisplay.py:70:14: F405 'formatColor' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:74:15: F405 'formatColor' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:78:17: F405 'formatColor' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:100:14: E711 comparison to None should be 'if cond is None:'
+./graphicsDisplay.py:110:26: F405 'text' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:111:80: E501 line too long (81 > 79 characters)
+./graphicsDisplay.py:123:17: F405 'text' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:124:80: E501 line too long (85 > 79 characters)
+./graphicsDisplay.py:128:9: F405 'change_text' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:144:17: F405 'change_text' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:208:25: F405 'square' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:220:9: F405 'refresh' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:231:9: F405 'refresh' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:239:13: F405 'remove_from_screen' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:246:9: F405 'refresh' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:261:32: E711 comparison to None should be 'if cond is not None:'
+./graphicsDisplay.py:263:35: E711 comparison to None should be 'if cond is not None:'
+./graphicsDisplay.py:275:9: F405 'begin_graphics' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:294:17: F405 'circle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:319:9: F405 'move_circle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:320:9: F405 'refresh' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:325:20: F405 'wait_for_keys' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:329:13: F841 local variable 'start' is assigned to but never used
+./graphicsDisplay.py:338:17: F405 'refresh' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:339:17: F405 'sleep' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:343:9: F405 'refresh' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:361:16: F405 'polygon' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:362:17: F405 'formatColor' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:363:17: F405 'formatColor' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:375:19: F405 'circle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:375:80: E501 line too long (95 > 79 characters)
+./graphicsDisplay.py:376:80: E501 line too long (121 > 79 characters)
+./graphicsDisplay.py:377:20: F405 'circle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:377:80: E501 line too long (95 > 79 characters)
+./graphicsDisplay.py:378:80: E501 line too long (122 > 79 characters)
+./graphicsDisplay.py:379:21: F405 'circle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:379:80: E501 line too long (91 > 79 characters)
+./graphicsDisplay.py:380:80: E501 line too long (118 > 79 characters)
+./graphicsDisplay.py:381:22: F405 'circle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:381:80: E501 line too long (91 > 79 characters)
+./graphicsDisplay.py:382:80: E501 line too long (119 > 79 characters)
+./graphicsDisplay.py:404:9: F405 'move_circle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:404:80: E501 line too long (98 > 79 characters)
+./graphicsDisplay.py:405:80: E501 line too long (110 > 79 characters)
+./graphicsDisplay.py:406:9: F405 'move_circle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:406:80: E501 line too long (97 > 79 characters)
+./graphicsDisplay.py:407:80: E501 line too long (110 > 79 characters)
+./graphicsDisplay.py:408:9: F405 'move_circle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:408:80: E501 line too long (92 > 79 characters)
+./graphicsDisplay.py:409:80: E501 line too long (105 > 79 characters)
+./graphicsDisplay.py:410:9: F405 'move_circle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:410:80: E501 line too long (91 > 79 characters)
+./graphicsDisplay.py:411:80: E501 line too long (105 > 79 characters)
+./graphicsDisplay.py:419:13: F405 'move_by' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:420:9: F405 'refresh' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:426:9: F405 'edit' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:429:9: F405 'refresh' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:432:37: E711 comparison to None should be 'if cond is None:'
+./graphicsDisplay.py:437:37: E711 comparison to None should be 'if cond is None:'
+./graphicsDisplay.py:442:9: F405 'end_graphics' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:446:9: E265 block comment should start with '# '
+./graphicsDisplay.py:454:9: E265 block comment should start with '# '
+./graphicsDisplay.py:486:25: F405 'circle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:490:25: F405 'line' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:490:80: E501 line too long (87 > 79 characters)
+./graphicsDisplay.py:491:80: E501 line too long (150 > 79 characters)
+./graphicsDisplay.py:494:25: F405 'line' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:494:80: E501 line too long (94 > 79 characters)
+./graphicsDisplay.py:495:80: E501 line too long (161 > 79 characters)
+./graphicsDisplay.py:498:25: F405 'circle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:498:80: E501 line too long (115 > 79 characters)
+./graphicsDisplay.py:499:80: E501 line too long (104 > 79 characters)
+./graphicsDisplay.py:500:25: F405 'line' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:500:80: E501 line too long (116 > 79 characters)
+./graphicsDisplay.py:501:80: E501 line too long (115 > 79 characters)
+./graphicsDisplay.py:502:25: F405 'line' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:502:80: E501 line too long (112 > 79 characters)
+./graphicsDisplay.py:503:80: E501 line too long (107 > 79 characters)
+./graphicsDisplay.py:508:25: F405 'circle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:512:25: F405 'line' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:512:80: E501 line too long (94 > 79 characters)
+./graphicsDisplay.py:513:80: E501 line too long (164 > 79 characters)
+./graphicsDisplay.py:516:25: F405 'line' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:516:80: E501 line too long (94 > 79 characters)
+./graphicsDisplay.py:517:80: E501 line too long (164 > 79 characters)
+./graphicsDisplay.py:520:25: F405 'circle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:520:80: E501 line too long (118 > 79 characters)
+./graphicsDisplay.py:521:80: E501 line too long (104 > 79 characters)
+./graphicsDisplay.py:522:25: F405 'line' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:522:80: E501 line too long (119 > 79 characters)
+./graphicsDisplay.py:523:80: E501 line too long (114 > 79 characters)
+./graphicsDisplay.py:524:25: F405 'line' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:524:80: E501 line too long (119 > 79 characters)
+./graphicsDisplay.py:525:80: E501 line too long (114 > 79 characters)
+./graphicsDisplay.py:530:25: F405 'circle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:534:25: F405 'line' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:534:80: E501 line too long (87 > 79 characters)
+./graphicsDisplay.py:535:80: E501 line too long (149 > 79 characters)
+./graphicsDisplay.py:538:25: F405 'line' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:538:80: E501 line too long (93 > 79 characters)
+./graphicsDisplay.py:539:80: E501 line too long (159 > 79 characters)
+./graphicsDisplay.py:542:25: F405 'circle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:542:80: E501 line too long (114 > 79 characters)
+./graphicsDisplay.py:543:80: E501 line too long (103 > 79 characters)
+./graphicsDisplay.py:544:25: F405 'line' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:544:80: E501 line too long (115 > 79 characters)
+./graphicsDisplay.py:545:80: E501 line too long (110 > 79 characters)
+./graphicsDisplay.py:546:25: F405 'line' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:546:80: E501 line too long (111 > 79 characters)
+./graphicsDisplay.py:547:80: E501 line too long (106 > 79 characters)
+./graphicsDisplay.py:552:25: F405 'circle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:556:25: F405 'line' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:556:80: E501 line too long (94 > 79 characters)
+./graphicsDisplay.py:557:80: E501 line too long (163 > 79 characters)
+./graphicsDisplay.py:560:25: F405 'line' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:560:80: E501 line too long (93 > 79 characters)
+./graphicsDisplay.py:561:80: E501 line too long (162 > 79 characters)
+./graphicsDisplay.py:564:25: F405 'circle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:564:80: E501 line too long (117 > 79 characters)
+./graphicsDisplay.py:565:80: E501 line too long (101 > 79 characters)
+./graphicsDisplay.py:566:25: F405 'line' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:566:80: E501 line too long (118 > 79 characters)
+./graphicsDisplay.py:567:80: E501 line too long (113 > 79 characters)
+./graphicsDisplay.py:568:25: F405 'line' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:568:80: E501 line too long (118 > 79 characters)
+./graphicsDisplay.py:569:80: E501 line too long (113 > 79 characters)
+./graphicsDisplay.py:591:27: F405 'circle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:604:19: F405 'circle' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:614:9: F405 'remove_from_screen' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:618:9: F405 'remove_from_screen' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:630:25: F405 'formatColor' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:632:21: F405 'square' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:638:17: F405 'refresh' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:643:17: F405 'remove_from_screen' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:649:36: E711 comparison to None should be 'if cond is None:'
+./graphicsDisplay.py:666:17: F405 'changeColor' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:666:36: F405 'formatColor' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:667:9: F405 'refresh' may be undefined, or defined from star imports: graphicsUtils
+./graphicsDisplay.py:682:9: F841 local variable 'walls' is assigned to but never used
+./graphicsDisplay.py:683:9: F841 local variable 'dist' is assigned to but never used
+./graphicsDisplay.py:712:80: E501 line too long (95 > 79 characters)
+./graphicsDisplay.py:731:1: E402 module level import not at top of file
+./graphicsDisplay.py:743:5: F405 'writePostscript' may be undefined, or defined from star imports: graphicsUtils
+./graphicsUtils.py:8:80: E501 line too long (80 > 79 characters)
+./graphicsUtils.py:16:1: F401 'math' imported but unused
+./graphicsUtils.py:17:1: F401 'random' imported but unused
+./graphicsUtils.py:18:1: F401 'string' imported but unused
+./graphicsUtils.py:20:1: F401 'types' imported but unused
+./graphicsUtils.py:43:1: E305 expected 2 blank lines after class or function definition, found 1
+./graphicsUtils.py:52:21: E711 comparison to None should be 'if cond is None:'
+./graphicsUtils.py:60:80: E501 line too long (82 > 79 characters)
+./graphicsUtils.py:62:80: E501 line too long (89 > 79 characters)
+./graphicsUtils.py:86:5: E722 do not use bare 'except'
+./graphicsUtils.py:101:1: E305 expected 2 blank lines after class or function definition, found 1
+./graphicsUtils.py:126:27: E711 comparison to None should be 'if cond is not None:'
+./graphicsUtils.py:130:28: E711 comparison to None should be 'if cond is not None:'
+./graphicsUtils.py:134:32: E711 comparison to None should be 'if cond is not None:'
+./graphicsUtils.py:161:29: E711 comparison to None should be 'if cond is not None:'
+./graphicsUtils.py:179:80: E501 line too long (91 > 79 characters)
+./graphicsUtils.py:184:18: E711 comparison to None should be 'if cond is None:'
+./graphicsUtils.py:201:80: E501 line too long (87 > 79 characters)
+./graphicsUtils.py:205:18: E711 comparison to None should be 'if cond is None:'
+./graphicsUtils.py:212:80: E501 line too long (83 > 79 characters)
+./graphicsUtils.py:213:80: E501 line too long (87 > 79 characters)
+./graphicsUtils.py:219:80: E501 line too long (93 > 79 characters)
+./graphicsUtils.py:232:9: F841 local variable 'x1' is assigned to but never used
+./graphicsUtils.py:233:9: F841 local variable 'y1' is assigned to but never used
+./graphicsUtils.py:234:18: E711 comparison to None should be 'if cond is None:'
+./graphicsUtils.py:249:80: E501 line too long (87 > 79 characters)
+./graphicsUtils.py:253:80: E501 line too long (89 > 79 characters)
+./graphicsUtils.py:258:13: E711 comparison to None should be 'if cond is not None:'
+./graphicsUtils.py:272:1: E266 too many leading '#' for block comment
+./graphicsUtils.py:277:1: E305 expected 2 blank lines after class or function definition, found 1
+./graphicsUtils.py:298:5: E722 do not use bare 'except'
+./graphicsUtils.py:327:7: E275 missing whitespace after keyword
+./graphicsUtils.py:376:9: E722 do not use bare 'except'
+./graphicsUtils.py:403:9: E722 do not use bare 'except'
+./graphicsUtils.py:425:14: F821 undefined name 'file'
+./graphicsUtils.py:431:1: E305 expected 2 blank lines after class or function definition, found 1
+./keyboardAgents.py:8:80: E501 line too long (80 > 79 characters)
+./keyboardAgents.py:63:80: E501 line too long (92 > 79 characters)
+./keyboardAgents.py:65:80: E501 line too long (93 > 79 characters)
+./keyboardAgents.py:67:80: E501 line too long (92 > 79 characters)
+./keyboardAgents.py:69:80: E501 line too long (94 > 79 characters)
+./layout.py:8:80: E501 line too long (80 > 79 characters)
+./layout.py:52:80: E501 line too long (96 > 79 characters)
+./layout.py:53:80: E501 line too long (87 > 79 characters)
+./layout.py:56:41: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+./layout.py:60:80: E501 line too long (119 > 79 characters)
+./layout.py:104:80: E501 line too long (82 > 79 characters)
+./layout.py:143:19: E711 comparison to None should be 'if cond is None:'
+./layout.py:147:19: E711 comparison to None should be 'if cond is None:'
+./layout.py:149:15: E711 comparison to None should be 'if cond is None:'
+./layout.py:158:7: E275 missing whitespace after keyword
+./pacman.py:8:80: E501 line too long (80 > 79 characters)
+./pacman.py:48:1: F401 'util' imported but unused
+./pacman.py:51:1: F401 'types' imported but unused
+./pacman.py:52:1: F401 'time' imported but unused
+./pacman.py:56:1: F401 'pacmanDQN_Agents' imported but unused
+./pacman.py:57:1: F401 'ghostAgents' imported but unused
+./pacman.py:69:80: E501 line too long (86 > 79 characters)
+./pacman.py:72:80: E501 line too long (83 > 79 characters)
+./pacman.py:73:80: E501 line too long (84 > 79 characters)
+./pacman.py:126:80: E501 line too long (81 > 79 characters)
+./pacman.py:237:22: E711 comparison to None should be 'if cond is not None:'
+./pacman.py:275:1: E305 expected 2 blank lines after class or function definition, found 1
+./pacman.py:289:44: F811 redefinition of unused 'ghostAgents' from line 57
+./pacman.py:289:80: E501 line too long (101 > 79 characters)
+./pacman.py:354:80: E501 line too long (104 > 79 characters)
+./pacman.py:369:80: E501 line too long (80 > 79 characters)
+./pacman.py:394:11: E275 missing whitespace after keyword
+./pacman.py:477:80: E501 line too long (86 > 79 characters)
+./pacman.py:494:12: E711 comparison to None should be 'if cond is None:'
+./pacman.py:523:80: E501 line too long (97 > 79 characters)
+./pacman.py:532:80: E501 line too long (87 > 79 characters)
+./pacman.py:534:80: E501 line too long (93 > 79 characters)
+./pacman.py:535:80: E501 line too long (84 > 79 characters)
+./pacman.py:538:80: E501 line too long (83 > 79 characters)
+./pacman.py:541:80: E501 line too long (85 > 79 characters)
+./pacman.py:543:80: E501 line too long (88 > 79 characters)
+./pacman.py:544:80: E501 line too long (89 > 79 characters)
+./pacman.py:545:80: E501 line too long (95 > 79 characters)
+./pacman.py:546:80: E501 line too long (82 > 79 characters)
+./pacman.py:547:80: E501 line too long (113 > 79 characters)
+./pacman.py:549:80: E501 line too long (83 > 79 characters)
+./pacman.py:551:80: E501 line too long (99 > 79 characters)
+./pacman.py:553:80: E501 line too long (103 > 79 characters)
+./pacman.py:555:80: E501 line too long (99 > 79 characters)
+./pacman.py:556:80: E501 line too long (93 > 79 characters)
+./pacman.py:557:80: E501 line too long (98 > 79 characters)
+./pacman.py:559:80: E501 line too long (119 > 79 characters)
+./pacman.py:572:23: E711 comparison to None should be 'if cond is None:'
+./pacman.py:576:39: E711 comparison to None should be 'if cond is None:'
+./pacman.py:658:80: E501 line too long (82 > 79 characters)
+./pacman.py:666:5: F811 redefinition of unused 'ghostAgents' from line 57
+./pacman.py:669:80: E501 line too long (83 > 79 characters)
+./pacman.py:675:13: E117 over-indented (comment)
+./pacman.py:685:80: E501 line too long (114 > 79 characters)
+./pacman.py:695:17: E117 over-indented (comment)
+./pacman.py:710:13: F811 redefinition of unused 'time' from line 52
+./pacman.py:714:17: F821 undefined name 'file'
+./pacman.py:732:1: E305 expected 2 blank lines after class or function definition, found 1
+./pacmanDQN_Agents.py:12:1: F401 'util' imported but unused
+./pacmanDQN_Agents.py:18:1: F401 'game.Agent' imported but unused
+./pacmanDQN_Agents.py:26:1: F403 'from DQN import *' used; unable to detect undefined names
+./pacmanDQN_Agents.py:32:20: E203 whitespace before ':'
+./pacmanDQN_Agents.py:32:29: W291 trailing whitespace
+./pacmanDQN_Agents.py:48:2: W291 trailing whitespace
+./pacmanDQN_Agents.py:52:1: E303 too many blank lines (3)
+./pacmanDQN_Agents.py:64:80: E501 line too long (82 > 79 characters)
+./pacmanDQN_Agents.py:65:48: E251 unexpected spaces around keyword / parameter equals
+./pacmanDQN_Agents.py:65:50: E251 unexpected spaces around keyword / parameter equals
+./pacmanDQN_Agents.py:65:80: E501 line too long (102 > 79 characters)
+./pacmanDQN_Agents.py:65:87: E251 unexpected spaces around keyword / parameter equals
+./pacmanDQN_Agents.py:65:89: E251 unexpected spaces around keyword / parameter equals
+./pacmanDQN_Agents.py:66:21: F405 'DQN' may be undefined, or defined from star imports: DQN
+./pacmanDQN_Agents.py:69:80: E501 line too long (90 > 79 characters)
+./pacmanDQN_Agents.py:72:27: W291 trailing whitespace
+./pacmanDQN_Agents.py:87:5: E303 too many blank lines (2)
+./pacmanDQN_Agents.py:93:26: E251 unexpected spaces around keyword / parameter equals
+./pacmanDQN_Agents.py:93:28: E251 unexpected spaces around keyword / parameter equals
+./pacmanDQN_Agents.py:94:80: E501 line too long (106 > 79 characters)
+./pacmanDQN_Agents.py:94:107: W291 trailing whitespace
+./pacmanDQN_Agents.py:137:1: W293 blank line contains whitespace
+./pacmanDQN_Agents.py:159:1: W293 blank line contains whitespace
+./pacmanDQN_Agents.py:160:13: E303 too many blank lines (2)
+./pacmanDQN_Agents.py:160:15: E275 missing whitespace after keyword
+./pacmanDQN_Agents.py:164:48: W291 trailing whitespace
+./pacmanDQN_Agents.py:165:80: E501 line too long (120 > 79 characters)
+./pacmanDQN_Agents.py:171:15: E275 missing whitespace after keyword
+./pacmanDQN_Agents.py:172:80: E501 line too long (118 > 79 characters)
+./pacmanDQN_Agents.py:173:80: E501 line too long (124 > 79 characters)
+./pacmanDQN_Agents.py:183:56: E225 missing whitespace around operator
+./pacmanDQN_Agents.py:183:80: E501 line too long (88 > 79 characters)
+./pacmanDQN_Agents.py:186:5: E303 too many blank lines (2)
+./pacmanDQN_Agents.py:202:80: E501 line too long (179 > 79 characters)
+./pacmanDQN_Agents.py:202:175: E231 missing whitespace after ','
+./pacmanDQN_Agents.py:203:80: E501 line too long (90 > 79 characters)
+./pacmanDQN_Agents.py:204:26: E127 continuation line over-indented for visual indent
+./pacmanDQN_Agents.py:204:38: E231 missing whitespace after ','
+./pacmanDQN_Agents.py:204:80: E501 line too long (117 > 79 characters)
+./pacmanDQN_Agents.py:205:80: E501 line too long (105 > 79 characters)
+./pacmanDQN_Agents.py:206:80: E501 line too long (92 > 79 characters)
+./pacmanDQN_Agents.py:207:38: E231 missing whitespace after ','
+./pacmanDQN_Agents.py:207:80: E501 line too long (117 > 79 characters)
+./pacmanDQN_Agents.py:208:80: E501 line too long (107 > 79 characters)
+./pacmanDQN_Agents.py:215:25: E261 at least two spaces before inline comment
+./pacmanDQN_Agents.py:216:25: E261 at least two spaces before inline comment
+./pacmanDQN_Agents.py:217:25: E261 at least two spaces before inline comment
+./pacmanDQN_Agents.py:218:25: E261 at least two spaces before inline comment
+./pacmanDQN_Agents.py:219:25: E261 at least two spaces before inline comment
+./pacmanDQN_Agents.py:233:80: E501 line too long (99 > 79 characters)
+./pacmanDQN_Agents.py:236:5: E303 too many blank lines (2)
+./pacmanDQN_Agents.py:239:38: W291 trailing whitespace
+./pacmanDQN_Agents.py:240:51: W291 trailing whitespace
+./pacmanDQN_Agents.py:241:30: W291 trailing whitespace
+./pacmanDQN_Agents.py:252:61: W291 trailing whitespace
+./pacmanDQN_Agents.py:334:76: W291 trailing whitespace
+./pacmanDQN_Agents.py:349:43: E261 at least two spaces before inline comment
+./textDisplay.py:7:2: W291 trailing whitespace
+./textDisplay.py:8:80: E501 line too long (80 > 79 characters)
+./textDisplay.py:16:5: W291 trailing whitespace
+./textDisplay.py:18:1: E722 do not use bare 'except'
+./textDisplay.py:22:15: E261 at least two spaces before inline comment
+./textDisplay.py:24:14: E261 at least two spaces before inline comment
+./textDisplay.py:26:1: E302 expected 2 blank lines, found 1
+./textDisplay.py:27:39: E251 unexpected spaces around keyword / parameter equals
+./textDisplay.py:27:41: E251 unexpected spaces around keyword / parameter equals
+./textDisplay.py:48:1: E302 expected 2 blank lines, found 1
+./textDisplay.py:50:18: E711 comparison to None should be 'if cond is not None:'
+./textDisplay.py:54:39: E251 unexpected spaces around keyword / parameter equals
+./textDisplay.py:54:41: E251 unexpected spaces around keyword / parameter equals
+./textDisplay.py:66:80: E501 line too long (102 > 79 characters)
+./textDisplay.py:67:80: E501 line too long (158 > 79 characters)
+./util.py:8:80: E501 line too long (80 > 79 characters)
+./util.py:19:1: F401 'io' imported but unused
+./util.py:25:80: E501 line too long (82 > 79 characters)
+./util.py:26:80: E501 line too long (105 > 79 characters)
+./util.py:27:80: E501 line too long (106 > 79 characters)
+./util.py:28:80: E501 line too long (106 > 79 characters)
+./util.py:29:80: E501 line too long (108 > 79 characters)
+./util.py:30:80: E501 line too long (107 > 79 characters)
+./util.py:31:80: E501 line too long (108 > 79 characters)
+./util.py:32:80: E501 line too long (108 > 79 characters)
+./util.py:33:80: E501 line too long (108 > 79 characters)
+./util.py:34:80: E501 line too long (108 > 79 characters)
+./util.py:35:80: E501 line too long (107 > 79 characters)
+./util.py:36:80: E501 line too long (106 > 79 characters)
+./util.py:37:80: E501 line too long (107 > 79 characters)
+./util.py:38:80: E501 line too long (107 > 79 characters)
+./util.py:39:80: E501 line too long (106 > 79 characters)
+./util.py:40:80: E501 line too long (109 > 79 characters)
+./util.py:41:80: E501 line too long (108 > 79 characters)
+./util.py:42:80: E501 line too long (108 > 79 characters)
+./util.py:43:80: E501 line too long (108 > 79 characters)
+./util.py:44:80: E501 line too long (108 > 79 characters)
+./util.py:45:80: E501 line too long (108 > 79 characters)
+./util.py:46:80: E501 line too long (107 > 79 characters)
+./util.py:47:80: E501 line too long (106 > 79 characters)
+./util.py:48:80: E501 line too long (105 > 79 characters)
+./util.py:49:80: E501 line too long (106 > 79 characters)
+./util.py:50:80: E501 line too long (108 > 79 characters)
+./util.py:51:80: E501 line too long (107 > 79 characters)
+./util.py:52:80: E501 line too long (108 > 79 characters)
+./util.py:53:80: E501 line too long (108 > 79 characters)
+./util.py:54:80: E501 line too long (107 > 79 characters)
+./util.py:55:80: E501 line too long (105 > 79 characters)
+./util.py:56:80: E501 line too long (107 > 79 characters)
+./util.py:57:80: E501 line too long (108 > 79 characters)
+./util.py:58:80: E501 line too long (107 > 79 characters)
+./util.py:59:80: E501 line too long (108 > 79 characters)
+./util.py:60:80: E501 line too long (107 > 79 characters)
+./util.py:61:80: E501 line too long (107 > 79 characters)
+./util.py:62:80: E501 line too long (107 > 79 characters)
+./util.py:63:80: E501 line too long (108 > 79 characters)
+./util.py:64:80: E501 line too long (106 > 79 characters)
+./util.py:65:80: E501 line too long (108 > 79 characters)
+./util.py:66:80: E501 line too long (109 > 79 characters)
+./util.py:67:80: E501 line too long (106 > 79 characters)
+./util.py:68:80: E501 line too long (109 > 79 characters)
+./util.py:69:80: E501 line too long (107 > 79 characters)
+./util.py:70:80: E501 line too long (109 > 79 characters)
+./util.py:71:80: E501 line too long (107 > 79 characters)
+./util.py:72:80: E501 line too long (105 > 79 characters)
+./util.py:73:80: E501 line too long (105 > 79 characters)
+./util.py:74:80: E501 line too long (106 > 79 characters)
+./util.py:75:80: E501 line too long (105 > 79 characters)
+./util.py:76:80: E501 line too long (105 > 79 characters)
+./util.py:77:80: E501 line too long (106 > 79 characters)
+./util.py:78:80: E501 line too long (106 > 79 characters)
+./util.py:79:80: E501 line too long (105 > 79 characters)
+./util.py:80:80: E501 line too long (109 > 79 characters)
+./util.py:81:80: E501 line too long (109 > 79 characters)
+./util.py:82:80: E501 line too long (106 > 79 characters)
+./util.py:83:80: E501 line too long (108 > 79 characters)
+./util.py:84:80: E501 line too long (109 > 79 characters)
+./util.py:85:80: E501 line too long (102 > 79 characters)
+./util.py:86:80: E501 line too long (107 > 79 characters)
+./util.py:87:80: E501 line too long (107 > 79 characters)
+./util.py:88:80: E501 line too long (106 > 79 characters)
+./util.py:89:80: E501 line too long (109 > 79 characters)
+./util.py:90:80: E501 line too long (109 > 79 characters)
+./util.py:91:80: E501 line too long (108 > 79 characters)
+./util.py:92:80: E501 line too long (107 > 79 characters)
+./util.py:93:80: E501 line too long (108 > 79 characters)
+./util.py:94:80: E501 line too long (108 > 79 characters)
+./util.py:95:80: E501 line too long (108 > 79 characters)
+./util.py:96:80: E501 line too long (108 > 79 characters)
+./util.py:97:80: E501 line too long (106 > 79 characters)
+./util.py:98:80: E501 line too long (105 > 79 characters)
+./util.py:99:80: E501 line too long (105 > 79 characters)
+./util.py:100:80: E501 line too long (107 > 79 characters)
+./util.py:101:80: E501 line too long (104 > 79 characters)
+./util.py:102:80: E501 line too long (106 > 79 characters)
+./util.py:103:80: E501 line too long (105 > 79 characters)
+./util.py:104:80: E501 line too long (107 > 79 characters)
+./util.py:105:80: E501 line too long (107 > 79 characters)
+./util.py:106:80: E501 line too long (107 > 79 characters)
+./util.py:107:80: E501 line too long (108 > 79 characters)
+./util.py:108:80: E501 line too long (108 > 79 characters)
+./util.py:109:80: E501 line too long (109 > 79 characters)
+./util.py:110:80: E501 line too long (108 > 79 characters)
+./util.py:111:80: E501 line too long (109 > 79 characters)
+./util.py:112:80: E501 line too long (105 > 79 characters)
+./util.py:113:80: E501 line too long (106 > 79 characters)
+./util.py:118:1: E305 expected 2 blank lines after class or function definition, found 1
+./util.py:207:80: E501 line too long (83 > 79 characters)
+./util.py:219:1: E305 expected 2 blank lines after class or function definition, found 1
+./util.py:309:9: E731 do not assign a lambda expression, use a def
+./util.py:418:80: E501 line too long (89 > 79 characters)
+./util.py:455:80: E501 line too long (81 > 79 characters)
+./util.py:555:7: E275 missing whitespace after keyword
+./util.py:626:1: E402 module level import not at top of file
+./util.py:627:1: E402 module level import not at top of file
+./util.py:683:5: E265 block comment should start with '# '
+./util.py:685:5: E265 block comment should start with '# '
+./util.py:695:5: E265 block comment should start with '# '
