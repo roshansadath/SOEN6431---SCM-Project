@@ -19,6 +19,7 @@ from util import manhattan_distance
 import util
 
 
+
 class GhostAgent(Agent):
     """Define the properties of Ghost agents"""
 
